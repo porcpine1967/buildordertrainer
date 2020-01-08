@@ -6,27 +6,44 @@
    td { padding: 5px; }
 </style>
 <script>
-      var archers = [{p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, b: 3},
+      var archers = [{p: 5, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, b: 1, hb: 2},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 5},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 1},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 2},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 3},
-{p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 3, b: 1},
+{p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 3, hb: 1},
 {p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 7, lj: 4},
 {p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 4},
 {p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 4, fo: 1},
 {p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 4, fo: 2},
 {p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 4, fo: 3},
 {p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 4, fo: 4},
-{p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 3, fo: 4, fa: 1, b: 1},
+{p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 3, fo: 4, fa: 1, hb: 1},
 {p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 5, fo: 4, fa: 1},
 {p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 6, fo: 4, fa: 1},
-{p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 7, fo: 4, fa: 1},
-{p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 8, fo: 4, fa: 1},
-{p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 9, fo: 4, fa: 1},
-{p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 10, fo: 4, fa: 1},
+{p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 3, lj: 9, fo: 4, fa: 1, m: 3},
+{p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 1, m: 3},
+{p: 25, l: true, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 3, lj: 11, fo: 4, fa: 1, m: 3},
+{p: 25, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 3, lj: 11, fo: 4, fa: 1, m: 3},
+{p: 25, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 1, m: 3, b: 1},
+{p: 25, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 1, m: 3, hb: 1},
+{p: 30, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: false, wb: false, h: 3, lj: 9, fo: 4, fa: 1, m: 4, b: 2},
+{p: 30, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: false, wb: false, h: 3, lj: 9, fo: 4, fa: 1, m: 5, b: 2},
+{p: 30, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: false, wb: false, h: 3, lj: 9, fo: 4, fa: 1, m: 6, b: 1, hb: 1},
+{p: 35, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: false, wb: false, h: 3, lj: 9, fo: 4, fa: 1, m: 7, b: 1, hb: 1},
+{p: 40, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: true, wb: false, h: 0, lj: 10, fo: 0, fa: 8, m: 8, hb: 1},
+{p: 45, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: true, wb: false, h: 0, lj: 10, fo: 0, fa: 9, m: 8, hb: 1},
+{p: 50, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: true, wb: false, h: 0, lj: 10, fo: 0, fa: 10, m: 8, hb: 1},
+{p: 55, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: true, wb: false, h: 0, lj: 10, fo: 0, fa: 11, m: 8, hb: 1},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: true, wb: false, h: 0, lj: 10, fo: 0, fa: 13, m: 8},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: true, wb: false, h: 0, lj: 10, fo: 0, fa: 14, m: 8},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: true, wb: true, h: 0, lj: 10, fo: 0, fa: 14, m: 8},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: true, wb: true, h: 0, lj: 10, fo: 0, fa: 15, m: 8},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: true, wb: true, h: 0, lj: 10, fo: 0, fa: 16, m: 8},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: true, wb: true, h: 0, lj: 10, fo: 0, fa: 16, m: 8, hb: 1},
+{p: 65, l: true, a: 'Castle', dba: true, hc: true, bs: false, fl: true, wb: true, h: 0, lj: 10, fo: 0, fa: 17, m: 8, hb: 1},
 ]
 
       var unallocatedBuilders = 0;
@@ -38,35 +55,46 @@
       var bowsaw = false;
       var fletching = false;
       var wheelbarrow = false;
-      var turnOffset = 4;
+      var turnCount = 0;
       var villagers = {
         'idle': 3,
         'builder': 0,
+        'housebuilder': 0,
         'hunter': 0,
         'farmer': 0,
         'forager': 0,
         'lumberjack': 0,
-        'miner': 0  
+        'miner': 0
       }
       function validateBuildOrder() {
-        var check = archers[populationCount() - turnOffset];
-        var valid = check['p'] == popCap && 
-                check['l'] == loom && 
-                check['a'] == 'Dark' &&
-                check['dba'] == dba &&
-                check['hc'] == horsecollar &&
-                check['bs'] == bowsaw &&
-                check['fl'] == fletching &&
-                check['wb'] == wheelbarrow &&
-                villagers['idle'] == 0 &&
-                (check['b'] || 0) == villagers['builder'] &&
-                (check['h'] || 0) == villagers['hunter'] &&
-                (check['fo'] || 0) == villagers['forager'] &&
-                (check['fa'] || 0) == villagers['farmer'] &&
-                (check['lj'] || 0) == villagers['lumberjack'] &&
-                (check['m'] || 0) == villagers['miner'];
+        var check = archers[turnCount];
+        var errors = {}
+        errors['p'] = check['p'] == popCap; 
+                errors['l'] = check['l'] == loom; 
+                errors['a'] = check['a'] == age;
+                errors['dba'] = check['dba'] == dba;
+                errors['hc'] = check['hc'] == horsecollar;
+                errors['bs'] = check['bs'] == bowsaw;
+                errors['fl'] = check['fl'] == fletching;
+                errors['wb'] = check['wb'] == wheelbarrow;
+                errors['idle'] = villagers['idle'] == 0;
+                errors['hb'] = (check['hb'] || 0) == villagers['housebuilder'];
+                errors['b'] = (check['b'] || 0) == villagers['builder'];
+                errors['h'] = (check['h'] || 0) == villagers['hunter'];
+                errors['fo'] = (check['fo'] || 0) == villagers['forager'];
+                errors['fa'] = (check['fa'] || 0) == villagers['farmer'];
+                errors['lj'] = (check['lj'] || 0) == villagers['lumberjack'];
+                errors['m'] = (check['m'] || 0) == villagers['miner'];
+        var valid = true;
+        var error_list = []
+        for (key in errors) {
+           if (!errors[key]) {
+              error_list.push(key)
+           }
+           valid = valid && errors[key];
+        }
         if (valid) {
-          if (archers.length < populationCount() - turnOffset + 1 ) {
+          if (archers.length <= turnCount + 1 ) {
             document.getElementById('messages').style.color = 'green';
             document.getElementById('messages').innerHTML = 'Success!';
             return false;
@@ -74,21 +102,21 @@
             return true;
           }
         } else {
-          errorMessage('Inaccurate setup. Try readjusting');
+          errorMessage('Inaccurate setup. Try readjusting ' + error_list.join(', '));
           return false;
         }
       }
       function reset() {
-        unallocatedBuilders = 0;
-        villagers['idle'] += villagers['builder'];
-        villagers['builder'] = 0;
+        popCap += villagers['housebuilder']*5
+        villagers['idle'] += villagers['housebuilder'];
+        villagers['housebuilder'] = 0;
       }
       function errorMessage(str) {
         document.getElementById('messages').style.color = 'red';
         document.getElementById('messages').innerHTML = str;
       }
       function populationCount() {
-        var vc = 1
+        var vc = 1;
         for (var state in villagers) {
           vc += villagers[state];
         }
@@ -99,6 +127,7 @@
         document.getElementById('totalVillagers').innerHTML = populationCount();
         document.getElementById('popCap').innerHTML = popCap;
         document.getElementById('totalIdle').innerHTML = villagers['idle'];
+        document.getElementById('totalHouseBuilders').innerHTML = villagers['housebuilder'];
         document.getElementById('totalBuilders').innerHTML = villagers['builder'];
         document.getElementById('totalHunters').innerHTML = villagers['hunter'];
         document.getElementById('totalForagers').innerHTML = villagers['forager'];
@@ -109,14 +138,6 @@
       }
       function removeVillager(state) {
       if (villagers[state] > 0) {
-         if (state == 'builder') {
-           if (unallocatedBuilders > 0) {
-             unallocatedBuilders -= 1;
-           } else {
-             errorMessage('Unable to remove: builder already allocated');
-             return;
-           }
-         }
          villagers[state] -= 1;
          villagers['idle'] += 1;
          updateUI();
@@ -132,33 +153,73 @@
          updateUI();
        }
       }
-      function addHouse() {
-        if (unallocatedBuilders < 1) {
-          errorMessage('Add a builder to make a house');
-        } else {
-           unallocatedBuilders -= 1;
-           popCap += 5;
-           updateUI();
-        }
+      function populationToCheck(turn) {
+        var check = archers[turn];
+        return (check['b'] || 0) +(check['hb'] || 0) + (check['h'] || 0) + (check['fo'] || 0) + (check['fa'] || 0) + (check['lj'] || 0) + (check['m'] || 0)
       }
       function addIdleVillager() {
         if (popCap <= populationCount()) {
           errorMessage('You are housed');
+        } else if (populationCount() - 1 < populationToCheck(turnCount)) {
+           villagers['idle'] += 1;
+           updateUI();
+        } else if (populationCount() - 1 == populationToCheck(turnCount + 1)) {
+           errorMessage('You should not add a villager now');
         } else if (validateBuildOrder()) {
          reset();
          villagers['idle'] += 1;
+         turnCount += 1;
          updateUI();
         }
       }
       function toggleLoom() {
-       loomElement = document.getElementById('loom')
-       if (loom) {
-          loom = false;
-          loomElement.innerHTML = 'Loom';
-       } else {
           loom = true;
-          loomElement.innerHTML = 'Undo Loom';
-       }
+          if (validateBuildOrder()) {
+            document.getElementById('loom').disabled = true;
+            reset();
+            turnCount += 1;
+            updateUI();
+          } else {
+            loom = false;
+          }
+      }
+      function toggleWheelbarrow() {
+        wheelbarrow = true;
+        if (validateBuildOrder()) {
+            document.getElementById('wheelbarrow').disabled = true;
+            reset();
+            turnCount += 1;
+            updateUI();
+        } else {
+            wheelbarrow = false;
+        }
+      }
+      function advance() {
+        if (age == 'Feudal') {
+          age = 'Castle';
+          if (validateBuildOrder()) {
+             document.getElementById('bowsaw').disabled = false;
+             reset();
+             turnCount += 1;
+             updateUI();
+          } else {
+            age = 'Feudal';
+          }
+        }
+        if (age == 'Dark') {
+          age = 'Feudal';
+          if (validateBuildOrder()) {
+            document.getElementById('horsecollar').disabled = false;
+            document.getElementById('dba').disabled = false;
+            document.getElementById('fletching').disabled = false;
+            document.getElementById('wheelbarrow').disabled = false;
+             reset();
+             turnCount += 1;
+             updateUI();
+          } else {
+            age = 'Dark';
+          }
+        }
       }
       function toggleHorseCollar() {
        horsecollarElement = document.getElementById('horsecollar')
@@ -190,20 +251,19 @@
           bowsawElement.innerHTML = 'Undo Bow Saw';
        }
       }
-      function advance() {
-      if (age == 'Dark') {
-        age = 'Feudal';
-        document.getElementById('horsecollar').disabled = false;
-        document.getElementById('dba').disabled = false;
-      } else if (age == 'Feudal') {
-        age = 'Castle';
-        document.getElementById('bowsaw').disabled = false;
-      }
-      updateUI();
+      function toggleFletching() {
+       fletchingElement = document.getElementById('fletching')
+       if (fletching) {
+          fletching = false;
+          fletchingElement.innerHTML = 'Fletching';
+       } else {
+          fletching = true;
+          fletchingElement.innerHTML = 'Undo Fletching';
+       }
       }
       function nextTurn() {
         if (validateBuildOrder()) {
-           turnOffset += 1;
+           turnCount += 1;
            reset();
            updateUI();
         }
@@ -213,10 +273,17 @@
 <body>
 <div id="messages">&nbsp;</div>
 <h1><span id="age"></span> Age</h1>
-<h2>Total villagers: <span id="totalVillagers"></span>/<span id="popCap"></span></h2>
-<button onClick="addIdleVillager()">Add Villager</button><br/>
+<h2>Total Population: <span id="totalVillagers"></span>/<span id="popCap"></span></h2>
 <table>
+<tr><td><button onClick="addIdleVillager()">Add Villager</button></td><td/><td><button onClick="nextTurn()">Next Turn</button><br/></td></tr>
+<tr><td><button onClick="advance()">Advance</button></td>
+<td><button onClick="toggleLoom()" id="loom">Loom</button></td>
+<td><button onClick="toggleWheelbarrow()" disabled="true" id="wheelbarrow">Wheelbarrow</button></td></tr>
+<tr><td>&nbsp;</td><td/><td/></tr>
 <tr><td/><td>Idle</td><td/><td id="totalIdle"/></tr>
+<tr><td><button onClick="removeVillager('housebuilder')">-</button></td>
+<td>House Builder</td>
+</td><td><button onClick="addVillager('housebuilder')">+</button></td><td id="totalHouseBuilders"/></tr>
 <tr><td><button onClick="removeVillager('builder')">-</button></td>
 <td>Builder</td>
 </td><td><button onClick="addVillager('builder')">+</button></td><td id="totalBuilders"/></tr>
@@ -236,13 +303,10 @@
 <td>Miner</td>
 </td><td><button onClick="addVillager('miner')">+</button></td><td id="totalMiners"/></tr>
 </table>
-<button onClick="addHouse()">Add House</button><br/>
-<button onClick="toggleLoom()" id="loom">Loom</button><br/>
-<button onClick="advance()">Advance</button><br/>
-<button onClick="nextTurn()">Next Turn</button><br/>
 <button onClick="toggleHorseCollar()" disabled="true" id="horsecollar">Horse Collar</button><br/>
 <button onClick="toggleDoubleBitAxe()" disabled="true" id="dba">Double-bit Axe</button><br/>
 <button onClick="toggleBowsaw()" disabled="true" id="bowsaw">Bow Saw</button><br/>
+<button onClick="toggleFletching()" disabled="true" id="fletching">Fletching</button><br/>
 <script>updateUI()</script>
 </body>
 </html>
