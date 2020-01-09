@@ -7,7 +7,7 @@
 </style>
 <script>
       var archers = [{p: 5, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, b: 1, hb: 2},
-{p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4},
+{p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4, message: 'testing message'},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 5},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 1},
@@ -22,7 +22,7 @@
 {p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 4, fo: 4},
 {p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 3, fo: 4, fa: 1, hb: 1},
 {p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 5, fo: 4, fa: 1},
-{p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 6, fo: 4, fa: 1},
+{p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 6, fo: 4, fa: 1, message: 'Boar done'},
 {p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 3, lj: 9, fo: 4, fa: 1, m: 3},
 {p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 1, m: 3},
 {p: 25, l: true, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 3, lj: 11, fo: 4, fa: 1, m: 3},
@@ -32,20 +32,171 @@
 {p: 30, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: false, wb: false, h: 3, lj: 9, fo: 4, fa: 1, m: 4, b: 2},
 {p: 30, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: false, wb: false, h: 3, lj: 9, fo: 4, fa: 1, m: 5, b: 2},
 {p: 30, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: false, wb: false, h: 3, lj: 9, fo: 4, fa: 1, m: 6, b: 1, hb: 1},
-{p: 35, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: false, wb: false, h: 3, lj: 9, fo: 4, fa: 1, m: 7, b: 1, hb: 1},
-{p: 40, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: true, wb: false, h: 0, lj: 10, fo: 0, fa: 8, m: 8, hb: 1},
-{p: 45, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: true, wb: false, h: 0, lj: 10, fo: 0, fa: 9, m: 8, hb: 1},
-{p: 50, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: true, wb: false, h: 0, lj: 10, fo: 0, fa: 10, m: 8, hb: 1},
-{p: 55, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: true, wb: false, h: 0, lj: 10, fo: 0, fa: 11, m: 8, hb: 1},
-{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: true, wb: false, h: 0, lj: 10, fo: 0, fa: 13, m: 8},
-{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: true, wb: false, h: 0, lj: 10, fo: 0, fa: 14, m: 8},
-{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: true, wb: true, h: 0, lj: 10, fo: 0, fa: 14, m: 8},
-{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: true, wb: true, h: 0, lj: 10, fo: 0, fa: 15, m: 8},
-{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: true, wb: true, h: 0, lj: 10, fo: 0, fa: 16, m: 8},
-{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: true, wb: true, h: 0, lj: 10, fo: 0, fa: 16, m: 8, hb: 1},
-{p: 65, l: true, a: 'Castle', dba: true, hc: true, bs: false, fl: true, wb: true, h: 0, lj: 10, fo: 0, fa: 17, m: 8, hb: 1},
+{p: 35, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: false, wb: false, h: 3, lj: 9, fo: 4, fa: 1, m: 7, b: 1, hb: 1, message: 'Sheep done'},
+{p: 40, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: true, wb: false, lj: 10, fo: 4, fa: 4, m: 8, hb: 1},
+{p: 45, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: true, wb: false, lj: 10, fa: 5, m: 8, hb: 1, message: 'Berries done'},
+{p: 50, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: true, wb: false, lj: 10, fa: 10, m: 8, hb: 1},
+{p: 55, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: true, wb: false, lj: 10, fa: 11, m: 8, hb: 1},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: true, wb: false, lj: 10, fa: 13, m: 8},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: true, wb: false, lj: 10, fa: 14, m: 8},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: true, wb: true, lj: 10, fa: 14, m: 8},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: true, wb: true, lj: 10, fa: 15, m: 8},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: true, wb: true, lj: 10, fa: 16, m: 8},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: true, wb: true, lj: 10, fa: 16, m: 8, hb: 1},
+{p: 65, l: true, a: 'Castle', dba: true, hc: true, bs: false, fl: true, wb: true, lj: 10, fa: 17, m: 8, hb: 1},
+]
+      var scoutArchers = [{p: 5, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, b: 1, hb: 2},
+{p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4},
+{p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 5},
+{p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6},
+{p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 1},
+{p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 2},
+{p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 3},
+{p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 3, hb: 1},
+{p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 3},
+{p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 3, fo: 1},
+{p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 3, fo: 2},
+{p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 3, fo: 3},
+{p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 3, fo: 4},
+{p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 3, fo: 4, fa: 1},
+{p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 3, fo: 3, fa: 2, hb: 1},
+{p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 4, fo: 4, fa: 2},
+{p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 5, fo: 4, fa: 2},
+{p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 6, fo: 4, fa: 2},
+{p: 25, l: true, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 5, lj: 10, fo: 4, fa: 2},
+{p: 25, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 5, lj: 10, fo: 4, fa: 2},
+{p: 25, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4, lj: 10, fo: 4, fa: 2, b: 1},
+{p: 25, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4, lj: 10, fo: 4, fa: 2, hb: 1},
+{p: 30, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 3, b: 2},
+{p: 30, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 5, hb: 1},
+{p: 35, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 6, hb: 1},
+{p: 40, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 7, hb: 1},
+{p: 45, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 4, fa: 11, hb: 1},
+{p: 50, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 4, fa: 12, hb: 1},
+{p: 55, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 4, fa: 13, hb: 1},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 2, fa: 14, b: 1, m: 3},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 2, fa: 14, b: 1, m: 4},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 2, fa: 14, b: 1, m: 5},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 2, fa: 14, b: 1, m: 6},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 2, fa: 14, hb: 1, m: 7},
+{p: 70, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: true, lj: 10, fo: 2, fa: 14, b: 1, m: 8, message: 'Berries done'},
+{p: 70, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: true, lj: 10, fa: 16, b: 1, m: 8},
+{p: 70, l: true, a: 'Castle', dba: true, hc: true, bs: false, fl: false, wb: true, lj: 10, fa: 18, m: 8},
+]
+      var scoutSkirms = [{p: 5, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, b: 1, hb: 2},
+{p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4},
+{p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 5},
+{p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6},
+{p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 1},
+{p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 2},
+{p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 3},
+{p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 3, hb: 1},
+{p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 3},
+{p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 3, fo: 1},
+{p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 3, fo: 2},
+{p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 3, fo: 3},
+{p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 3, fo: 4},
+{p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 3, fo: 4, fa: 1},
+{p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 3, fo: 3, fa: 2, hb: 1},
+{p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 4, fo: 4, fa: 2},
+{p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 5, fo: 4, fa: 2},
+{p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 6, fo: 4, fa: 2},
+{p: 25, l: true, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 7, fo: 4, fa: 2},
+{p: 25, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 5, lj: 10, fo: 4, fa: 2},
+{p: 25, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4, lj: 10, fo: 4, fa: 2, b: 1},
+{p: 25, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4, lj: 10, fo: 4, fa: 2, hb: 1},
+{p: 30, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 3, b: 2},
+{p: 30, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 5, hb: 1},
+{p: 35, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 6, hb: 1},
+{p: 40, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 7, hb: 1},
+{p: 45, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 4, fa: 11, hb: 1},
+{p: 50, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 4, fa: 12, hb: 1},
+{p: 55, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 4, fa: 13, hb: 1},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 4, fa: 14, b: 1},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 11, fo: 2, fa: 14, b: 1, m: 2},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 12, fo: 2, fa: 14, b: 1, m: 2},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 12, fo: 2, fa: 14, b: 1, m: 3},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: true, lj: 12, fo: 2, fa: 14, b: 1, m: 4, message: 'Berries done'},
+{p: 60, l: true, a: 'Castle', dba: true, hc: true, bs: false, fl: false, wb: true, lj: 12, fa: 18, m: 4},
+]
+      var scoutCastle = [{p: 5, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, b: 1, hb: 2},
+{p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4},
+{p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 5},
+{p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6},
+{p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 1},
+{p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 2},
+{p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 3},
+{p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 3, hb: 1},
+{p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 3},
+{p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 3, fo: 1},
+{p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 3, fo: 2},
+{p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 3, fo: 3},
+{p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 3, fo: 4},
+{p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 3, fo: 4, fa: 1},
+{p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 3, fo: 3, fa: 2, hb: 1},
+{p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 4, fo: 4, fa: 2},
+{p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 5, fo: 4, fa: 2},
+{p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 6, fo: 4, fa: 2},
+{p: 25, l: true, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 7, fo: 4, fa: 2},
+{p: 25, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 5, lj: 10, fo: 4, fa: 2},
+{p: 25, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4, lj: 10, fo: 4, fa: 2, b: 1},
+{p: 25, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4, lj: 10, fo: 4, fa: 2, hb: 1},
+{p: 30, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 3, b: 2},
+{p: 30, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 5, hb: 1},
+{p: 35, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 6, hb: 1},
+{p: 40, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 7, hb: 1},
+{p: 45, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 4, fa: 11, hb: 1},
+{p: 50, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 4, fa: 12, hb: 1},
+{p: 55, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 4, fa: 13, hb: 1},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 4, fa: 14, b: 1},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 2, fa: 15, b: 1, m: 2},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 2, fa: 16, b: 1, m: 2},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 2, fa: 16, m: 4},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: true, lj: 10, fo: 2, fa: 16, m: 5},
+{p: 60, l: true, a: 'Castle', dba: true, hc: true, bs: false, fl: false, wb: true, lj: 10, fo: 2, fa: 16, m: 5},
+]
+      var maaArchers = [{p: 5, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, b: 1, hb: 2},
+{p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4},
+{p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 5},
+{p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6},
+{p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 1},
+{p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 2},
+{p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 3},
+{p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 3, hb: 1},
+{p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 7, lj: 4},
+{p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 4},
+{p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 4, fo: 1},
+{p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 4, fo: 2},
+{p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 4, fo: 3},
+{p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 4, fo: 4},
+{p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 9, lj: 4, fo: 4},
+{p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 9, lj: 4, fo: 4, hb: 1},
+{p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 10, lj: 4, fo: 4, b: 1},
+{p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 10, lj: 4, fo: 4, b: 1, m: 1},
+{p: 25, l: true, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 10, lj: 4, fo: 4, hb: 1, m: 2},
+{p: 30, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 10, lj: 4, fo: 4, b: 1, m: 2},
+{p: 30, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4, lj: 7, fo: 6, fa: 2, m: 2, message: 'Sheep done'},
+{p: 30, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: false, wb: false, lj: 12, fo: 6, fa: 2, m: 2},
+{p: 30, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: false, wb: false, lj: 12, fo: 4, b: 2, fa: 2, m: 3},
+{p: 30, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: false, wb: false, lj: 12, fo: 4, b: 2, fa: 2, m: 4},
+{p: 30, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: false, wb: false, lj: 12, fo: 4, b: 1, hb: 1, fa: 2, m: 5},
+{p: 35, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: false, wb: false, lj: 12, fo: 4, b: 1, hb: 1, fa: 2, m: 6},
+{p: 40, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: true, wb: false, lj: 12, fo: 4, hb: 1, fa: 2, m: 8, message: 'Berries done'},
+{p: 45, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: true, wb: false, lj: 12, hb: 1, fa: 7, m: 8},
+{p: 50, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: true, wb: false, lj: 12, hb: 1, fa: 8, m: 8},
+{p: 55, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: true, wb: false, lj: 12, hb: 1, fa: 9, m: 8},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: true, wb: false, lj: 12, hb: 1, fa: 10, m: 8},
+{p: 65, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: true, wb: false, lj: 12, hb: 1, fa: 11, m: 8},
+{p: 70, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: true, wb: false, lj: 12, hb: 1, fa: 12, m: 8},
+{p: 70, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: true, wb: false, lj: 12, fa: 14, m: 8},
+{p: 70, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: true, wb: false, lj: 12, fa: 15, m: 8},
+{p: 70, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: true, wb: false, lj: 12, fa: 16, m: 8},
+{p: 70, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: true, wb: false, lj: 12, fa: 17, m: 8},
+{p: 70, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: true, wb: true, lj: 12, fa: 18, m: 8},
+{p: 70, l: true, a: 'Castle', dba: true, hc: false, bs: false, fl: true, wb: true, lj: 12, fa: 18, m: 8},
 ]
 
+      var boChecker = archers;
       var unallocatedBuilders = 0;
       var popCap = 5;
       var loom = false;
@@ -67,7 +218,7 @@
         'miner': 0
       }
       function validateBuildOrder() {
-        var check = archers[turnCount];
+        var check = boChecker[turnCount];
         var errors = {}
         errors['p'] = check['p'] == popCap; 
                 errors['l'] = check['l'] == loom; 
@@ -94,12 +245,13 @@
            valid = valid && errors[key];
         }
         if (valid) {
-          if (archers.length <= turnCount + 1 ) {
+          if (boChecker.length <= turnCount + 1 ) {
             document.getElementById('messages').style.color = 'green';
             document.getElementById('messages').innerHTML = 'Success!';
             return false;
           } else {
-            return true;
+            document.getElementById('messages').style.color = 'blue';
+            return check['message'] || '&nbsp;';
           }
         } else {
           errorMessage('Inaccurate setup. Try readjusting ' + error_list.join(', '));
@@ -122,7 +274,7 @@
         }
         return vc;
       }
-      function updateUI() {
+      function updateUI(msg='&nbsp;') {
         document.getElementById('age').innerHTML = age;
         document.getElementById('totalVillagers').innerHTML = populationCount();
         document.getElementById('popCap').innerHTML = popCap;
@@ -134,7 +286,7 @@
         document.getElementById('totalFarmers').innerHTML = villagers['farmer'];
         document.getElementById('totalLumberjacks').innerHTML = villagers['lumberjack'];
         document.getElementById('totalMiners').innerHTML = villagers['miner'];
-        errorMessage('&nbsp');
+        document.getElementById('messages').innerHTML = msg;
       }
       function removeVillager(state) {
       if (villagers[state] > 0) {
@@ -154,10 +306,11 @@
        }
       }
       function populationToCheck(turn) {
-        var check = archers[turn];
+        var check = boChecker[turn];
         return (check['b'] || 0) +(check['hb'] || 0) + (check['h'] || 0) + (check['fo'] || 0) + (check['fa'] || 0) + (check['lj'] || 0) + (check['m'] || 0)
       }
       function addIdleVillager() {
+        var orderMessage = validateBuildOrder();
         if (popCap <= populationCount()) {
           errorMessage('You are housed');
         } else if (populationCount() - 1 < populationToCheck(turnCount)) {
@@ -165,31 +318,33 @@
            updateUI();
         } else if (populationCount() - 1 == populationToCheck(turnCount + 1)) {
            errorMessage('You should not add a villager now');
-        } else if (validateBuildOrder()) {
+        } else if (orderMessage) {
          reset();
          villagers['idle'] += 1;
          turnCount += 1;
-         updateUI();
+         updateUI(orderMessage);
         }
       }
       function toggleLoom() {
           loom = true;
-          if (validateBuildOrder()) {
+        var orderMessage = validateBuildOrder();
+        if (orderMessage) {
             document.getElementById('loom').disabled = true;
             reset();
             turnCount += 1;
-            updateUI();
+            updateUI(orderMessage);
           } else {
             loom = false;
           }
       }
       function toggleWheelbarrow() {
         wheelbarrow = true;
-        if (validateBuildOrder()) {
+        var orderMessage = validateBuildOrder();
+        if (orderMessage) {
             document.getElementById('wheelbarrow').disabled = true;
             reset();
             turnCount += 1;
-            updateUI();
+            updateUI(orderMessage);
         } else {
             wheelbarrow = false;
         }
@@ -197,25 +352,27 @@
       function advance() {
         if (age == 'Feudal') {
           age = 'Castle';
-          if (validateBuildOrder()) {
+          var orderMessage = validateBuildOrder();
+          if (orderMessage) {
              document.getElementById('bowsaw').disabled = false;
              reset();
              turnCount += 1;
-             updateUI();
+             updateUI(orderMessage);
           } else {
             age = 'Feudal';
           }
         }
         if (age == 'Dark') {
           age = 'Feudal';
-          if (validateBuildOrder()) {
+          var orderMessage = validateBuildOrder();
+          if (orderMessage) {
             document.getElementById('horsecollar').disabled = false;
             document.getElementById('dba').disabled = false;
             document.getElementById('fletching').disabled = false;
             document.getElementById('wheelbarrow').disabled = false;
              reset();
              turnCount += 1;
-             updateUI();
+             updateUI(orderMessage);
           } else {
             age = 'Dark';
           }
@@ -262,16 +419,71 @@
        }
       }
       function nextTurn() {
-        if (validateBuildOrder()) {
+        var orderMessage = validateBuildOrder();
+        if (orderMessage) {
            turnCount += 1;
            reset();
-           updateUI();
+           updateUI(orderMessage);
         }
+      }
+      function changeChecker() {
+        var boName = document.getElementById('selectBo').value;
+        if (boName == 'archers') {
+          boChecker = archers;
+        } else if (boName == 'scoutArchers') {
+          boChecker = scoutArchers;
+        } else if (boName == 'scoutSkirms') {
+          boChecker = scoutSkirms;
+        } else if (boName == 'scoutCastle') {
+          boChecker = scoutCastle;
+        } else if (boName == 'maaArchers') {
+          boChecker = maaArchers;
+        } else {
+          errorMessage('Something wonky: no such build order ' + boName);
+          return;
+        }
+        document.getElementById('loom').disabled = false;
+        horsecollar = false;
+        document.getElementById('horsecollar').innerHTML = 'Horse Collar';
+        dba = false;
+        document.getElementById('dba').innerHTML = 'Double Bit Axe';
+        bowsaw = false;
+        document.getElementById('bowsaw').innerHTML = 'Bow Saw';
+        fletching = false;
+        document.getElementById('fletching').innerHTML = 'Fletching';
+        turnCount = 0;
+        popCap = 5;
+        loom = false;
+        age = 'Dark';
+        dba = false;
+        horsecollar = false;
+        bowsaw = false;
+        fletching = false;
+        wheelbarrow = false;
+        turnCount = 0;
+        villagers = {
+              'idle': 3,
+              'builder': 0,
+              'housebuilder': 0,
+              'hunter': 0,
+              'farmer': 0,
+              'forager': 0,
+              'lumberjack': 0,
+              'miner': 0
+        }
+        updateUI();
       }
 </script>
 </head>
 <body>
 <div id="messages">&nbsp;</div>
+<select id="selectBo" onChange="changeChecker()">
+      <option value="archers">Archers</option>
+      <option value="scoutArchers">Scouts to Archers</option>
+      <option value="scoutSkirms">Scouts to Skirms</option>
+      <option value="scoutCastle">Scouts to Castle</option>
+      <option value="maaArchers">Men-at-Arms to Archers</option>
+</select>
 <h1><span id="age"></span> Age</h1>
 <h2>Total Population: <span id="totalVillagers"></span>/<span id="popCap"></span></h2>
 <table>
