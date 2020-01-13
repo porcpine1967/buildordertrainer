@@ -1,9 +1,10 @@
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no"/>
 <title>Build Order Trainer</title>
 <style>
-//   body { zoom: 300% }
    td { padding: 5px; }
+   button.quantity { width: 3em; font-size: 24 }
 </style>
 <script>
   function verify(){
@@ -24,7 +25,7 @@
         }
       }
   }
-      var archers = [{p: 5, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, b: 1, hb: 2},
+      var archers = [{p: 5, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, b: 1, hb: 2, builderDone: true},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 5},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6},
@@ -45,12 +46,12 @@
 {p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 1, m: 3},
 {p: 25, l: true, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 3, lj: 11, fo: 4, fa: 1, m: 3},
 {p: 25, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 3, lj: 11, fo: 4, fa: 1, m: 3},
-{p: 25, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 1, m: 3, b: 1},
+{p: 25, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 1, m: 3, b: 1, builderDone: true},
 {p: 25, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 1, m: 3, hb: 1},
 {p: 30, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: false, wb: false, h: 3, lj: 9, fo: 4, fa: 1, m: 4, b: 2},
-{p: 30, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: false, wb: false, h: 3, lj: 9, fo: 4, fa: 1, m: 5, b: 2},
+{p: 30, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: false, wb: false, h: 3, lj: 9, fo: 4, fa: 1, m: 5, b: 2, builderDone: true},
 {p: 30, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: false, wb: false, h: 3, lj: 9, fo: 4, fa: 1, m: 6, b: 1, hb: 1},
-{p: 35, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: false, wb: false, h: 3, lj: 9, fo: 4, fa: 1, m: 7, b: 1, hb: 1, message: 'Sheep done'},
+{p: 35, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: false, wb: false, h: 3, lj: 9, fo: 4, fa: 1, m: 7, b: 1, hb: 1, builderDone: true, message: 'Sheep done'},
 {p: 40, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: true, wb: false, lj: 10, fo: 4, fa: 4, m: 8, hb: 1},
 {p: 45, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: true, wb: false, lj: 10, fa: 5, fo: 4, m: 8, hb: 1, message: 'Berries done'},
 {p: 50, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: true, wb: false, lj: 10, fa: 10, m: 8, hb: 1},
@@ -62,7 +63,7 @@
 {p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: true, wb: true, lj: 10, fa: 16, m: 8, hb: 1},
 {p: 65, l: true, a: 'Castle', dba: true, hc: true, bs: false, fl: true, wb: true, lj: 10, fa: 17, m: 8, hb: 1},
 ]
-      var scoutArchers = [{p: 5, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, b: 1, hb: 2},
+      var scoutArchers = [{p: 5, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, b: 1, hb: 2, builderDone: true},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 5},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6},
@@ -80,11 +81,12 @@
 {p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 4, fo: 4, fa: 2},
 {p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 5, fo: 4, fa: 2},
 {p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 6, fo: 4, fa: 2},
-{p: 25, l: true, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 5, lj: 10, fo: 4, fa: 2},
+{p: 25, l: true, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 7, fo: 4, fa: 2, message: '5th sheep done'},
 {p: 25, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 5, lj: 10, fo: 4, fa: 2},
-{p: 25, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4, lj: 10, fo: 4, fa: 2, b: 1},
+{p: 25, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 5, lj: 10, fo: 4, fa: 2},
+{p: 25, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4, lj: 10, fo: 4, fa: 2, builderDone: true, b: 1},
 {p: 25, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4, lj: 10, fo: 4, fa: 2, hb: 1},
-{p: 30, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 3, b: 2},
+{p: 30, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 3, builderDone: true, b: 2},
 {p: 30, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 5, hb: 1},
 {p: 35, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 6, hb: 1},
 {p: 40, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 7, hb: 1, message: 'Sheep done'},
@@ -92,16 +94,16 @@
 {p: 50, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 4, fa: 12, hb: 1},
 {p: 55, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 4, fa: 13, hb: 1},
 {p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 9, fo: 2, fa: 14, b: 1, m: 3},
-{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 9, fo: 2, fa: 14, b: 1, m: 4},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 9, fo: 2, fa: 14, builderDone: true, b: 1, m: 4},
 {p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 9, fo: 2, fa: 14, b: 1, m: 5},
-{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 9, fo: 2, fa: 14, b: 1, m: 6},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 9, fo: 2, fa: 14, builderDone: true, b: 1, m: 6},
 {p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 9, fo: 2, fa: 14, hb: 1, m: 7},
 {p: 65, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: true, lj: 9, fo: 2, fa: 14, b: 1, m: 8, message: 'Berries done'},
-{p: 65, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: true, lj: 9, fa: 16, b: 1, m: 8},
+{p: 65, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: true, lj: 9, fa: 16, builderDone: true, b: 1, m: 8},
 {p: 65, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: true, lj: 10, fa: 17, m: 8},
 {p: 65, l: true, a: 'Castle', dba: true, hc: true, bs: false, fl: false, wb: true, lj: 10, fa: 18, m: 8},
 ]
-      var scoutSkirms = [{p: 5, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, b: 1, hb: 2},
+      var scoutSkirms = [{p: 5, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, b: 1, hb: 2, builderDone: true},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 5},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6},
@@ -119,25 +121,26 @@
 {p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 4, fo: 4, fa: 2},
 {p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 5, fo: 4, fa: 2},
 {p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 6, fo: 4, fa: 2},
-{p: 25, l: true, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 7, fo: 4, fa: 2},
+{p: 25, l: true, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 7, fo: 4, fa: 2, message: '5th sheep done'},
 {p: 25, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 5, lj: 10, fo: 4, fa: 2},
-{p: 25, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4, lj: 10, fo: 4, fa: 2, b: 1},
+{p: 25, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 5, lj: 10, fo: 4, fa: 2},
+{p: 25, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4, lj: 10, fo: 4, fa: 2, builderDone: true, b: 1},
 {p: 25, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4, lj: 10, fo: 4, fa: 2, hb: 1},
-{p: 30, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 3, b: 2},
+{p: 30, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 3, builderDone: true, b: 2},
 {p: 30, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 5, hb: 1},
 {p: 35, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 6, hb: 1},
-{p: 40, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 7, hb: 1},
+{p: 40, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 7, hb: 1, message: 'Sheep done'},
 {p: 45, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 4, fa: 11, hb: 1},
 {p: 50, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 4, fa: 12, hb: 1},
 {p: 55, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 4, fa: 13, hb: 1},
 {p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 4, fa: 14, b: 1},
-{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 11, fo: 2, fa: 14, b: 1, m: 2},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 11, fo: 2, fa: 14, builderDone: true, b: 1, m: 2},
 {p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 12, fo: 2, fa: 14, b: 1, m: 2},
-{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 12, fo: 2, fa: 14, b: 1, m: 3},
-{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: true, lj: 12, fo: 2, fa: 14, b: 1, m: 4, message: 'Berries done'},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 12, fo: 2, fa: 14, builderDone: true, b: 1, m: 3},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: true, lj: 12, fo: 2, fa: 14, builderDone: true, b: 1, m: 4, message: 'Berries done'},
 {p: 60, l: true, a: 'Castle', dba: true, hc: true, bs: false, fl: false, wb: true, lj: 12, fa: 18, m: 4},
 ]
-      var scoutCastle = [{p: 5, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, b: 1, hb: 2},
+      var scoutCastle = [{p: 5, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, b: 1, hb: 2, builderDone: true},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 5},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6},
@@ -155,25 +158,26 @@
 {p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 4, fo: 4, fa: 2},
 {p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 5, fo: 4, fa: 2},
 {p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 6, fo: 4, fa: 2},
-{p: 25, l: true, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 7, fo: 4, fa: 2},
+{p: 25, l: true, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 7, fo: 4, fa: 2, message: '5th sheep done'},
 {p: 25, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 5, lj: 10, fo: 4, fa: 2},
-{p: 25, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4, lj: 10, fo: 4, fa: 2, b: 1},
+{p: 25, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 5, lj: 10, fo: 4, fa: 2},
+{p: 25, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4, lj: 10, fo: 4, fa: 2, builderDone: true, b: 1},
 {p: 25, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4, lj: 10, fo: 4, fa: 2, hb: 1},
-{p: 30, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 3, b: 2},
+{p: 30, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 3, builderDone: true, b: 2},
 {p: 30, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 5, hb: 1},
 {p: 35, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 6, hb: 1},
-{p: 40, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 7, hb: 1},
+{p: 40, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, h: 3, lj: 10, fo: 4, fa: 7, hb: 1, message: 'Sheep done'},
 {p: 45, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 4, fa: 11, hb: 1},
 {p: 50, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 4, fa: 12, hb: 1},
 {p: 55, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 4, fa: 13, hb: 1},
 {p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 4, fa: 14, b: 1},
-{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 2, fa: 15, b: 1, m: 2},
-{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 2, fa: 16, b: 1, m: 2},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 2, fa: 15, builderDone: true, b: 1, m: 2},
+{p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 2, fa: 16, builderDone: true, b: 1, m: 2},
 {p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 2, fa: 16, m: 4},
 {p: 60, l: true, a: 'Feudal', dba: true, hc: true, bs: false, fl: false, wb: true, lj: 10, fo: 2, fa: 16, m: 5},
 {p: 60, l: true, a: 'Castle', dba: true, hc: true, bs: false, fl: false, wb: true, lj: 10, fo: 2, fa: 16, m: 5},
 ]
-      var maaArchers = [{p: 5, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, b: 1, hb: 2},
+      var maaArchers = [{p: 5, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, b: 1, hb: 2, builderDone: true},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 5},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6},
@@ -189,16 +193,16 @@
 {p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 4, fo: 4},
 {p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 9, lj: 4, fo: 4},
 {p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 9, lj: 4, fo: 4, b: 1},
-{p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 10, lj: 4, fo: 4, b: 1},
+{p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 10, lj: 4, fo: 4, builderDone: true, b: 1},
 {p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 10, lj: 4, fo: 4, hb: 1, m: 1},
 {p: 30, l: true, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 10, lj: 5, fo: 4, m: 2},
 {p: 30, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 10, lj: 5, fo: 4, m: 2},
 {p: 30, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4, lj: 7, fo: 6, fa: 2, m: 2, message: 'Sheep done'},
 {p: 30, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: false, wb: false, lj: 12, fo: 6, fa: 2, m: 2},
 {p: 30, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: false, wb: false, lj: 12, fo: 4, b: 2, fa: 2, m: 3},
-{p: 30, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: false, wb: false, lj: 12, fo: 4, b: 2, fa: 2, m: 4},
+{p: 30, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: false, wb: false, lj: 12, fo: 4, builderDone: true, b: 2, fa: 2, m: 4},
 {p: 30, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: false, wb: false, lj: 12, fo: 4, b: 1, hb: 1, fa: 2, m: 5},
-{p: 35, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: false, wb: false, lj: 12, fo: 4, b: 1, hb: 1, fa: 2, m: 6},
+{p: 35, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: false, wb: false, lj: 12, fo: 4, builderDone: true, b: 1, hb: 1, fa: 2, m: 6},
 {p: 40, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: true, wb: false, lj: 12, fo: 4, hb: 1, fa: 2, m: 8, message: 'Berries done'},
 {p: 45, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: true, wb: false, lj: 12, hb: 1, fa: 7, m: 8},
 {p: 50, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: true, wb: false, lj: 12, hb: 1, fa: 8, m: 8},
@@ -213,7 +217,7 @@
 {p: 70, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: true, wb: true, lj: 12, fa: 18, m: 8},
 {p: 70, l: true, a: 'Castle', dba: true, hc: false, bs: false, fl: true, wb: true, lj: 12, fa: 18, m: 8},
 ]
-      var maaTowers = [{p: 5, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, b: 1, hb: 2},
+      var maaTowers = [{p: 5, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, b: 1, hb: 2, builderDone: true},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 5},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6},
@@ -229,14 +233,14 @@
 {p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 4, fo: 4},
 {p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 9, lj: 4, fo: 4},
 {p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 9, lj: 4, fo: 4, b: 1},
-{p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 10, lj: 4, fo: 4, b: 1},
+{p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 10, lj: 4, fo: 4, builderDone: true, b: 1},
 {p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 10, lj: 4, fo: 4, hb: 1, m: 1},
 {p: 30, l: true, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 11, lj: 4, fo: 4, m: 2},
-{p: 30, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 10, lj: 4, fo: 4, b: 1, m: 2},
+{p: 30, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 10, lj: 4, fo: 4, builderDone: true, b: 1, m: 2},
 {p: 30, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 9, lj: 4, fo: 6, m: 2, message: '40g maa upgrade collected (nb: switch all gold to stone)'},
 {p: 30, l: true, a: 'Feudal', dba: true, hc: false, bs: false, fl: false, wb: false, h: 1, lj: 4, fo: 6, m: 5, i: 5},
 ]
-      var fcBoom = [{p: 5, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, b: 1, hb: 2},
+      var fcBoom = [{p: 5, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, b: 1, hb: 2, builderDone: true},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 5},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6},
@@ -263,11 +267,11 @@
 {p: 30, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 9, fo: 4, fa: 2, m: 3, message: 'Sheep done'},
 {p: 30, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, lj: 9, fo: 6, fa: 8, m: 3},
 {p: 30, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, lj: 8, fo: 5, fa: 8, m: 3, b: 3},
-{p: 30, l: true, a: 'Castle', dba: false, hc: false, bs: false, fl: false, wb: false, lj: 9, fo: 5, fa: 8, m: 3, b: 3},
+{p: 30, l: true, a: 'Castle', dba: false, hc: false, bs: false, fl: false, wb: false, lj: 9, fo: 5, fa: 8, m: 3, builderDone: true, b: 3},
 {p: 30, l: true, a: 'Castle', dba: false, hc: false, bs: false, fl: false, wb: false, lj: 14, fo: 3, fa: 8, m: 3},
 {p: 30, l: true, a: 'Castle', dba: false, hc: false, bs: false, fl: false, wb: false, lj: 14, fo: 2, fa: 8, m: 3, hb: 1},
 ]
-      var fcKnights = [{p: 5, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, b: 1, hb: 2},
+      var fcKnights = [{p: 5, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, b: 1, hb: 2, builderDone: true},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 5},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6},
@@ -294,14 +298,14 @@
 {p: 30, l: true, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 10, fo: 4, fa: 2, m: 3},
 {p: 30, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 10, fo: 4, fa: 2, m: 3, message: 'Sheep done'},
 {p: 30, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, lj: 10, fo: 6, fa: 8, m: 3},
-{p: 30, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, lj: 10, fo: 5, fa: 8, m: 3, b: 1},
+{p: 30, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, lj: 10, fo: 5, fa: 8, m: 3, builderDone: true, b: 1},
 {p: 30, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, lj: 8, fo: 5, fa: 8, m: 4, b: 3},
-{p: 30, l: true, a: 'Castle', dba: false, hc: false, bs: false, fl: false, wb: false, lj: 8, fo: 5, fa: 8, m: 5, b: 3},
+{p: 30, l: true, a: 'Castle', dba: false, hc: false, bs: false, fl: false, wb: false, lj: 8, fo: 5, fa: 8, m: 5, builderDone: true, b: 3},
 {p: 30, l: true, a: 'Castle', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 3, fa: 10, m: 6},
-{p: 30, l: true, a: 'Castle', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 2, fa: 10, m: 6, b: 1},
+{p: 30, l: true, a: 'Castle', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 2, fa: 10, m: 6, builderDone: true, b: 1},
 {p: 30, l: true, a: 'Castle', dba: true, hc: true, bs: false, fl: false, wb: false, lj: 10, fo: 2, fa: 10, m: 6, hb: 1},
 ]
-      var fcUU = [{p: 5, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, b: 1, hb: 2},
+      var fcUU = [{p: 5, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, b: 1, hb: 2, builderDone: true},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 5},
 {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6},
@@ -329,7 +333,7 @@
 {p: 30, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 9, fo: 4, fa: 2, m: 4, message: 'Sheep done'},
 {p: 30, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, lj: 9, fo: 4, fa: 8, m: 6},
 {p: 30, l: true, a: 'Feudal', dba: false, hc: false, bs: false, fl: false, wb: false, lj: 7, fo: 3, fa: 8, m: 7, b: 3},
-{p: 30, l: true, a: 'Castle', dba: false, hc: false, bs: false, fl: false, wb: false, lj: 7, fo: 3, fa: 8, m: 8, b: 3},
+{p: 30, l: true, a: 'Castle', dba: false, hc: false, bs: false, fl: false, wb: false, lj: 7, fo: 3, fa: 8, m: 8, builderDone: true, b: 3},
 {p: 30, l: true, a: 'Castle', dba: false, hc: false, bs: false, fl: false, wb: false, lj: 9, fo: 3, fa: 8, m: 8, hb: 1},
 ]
 
@@ -399,6 +403,10 @@
         popCap += villagers['housebuilder']*5
         villagers['idle'] += villagers['housebuilder'];
         villagers['housebuilder'] = 0;
+        if (boChecker[turnCount]['builderDone']) {
+           villagers['idle'] += villagers['builder'];
+           villagers['builder'] = 0;
+        }
       }
       function errorMessage(str) {
         document.getElementById('messages').style.color = 'red';
@@ -558,8 +566,8 @@
       function nextTurn() {
         var orderMessage = validateBuildOrder();
         if (orderMessage) {
-           turnCount += 1;
            reset();
+           turnCount += 1;
            updateUI(orderMessage);
         }
       }
@@ -607,6 +615,41 @@
 </head>
 <body>
 <div id="messages">&nbsp;</div>
+<h1><span id="age"></span> Age</h1>
+<h2>Total Population: <span id="totalVillagers"></span>/<span id="popCap"></span></h2>
+<table>
+<tr><td><button onClick="addIdleVillager()">Add Villager</button></td><td/><td><button onClick="nextTurn()">Next Turn</button><br/></td></tr>
+<tr><td><button onClick="advance()">Advance</button></td>
+<td><button onClick="toggleLoom()" id="loom">Loom</button></td>
+<td><button onClick="toggleWheelbarrow()" disabled="true" id="wheelbarrow">Wheelbarrow</button></td></tr>
+</table><table>
+<tr><td/><td>Idle</td><td/><td id="totalIdle"/></tr>
+<tr><td><button onClick="removeVillager('housebuilder')" class="quantity">&darr;</button></td>
+<td>House Builder</td>
+</td><td><button onClick="addVillager('housebuilder')" class="quantity">&uarr;</button></td><td id="totalHouseBuilders"/></tr>
+<tr><td><button onClick="removeVillager('builder')" class="quantity">&darr;</button></td>
+<td>Builder</td>
+</td><td><button onClick="addVillager('builder')" class="quantity">&uarr;</button></td><td id="totalBuilders"/></tr>
+<tr><td><button onClick="removeVillager('hunter')" class="quantity">&darr;</button></td>
+<td>Hunter/shepherd</td>
+</td><td><button onClick="addVillager('hunter')" class="quantity">&uarr;</button></td><td id="totalHunters"/></tr>
+<tr><td><button onClick="removeVillager('lumberjack')" class="quantity">&darr;</button></td>
+<td>Lumberjack</td>
+</td><td><button onClick="addVillager('lumberjack')" class="quantity">&uarr;</button></td><td id="totalLumberjacks"/></tr>
+<tr><td><button onClick="removeVillager('farmer')" class="quantity">&darr;</button></td>
+<td>Farmer</td>
+</td><td><button onClick="addVillager('farmer')" class="quantity">&uarr;</button></td><td id="totalFarmers"/></tr>
+<tr><td><button onClick="removeVillager('forager')" class="quantity">&darr;</button></td>
+<td>Forager</td>
+</td><td><button onClick="addVillager('forager')" class="quantity">&uarr;</button></td><td id="totalForagers"/></tr>
+<tr><td><button onClick="removeVillager('miner')" class="quantity">&darr;</button></td>
+<td>Miner</td>
+</td><td><button onClick="addVillager('miner')" class="quantity">&uarr;</button></td><td id="totalMiners"/></tr>
+</table>
+<button onClick="toggleHorseCollar()" disabled="true" id="horsecollar">Horse Collar</button><br/>
+<button onClick="toggleDoubleBitAxe()" disabled="true" id="dba">Double-bit Axe</button><br/>
+<button onClick="toggleBowsaw()" disabled="true" id="bowsaw">Bow Saw</button><br/>
+<button onClick="toggleFletching()" disabled="true" id="fletching">Fletching</button><br/>
 <select id="selectBo" onChange="changeChecker()">
       <option value="archers">Archers</option>
       <option value="scoutArchers">Scouts to Archers</option>
@@ -618,41 +661,6 @@
       <option value="fcKnights">Fast Castle to Knights</option>
       <option value="fcUU">Fast Castle to Unique Units</option>
 </select>
-<h1><span id="age"></span> Age</h1>
-<h2>Total Population: <span id="totalVillagers"></span>/<span id="popCap"></span></h2>
-<table>
-<tr><td><button onClick="addIdleVillager()">Add Villager</button></td><td/><td><button onClick="nextTurn()">Next Turn</button><br/></td></tr>
-<tr><td><button onClick="advance()">Advance</button></td>
-<td><button onClick="toggleLoom()" id="loom">Loom</button></td>
-<td><button onClick="toggleWheelbarrow()" disabled="true" id="wheelbarrow">Wheelbarrow</button></td></tr>
-<tr><td>&nbsp;</td><td/><td/></tr>
-<tr><td/><td>Idle</td><td/><td id="totalIdle"/></tr>
-<tr><td><button onClick="removeVillager('housebuilder')">-</button></td>
-<td>House Builder</td>
-</td><td><button onClick="addVillager('housebuilder')">+</button></td><td id="totalHouseBuilders"/></tr>
-<tr><td><button onClick="removeVillager('builder')">-</button></td>
-<td>Builder</td>
-</td><td><button onClick="addVillager('builder')">+</button></td><td id="totalBuilders"/></tr>
-<tr><td><button onClick="removeVillager('hunter')">-</button></td>
-<td>Hunter/shepherd</td>
-</td><td><button onClick="addVillager('hunter')">+</button></td><td id="totalHunters"/></tr>
-<tr><td><button onClick="removeVillager('lumberjack')">-</button></td>
-<td>Lumberjack</td>
-</td><td><button onClick="addVillager('lumberjack')">+</button></td><td id="totalLumberjacks"/></tr>
-<tr><td><button onClick="removeVillager('farmer')">-</button></td>
-<td>Farmer</td>
-</td><td><button onClick="addVillager('farmer')">+</button></td><td id="totalFarmers"/></tr>
-<tr><td><button onClick="removeVillager('forager')">-</button></td>
-<td>Forager</td>
-</td><td><button onClick="addVillager('forager')">+</button></td><td id="totalForagers"/></tr>
-<tr><td><button onClick="removeVillager('miner')">-</button></td>
-<td>Miner</td>
-</td><td><button onClick="addVillager('miner')">+</button></td><td id="totalMiners"/></tr>
-</table>
-<button onClick="toggleHorseCollar()" disabled="true" id="horsecollar">Horse Collar</button><br/>
-<button onClick="toggleDoubleBitAxe()" disabled="true" id="dba">Double-bit Axe</button><br/>
-<button onClick="toggleBowsaw()" disabled="true" id="bowsaw">Bow Saw</button><br/>
-<button onClick="toggleFletching()" disabled="true" id="fletching">Fletching</button><br/>
 <script>updateUI()</script>
 </body>
 </html>
