@@ -21,6 +21,14 @@ var villagers = {
 }
 
 var activityMapping = {
+ p: 'Population',
+ l: 'Loom',
+ a: 'Advance',
+ dba: 'Double-bit Axe',
+ hc: 'Horse Collar',
+ bs: 'Bow Saw',
+ fl: 'Fletching',
+ wb: 'Wheelbarrow',
  i: 'Idles',
  hb: 'House Builders',
  b: 'Builders',
@@ -54,14 +62,14 @@ function verify(){
 function validateBuildOrder() {
     var check = boChecker[turnCount];
     var errors = {};
-    errors['p'] = check['p'] - popCap; 
-    errors['l'] = check['l'] - loom; 
-    errors['a'] = check['a'] - age;
-    errors['dba'] = check['dba'] - dba;
-    errors['hc'] = check['hc'] - horsecollar;
-    errors['bs'] = check['bs'] - bowsaw;
-    errors['fl'] = check['fl'] - fletching;
-    errors['wb'] = check['wb'] - wheelbarrow;
+    errors['p'] = check['p'] != popCap; 
+    errors['l'] = check['l'] != loom; 
+    errors['a'] = check['a'] != age;
+    errors['dba'] = check['dba'] != dba;
+    errors['hc'] = check['hc'] != horsecollar;
+    errors['bs'] = check['bs'] != bowsaw;
+    errors['fl'] = check['fl'] != fletching;
+    errors['wb'] = check['wb'] != wheelbarrow;
     errors['i'] = (check['i'] || 0) - villagers['idle'];
     errors['hb'] = (check['hb'] || 0) - villagers['housebuilder'];
     errors['b'] = (check['b'] || 0) - villagers['builder'];
@@ -71,10 +79,19 @@ function validateBuildOrder() {
     errors['lj'] = (check['lj'] || 0) - villagers['lumberjack'];
     errors['m'] = (check['m'] || 0) - villagers['miner'];
     var valid = true;
+    var not_click = [];
+    var should_toggle = [];
     var too_many_list = [];
     var not_enough_list = [];
     for (key in errors) {
-        if (errors[key] > 0) {
+        if (errors[key] === true) {
+            if (['l', 'a', 'wb'].includes(key)) {
+                not_click.push(activityMapping[key]);
+            } else {
+                should_toggle.push(activityMapping[key]);
+            }
+            valid = false;
+        } else if (errors[key] > 0) {
             not_enough_list.push(activityMapping[key]);
             valid = false;
         } else if (errors[key] < 0) {
@@ -93,6 +110,12 @@ function validateBuildOrder() {
         }
     } else {
         var msg = [];
+        if (not_click.length > 0) {
+          msg.push('Should not click ' + not_click.join(', '));
+        }
+        if (should_toggle.length > 0) {
+          msg.push('Should toggle ' + should_toggle.join(', '));
+        }
         if (too_many_list.length > 0) {
           msg.push('Too many ' + too_many_list.join(', '));
         }
