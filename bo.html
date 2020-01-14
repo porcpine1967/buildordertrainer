@@ -110,13 +110,23 @@
       </tr>
       <tr>
         <td>
-          <button onClick="removeVillager('miner')" class="quantity">&darr;</button>
+          <button onClick="removeVillager('goldminer')" class="quantity">&darr;</button>
         </td>
-        <td>Miner</td>
+        <td>Gold Miner</td>
         <td>
-          <button onClick="addVillager('miner')" class="quantity">&uarr;</button>
+          <button onClick="addVillager('goldminer')" class="quantity">&uarr;</button>
         </td>
-        <td id="totalMiners" />
+        <td id="totalGoldMiners" />
+      </tr>
+      <tr>
+        <td>
+          <button onClick="removeVillager('stoneminer')" class="quantity">&darr;</button>
+        </td>
+        <td>Stone Miner</td>
+        <td>
+          <button onClick="addVillager('stoneminer')" class="quantity">&uarr;</button>
+        </td>
+        <td id="totalStoneMiners" />
       </tr>
     </table>
     <button class="so" onClick="toggleHorseCollar()" disabled="true" id="horsecollar">Horse Collar</button>

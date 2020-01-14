@@ -17,7 +17,8 @@ var villagers = {
     'farmer': 0,
     'forager': 0,
     'lumberjack': 0,
-    'miner': 0
+    'goldminer': 0,
+    'stoneminer': 0
 }
 
 var activityMapping = {
@@ -36,18 +37,37 @@ var activityMapping = {
  lj: 'Lumberjacks',
  fa: 'Farmers',
  fo: 'Foragers',
- m: 'Miners',
+ gm: 'Gold Miners',
+ sm: 'Stone Miners',
 }
 var ages = ['Dark', 'Feudal', 'Castle'];
 function verify(){
     var lastPop = 3;
     var maxPop = 5;
+    var lToggled = false;
+    var wbToggled = false;
+    var hcToggled = false;
+    var dbaToggled = false;
+    var bsToggled = false;
+    var flToggled = false;
     for (var i = 0; i < boChecker.length; i++) {
         var check = boChecker[i];
+        if (check['l']) lToggled = true;
+        if (check['wb']) wbToggled = true;
+        if (check['hc']) hcToggled = true;
+        if (check['dba']) dbaToggled = true;
+        if (check['bs']) bsToggled = true;
+        if (check['fl']) flToggled = true;
+        if (lToggled && !check['l']) console.log('l untoggled');
+        if (wbToggled && !check['wb']) console.log('wb untoggled');
+        if (hcToggled && !check['hc']) console.log('hc untoggled');
+        if (dbaToggled && !check['dba']) console.log('dba untoggled');
+        if (bsToggled && !check['bs']) console.log('bs untoggled');
+        if (flToggled && !check['fl']) console.log('fl untoggled');
         if (check['p'] != maxPop) {
             console.log('Max pop error row ' + i);
         }
-        var currentpop = (check['b'] || 0) +(check['hb'] || 0) + (check['h'] || 0) + (check['fo'] || 0) + (check['fa'] || 0) + (check['lj'] || 0) + (check['m'] || 0) + (check['i'] || 0);
+        var currentpop = (check['b'] || 0) +(check['hb'] || 0) + (check['h'] || 0) + (check['fo'] || 0) + (check['fa'] || 0) + (check['lj'] || 0) + (check['gm'] || 0) + (check['sm'] || 0) + (check['i'] || 0);
         if (currentpop != lastPop && currentpop != lastPop + 1) {
             console.log('Pop unacceptable row ' + i);
         }
@@ -78,7 +98,8 @@ function validateBuildOrder() {
     errors['fo'] = (check['fo'] || 0) - villagers['forager'];
     errors['fa'] = (check['fa'] || 0) - villagers['farmer'];
     errors['lj'] = (check['lj'] || 0) - villagers['lumberjack'];
-    errors['m'] = (check['m'] || 0) - villagers['miner'];
+    errors['gm'] = (check['gm'] || 0) - villagers['goldminer'];
+    errors['sm'] = (check['sm'] || 0) - villagers['stoneminer'];
     var valid = true;
     var should_click = [];
     var not_click = [];
@@ -172,7 +193,8 @@ function updateUI(msg='&nbsp;') {
     document.getElementById('totalForagers').innerHTML = villagers['forager'];
     document.getElementById('totalFarmers').innerHTML = villagers['farmer'];
     document.getElementById('totalLumberjacks').innerHTML = villagers['lumberjack'];
-    document.getElementById('totalMiners').innerHTML = villagers['miner'];
+    document.getElementById('totalGoldMiners').innerHTML = villagers['goldminer'];
+    document.getElementById('totalStoneMiners').innerHTML = villagers['stoneminer'];
     document.getElementById('messages').innerHTML = msg;
 }
 function removeVillager(state) {
@@ -194,7 +216,7 @@ function addVillager(state) {
 }
 function populationToCheck(turn) {
     var check = boChecker[turn];
-    return (check['b'] || 0) +(check['hb'] || 0) + (check['h'] || 0) + (check['fo'] || 0) + (check['fa'] || 0) + (check['lj'] || 0) + (check['m'] || 0);
+    return (check['b'] || 0) +(check['hb'] || 0) + (check['h'] || 0) + (check['fo'] || 0) + (check['fa'] || 0) + (check['lj'] || 0) + (check['gm'] || 0) + (check['sm'] || 0);
 }
 function addIdleVillager() {
     var orderMessage = validateBuildOrder();
@@ -349,7 +371,8 @@ function changeChecker() {
         'farmer': 0,
         'forager': 0,
         'lumberjack': 0,
-        'miner': 0
-    }
+        'goldminer': 0,
+        'stoneminer': 0
+    };
     updateUI();
 }
