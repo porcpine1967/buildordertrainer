@@ -38,6 +38,7 @@ var activityMapping = {
  fo: 'Foragers',
  m: 'Miners',
 }
+var ages = ['Dark', 'Feudal', 'Castle'];
 function verify(){
     var lastPop = 3;
     var maxPop = 5;
@@ -79,14 +80,25 @@ function validateBuildOrder() {
     errors['lj'] = (check['lj'] || 0) - villagers['lumberjack'];
     errors['m'] = (check['m'] || 0) - villagers['miner'];
     var valid = true;
+    var should_click = [];
     var not_click = [];
     var should_toggle = [];
     var too_many_list = [];
     var not_enough_list = [];
     for (key in errors) {
         if (errors[key] === true) {
-            if (['l', 'a', 'wb'].includes(key)) {
-                not_click.push(activityMapping[key]);
+            if (['l', 'wb'].includes(key)) {
+                if (check[key]) {
+                    should_click.push(activityMapping[key]);
+                } else {
+                    not_click.push(activityMapping[key]);
+                }
+            } else if (key == 'a') {
+                if ( ages.indexOf(age) < ages.indexOf(check['a'])) {
+                    should_click.push(activityMapping[key]);
+                } else {
+                    not_click.push(activityMapping[key]);
+                }
             } else {
                 should_toggle.push(activityMapping[key]);
             }
@@ -110,6 +122,9 @@ function validateBuildOrder() {
         }
     } else {
         var msg = [];
+        if (should_click.length > 0) {
+          msg.push('Should click ' + should_click.join(', '));
+        }
         if (not_click.length > 0) {
           msg.push('Should not click ' + not_click.join(', '));
         }
