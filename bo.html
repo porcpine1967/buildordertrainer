@@ -3,7 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no" />
     <title>Build Order Trainer</title>
     <style>
-      h2 { margin: 3px }
+      h2 { margin: 3px; font-size: 22px }
       td { padding: 5px; }
       button.quantity { width: 3em; font-size: 24 }
       button.so {display: block; margin-bottom: 10px}
@@ -13,21 +13,22 @@
   </head>
   <body>
     <h2>
-    <span id="age"></span> Age</h2>
-    <h2>Total Population: 
-    <span id="totalVillagers"></span>/
-    <span id="popCap"></span></h2>
+    <span id="age"></span> Age |
+    Population:
+    <span id="totalVillagers"></span>/<span id="popCap"></span></h2>
     <div id="messages">&#160;</div>
     <table>
       <tr>
         <td>
-          <button onClick="addIdleVillager()">Add Villager</button>
+          <button style="font-size: 18; padding: 8px" onClick="addIdleVillager()">Add Villager</button>
         </td>
         <td />
         <td>
-          <button onClick="nextTurn()">Next Turn</button>
+          <button style="font-size: 16; padding: 6px" onClick="nextTurn()">Next Turn</button>
         </td>
       </tr>
+    </table>
+    <table>
       <tr>
         <td>
           <button onClick="advance()">Advance</button>

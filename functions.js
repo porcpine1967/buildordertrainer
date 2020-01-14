@@ -99,7 +99,7 @@ function validateBuildOrder() {
         if (not_enough_list.length > 0) {
           msg.push('Not enough ' + not_enough_list.join(', '));
         }
-        errorMessage(msg.join('; '));
+        errorMessage(msg.join('<br/>'));
         return false;
     }
 }
