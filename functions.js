@@ -1,5 +1,4 @@
 var boChecker = archers;
-var unallocatedBuilders = 0;
 var popCap = 5;
 var loom = false;
 var age = 'Dark';
@@ -115,7 +114,7 @@ function validateBuildOrder() {
                     not_click.push(activityMapping[key]);
                 }
             } else if (key == 'a') {
-                if ( ages.indexOf(age) < ages.indexOf(check['a'])) {
+                if (ages.indexOf(age) < ages.indexOf(check['a'])) {
                     should_click.push(activityMapping[key]);
                 } else {
                     not_click.push(activityMapping[key]);
@@ -134,6 +133,7 @@ function validateBuildOrder() {
     }
     if (valid) {
         if (boChecker.length <= turnCount + 1 ) {
+            updateUI();
             document.getElementById('messages').style.color = 'green';
             document.getElementById('messages').innerHTML = 'Success!';
             return false;
@@ -208,9 +208,6 @@ function addVillager(state) {
     if (villagers['idle'] > 0){
         villagers['idle'] -= 1;
         villagers[state] += 1;
-        if (state == 'builder') {
-            unallocatedBuilders += 1;
-        }
         updateUI();
     }
 }
@@ -299,7 +296,7 @@ function advance() {
     }
 }
 function toggleHorseCollar() {
-    horsecollarElement = document.getElementById('horsecollar')
+    horsecollarElement = document.getElementById('horsecollar');
     if (horsecollar) {
         horsecollar = false;
         horsecollarElement.innerHTML = 'Horse Collar';
@@ -309,7 +306,7 @@ function toggleHorseCollar() {
     }
 }
 function toggleDoubleBitAxe() {
-    dbaElement = document.getElementById('dba')
+    dbaElement = document.getElementById('dba');
     if (dba) {
         dba = false;
         dbaElement.innerHTML = 'Double-bit Axe';
@@ -319,7 +316,7 @@ function toggleDoubleBitAxe() {
     }
 }
 function toggleBowsaw() {
-    bowsawElement = document.getElementById('bowsaw')
+    bowsawElement = document.getElementById('bowsaw');
     if (bowsaw) {
         bowsaw = false;
         bowsawElement.innerHTML = 'Bow Saw';
@@ -329,7 +326,7 @@ function toggleBowsaw() {
     }
 }
 function toggleFletching() {
-    fletchingElement = document.getElementById('fletching')
+    fletchingElement = document.getElementById('fletching');
     if (fletching) {
         fletching = false;
         fletchingElement.innerHTML = 'Fletching';
@@ -349,7 +346,7 @@ function nextTurn() {
 function changeChecker() {
     var boName = document.getElementById('selectBo').value;
     if (['archers', 'scoutArchers', 'scoutSkirms', 'scoutCastle', 'maaArchers', 'maaTowers', 'fcBoom', 'fcKnights', 'fcUU', 'fI'].includes(boName)) {
-        boChecker = window[boName]
+        boChecker = window[boName];
     } else {
         errorMessage('Something wonky: no such build order ' + boName);
         return;
@@ -364,7 +361,6 @@ function changeChecker() {
     document.getElementById('bowsaw').innerHTML = 'Bow Saw';
     fletching = false;
     document.getElementById('fletching').innerHTML = 'Fletching';
-    turnCount = 0;
     popCap = 5;
     loom = false;
     age = 'Dark';
