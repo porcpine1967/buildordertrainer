@@ -40,7 +40,7 @@ var activityMapping = {
  gm: 'Gold Miners',
  sm: 'Stone Miners',
 }
-var ages = ['Dark', 'Feudal', 'Castle'];
+var ages = ['Dark', 'Feudal', 'Castle', 'Imperial'];
 function verify(){
     var lastPop = 3;
     var maxPop = 5;
@@ -259,6 +259,17 @@ function toggleWheelbarrow() {
     }
 }
 function advance() {
+    if (age == 'Castle') {
+        age = 'Imperial';
+        var orderMessage = validateBuildOrder();
+        if (orderMessage) {
+            reset();
+            turnCount += 1;
+            updateUI(orderMessage);
+        } else {
+            age = 'Castle';
+        }
+    }
     if (age == 'Feudal') {
         age = 'Castle';
         var orderMessage = validateBuildOrder();
@@ -337,7 +348,7 @@ function nextTurn() {
 }
 function changeChecker() {
     var boName = document.getElementById('selectBo').value;
-    if (['archers', 'scoutArchers', 'scoutSkirms', 'scoutCastle', 'maaArchers', 'maaTowers', 'fcBoom', 'fcKnights', 'fcUU'].includes(boName)) {
+    if (['archers', 'scoutArchers', 'scoutSkirms', 'scoutCastle', 'maaArchers', 'maaTowers', 'fcBoom', 'fcKnights', 'fcUU', 'fI'].includes(boName)) {
         boChecker = window[boName]
     } else {
         errorMessage('Something wonky: no such build order ' + boName);
