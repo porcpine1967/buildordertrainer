@@ -8,6 +8,7 @@ var bowsaw = false;
 var fletching = false;
 var wheelbarrow = false;
 var turnCount = 0;
+var advancing = false;
 var villagers = {
     'idle': 3,
     'builder': 0,
@@ -133,11 +134,13 @@ function validateBuildOrder() {
     }
     if (valid) {
         if (boChecker.length <= turnCount + 1 ) {
-            updateUI();
             document.getElementById('messages').style.color = 'green';
-            document.getElementById('messages').innerHTML = 'Success!';
+            updateUI('Success!');
             return false;
         } else {
+            if (populationToCheck(turnCount + 1) > populationToCheck(turnCount)) {
+                advancing = false;
+            }
             document.getElementById('messages').style.color = 'blue';
             return check['message'] || '&nbsp;';
         }
@@ -183,6 +186,15 @@ function populationCount() {
     return vc;
 }
 function updateUI(msg='&nbsp;') {
+    if (advancing) {
+        document.getElementById('age').style.color = 'gray';
+        document.getElementById('addVillager').disabled = true;
+        document.getElementById('advance').disabled = true;
+    } else {
+        document.getElementById('age').style.color = 'black';
+        document.getElementById('addVillager').disabled = false;
+        document.getElementById('advance').disabled = false;
+    }
     document.getElementById('age').innerHTML = age;
     document.getElementById('totalVillagers').innerHTML = populationCount();
     document.getElementById('popCap').innerHTML = popCap;
@@ -222,7 +234,7 @@ function addIdleVillager() {
     } else if (populationCount() - 1 < populationToCheck(turnCount)) {
         villagers['idle'] += 1;
         updateUI();
-    } else if (turnCount + 1 >= boChecker.length || populationCount() - 1 == populationToCheck(turnCount + 1)) {
+    } else if (turnCount + 1 >= boChecker.length || populationToCheck(turnCount) == populationToCheck(turnCount + 1)) {
         errorMessage('You should not add a villager now');
     } else if (orderMessage) {
         reset();
@@ -256,12 +268,14 @@ function toggleWheelbarrow() {
     }
 }
 function advance() {
+    var orderMessage = '';
     if (age == 'Castle') {
         age = 'Imperial';
-        var orderMessage = validateBuildOrder();
+        orderMessage = validateBuildOrder();
         if (orderMessage) {
             reset();
             turnCount += 1;
+            advancing = true;
             updateUI(orderMessage);
         } else {
             age = 'Castle';
@@ -269,11 +283,12 @@ function advance() {
     }
     if (age == 'Feudal') {
         age = 'Castle';
-        var orderMessage = validateBuildOrder();
+        orderMessage = validateBuildOrder();
         if (orderMessage) {
             document.getElementById('bowsaw').disabled = false;
             reset();
             turnCount += 1;
+            advancing = true;
             updateUI(orderMessage);
         } else {
             age = 'Feudal';
@@ -281,7 +296,7 @@ function advance() {
     }
     if (age == 'Dark') {
         age = 'Feudal';
-        var orderMessage = validateBuildOrder();
+        orderMessage = validateBuildOrder();
         if (orderMessage) {
             document.getElementById('horsecollar').disabled = false;
             document.getElementById('dba').disabled = false;
@@ -289,6 +304,7 @@ function advance() {
             document.getElementById('wheelbarrow').disabled = false;
             reset();
             turnCount += 1;
+            advancing = true;
             updateUI(orderMessage);
         } else {
             age = 'Dark';
@@ -370,6 +386,7 @@ function changeChecker() {
     fletching = false;
     wheelbarrow = false;
     turnCount = 0;
+    advancing = false;
     villagers = {
         'idle': 3,
         'builder': 0,
