@@ -1,4 +1,4 @@
-var scouts = [
+var opening = [
     {p: 5, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, b: 1, hb: 2, builderDone: true},
     {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4},
     {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 5},
@@ -7,6 +7,8 @@ var scouts = [
     {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 2},
     {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 3},
     {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 3, hb: 1},
+];
+var scouts = [
     {p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 3},
     {p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 3, fo: 1},
     {p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 3, fo: 2},
@@ -31,14 +33,6 @@ var scouts = [
 ];
 
 var archers = [
-    {p: 5, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, b: 1, hb: 2, builderDone: true},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 5},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 1},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 2},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 3},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 3, hb: 1},
     {p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 7, lj: 4},
     {p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 4},
     {p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 4, fo: 1},
@@ -101,14 +95,6 @@ var scoutCastle = scouts.concat(
 );
 
 var maa = [
-    {p: 5, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, b: 1, hb: 2, builderDone: true},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 5},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 1},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 2},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 3},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 3, hb: 1},
     {p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 7, lj: 3, hb: 1},
     {p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 4},
     {p: 25, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 4, fo: 1},
@@ -151,14 +137,6 @@ var maaTowers = maa.concat(
 );
 
 var fcBoom = [
-    {p: 5, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, b: 1, hb: 2, builderDone: true},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 5},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 1},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 2},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 3},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 3, hb: 1},
     {p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 7, lj: 4},
     {p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 4},
     {p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 4, fo: 1},
@@ -184,14 +162,6 @@ var fcBoom = [
 ];
 
 var fcKnights = [
-    {p: 5, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, b: 1, hb: 2, builderDone: true},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 5},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 1},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 2},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 3},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 3, hb: 1},
     {p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 7, lj: 4},
     {p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 4},
     {p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 4, fo: 1},
@@ -220,14 +190,6 @@ var fcKnights = [
 ];
 
 var fcUU = [
-    {p: 5, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, b: 1, hb: 2, builderDone: true},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 5},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 1},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 2},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 3},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 3, hb: 1},
     {p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 7, lj: 4},
     {p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 4},
     {p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 4, fo: 1},
@@ -253,14 +215,6 @@ var fcUU = [
 ];
 
 var fI = [
-    {p: 5, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, b: 1, hb: 2, builderDone: true},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 4},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 5},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 1},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 2},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 3},
-    {p: 15, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 6, lj: 3, hb: 1},
     {p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 7, lj: 4},
     {p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 4},
     {p: 20, l: false, a: 'Dark', dba: false, hc: false, bs: false, fl: false, wb: false, h: 8, lj: 4, fo: 1},

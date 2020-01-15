@@ -1,4 +1,4 @@
-var boChecker = archers;
+var boChecker = opening.concat(archers);
 var popCap = 5;
 var loom = false;
 var age = 'Dark';
@@ -195,7 +195,7 @@ function updateUI(msg='&nbsp;') {
         document.getElementById('addVillager').disabled = false;
         document.getElementById('advance').disabled = false;
     }
-    document.getElementById('age').innerHTML = age;
+    document.getElementById('age').innerHTML = age + ' Age';
     document.getElementById('totalVillagers').innerHTML = populationCount();
     document.getElementById('popCap').innerHTML = popCap;
     document.getElementById('totalIdle').innerHTML = villagers['idle'];
@@ -362,7 +362,7 @@ function nextTurn() {
 function changeChecker() {
     var boName = document.getElementById('selectBo').value;
     if (['archers', 'scoutArchers', 'scoutSkirms', 'scoutCastle', 'maaArchers', 'maaTowers', 'fcBoom', 'fcKnights', 'fcUU', 'fI'].includes(boName)) {
-        boChecker = window[boName];
+        boChecker = opening.concat(window[boName]);
     } else {
         errorMessage('Something wonky: no such build order ' + boName);
         return;
