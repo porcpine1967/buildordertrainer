@@ -82,6 +82,10 @@ function verify(){
 
 function validateBuildOrder() {
     var check = boChecker[turnCount];
+    if (populationToCheck(turnCount) == 3 && villagers['housebuilder'] == 3) {
+        villagers['housebuilder'] = 2;
+        villagers['builder'] = 1;
+    }
     var errors = {};
     errors['p'] = check['p'] != popCap; 
     errors['l'] = check['l'] != loom; 
