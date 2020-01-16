@@ -9,6 +9,7 @@ var fletching = false;
 var wheelbarrow = false;
 var turnCount = 0;
 var advancing = false;
+var military = 1;
 var villagers = {
     'idle': 3,
     'builder': 0,
@@ -39,10 +40,12 @@ var activityMapping = {
  fo: 'Foragers',
  gm: 'Gold Miners',
  sm: 'Stone Miners',
+ m: 'Military',
 }
 var ages = ['Dark', 'Feudal', 'Castle', 'Imperial'];
 function verify(){
-    var lastPop = 3;
+    var lastVillPop = 3;
+    var lastMilPop = 1;
     var maxPop = 5;
     var lToggled = false;
     var wbToggled = false;
@@ -67,11 +70,19 @@ function verify(){
         if (check['p'] != maxPop) {
             console.log('Max pop error row ' + i);
         }
-        var currentpop = (check['b'] || 0) +(check['hb'] || 0) + (check['h'] || 0) + (check['fo'] || 0) + (check['fa'] || 0) + (check['lj'] || 0) + (check['gm'] || 0) + (check['sm'] || 0) + (check['i'] || 0);
-        if (currentpop != lastPop && currentpop != lastPop + 1) {
+        var currentvillpop = (check['b'] || 0) +(check['hb'] || 0) + (check['h'] || 0) + (check['fo'] || 0) + (check['fa'] || 0) + (check['lj'] || 0) + (check['gm'] || 0) + (check['sm'] || 0) + (check['i'] || 0);
+        if (currentvillpop != lastVillPop && currentvillpop != lastVillPop + 1) {
             console.log('Pop unacceptable row ' + i);
         }
-        lastPop = currentpop;
+        lastVillPop = currentvillpop;
+        var currentmilpop = check['m'] || 0;
+        if (currentmilpop < lastMilPop) {
+            console.log('Military pop unaccecptable row ' + i);
+        }
+        if (currentmilpop + currentvillpop >= maxPop) {
+            console.log('Housed row ' + i);
+        }
+        lastMilPop = currentmilpop;
         if (check['hb']) {
             maxPop += check['hb']*5;
         }
@@ -82,12 +93,12 @@ function verify(){
 
 function validateBuildOrder() {
     var check = boChecker[turnCount];
-    if (populationToCheck(turnCount) == 3 && villagers['housebuilder'] == 3) {
+    if (expectedVillagerPopulation(turnCount) == 3 && villagers['housebuilder'] == 3) {
         villagers['housebuilder'] = 2;
         villagers['builder'] = 1;
     }
+    var hbCount = villagers['housebuilder'];
     var errors = {};
-    errors['p'] = check['p'] != popCap; 
     errors['l'] = check['l'] != loom; 
     errors['a'] = check['a'] != age;
     errors['dba'] = check['dba'] != dba;
@@ -96,7 +107,6 @@ function validateBuildOrder() {
     errors['fl'] = check['fl'] != fletching;
     errors['wb'] = check['wb'] != wheelbarrow;
     errors['i'] = (check['i'] || 0) - villagers['idle'];
-    errors['hb'] = (check['hb'] || 0) - villagers['housebuilder'];
     errors['b'] = (check['b'] || 0) - villagers['builder'];
     errors['h'] = (check['h'] || 0) - villagers['hunter'];
     errors['fo'] = (check['fo'] || 0) - villagers['forager'];
@@ -110,6 +120,10 @@ function validateBuildOrder() {
     var should_toggle = [];
     var too_many_list = [];
     var not_enough_list = [];
+    if (expectedPopulation(turnCount + 2) >= popCap && villagers['housebuilder'] == 0) {
+        valid = false;
+        not_enough_list.push('House Builders');
+    }
     for (key in errors) {
         if (errors[key] === true) {
             if (['l', 'wb'].includes(key)) {
@@ -129,11 +143,15 @@ function validateBuildOrder() {
             }
             valid = false;
         } else if (errors[key] > 0) {
-            not_enough_list.push(activityMapping[key]);
-            valid = false;
+            if (hbCount >= errors[key] && key != 'm' && key != 'b') {
+                hbCount -= errors[key];
+            } else {
+                not_enough_list.push(activityMapping[key]);
+                valid = false;
+            }
         } else if (errors[key] < 0) {
-            too_many_list.push(activityMapping[key]);
-            valid = false;
+          too_many_list.push(activityMapping[key]);
+          valid = false;
         }
     }
     if (valid) {
@@ -142,7 +160,7 @@ function validateBuildOrder() {
             updateUI('Success!');
             return false;
         } else {
-            if (populationToCheck(turnCount + 1) > populationToCheck(turnCount)) {
+            if (expectedVillagerPopulation(turnCount + 1) > expectedVillagerPopulation(turnCount)) {
                 advancing = false;
             }
             document.getElementById('messages').style.color = 'blue';
@@ -170,6 +188,7 @@ function validateBuildOrder() {
     }
 }
 function reset() {
+    military = boChecker[turnCount]['m'];
     popCap += villagers['housebuilder']*5;
     villagers['idle'] += villagers['housebuilder'];
     villagers['housebuilder'] = 0;
@@ -183,11 +202,11 @@ function errorMessage(str) {
     document.getElementById('messages').innerHTML = str;
 }
 function populationCount() {
-    var vc = 1;
+    var pc = military;
     for (var state in villagers) {
-        vc += villagers[state];
+        pc += villagers[state];
     }
-    return vc;
+    return pc;
 }
 function updateUI(msg='&nbsp;') {
     if (advancing) {
@@ -211,6 +230,7 @@ function updateUI(msg='&nbsp;') {
     document.getElementById('totalLumberjacks').innerHTML = villagers['lumberjack'];
     document.getElementById('totalGoldMiners').innerHTML = villagers['goldminer'];
     document.getElementById('totalStoneMiners').innerHTML = villagers['stoneminer'];
+    document.getElementById('totalMilitary').innerHTML = military;
     document.getElementById('messages').innerHTML = msg;
 }
 function removeVillager(state) {
@@ -225,20 +245,30 @@ function addVillager(state) {
         villagers['idle'] -= 1;
         villagers[state] += 1;
         updateUI();
+    } else {
+        errorMessage('No idle villagers to allocate');
     }
 }
-function populationToCheck(turn) {
+function expectedVillagerPopulation(turn) {
     var check = boChecker[turn];
     return (check['b'] || 0) +(check['hb'] || 0) + (check['h'] || 0) + (check['fo'] || 0) + (check['fa'] || 0) + (check['lj'] || 0) + (check['gm'] || 0) + (check['sm'] || 0);
+}
+function expectedPopulation(turn) {
+    var index = turn;
+    if (index + 1 > boChecker.length) {
+        index = boChecker.length - 1;
+    }
+    var check = boChecker[index];
+    return (check['b'] || 0) +(check['hb'] || 0) + (check['h'] || 0) + (check['fo'] || 0) + (check['fa'] || 0) + (check['lj'] || 0) + (check['gm'] || 0) + (check['sm'] || 0) + check['m'];
 }
 function addIdleVillager() {
     var orderMessage = validateBuildOrder();
     if (popCap <= populationCount()) {
         errorMessage('You are housed');
-    } else if (populationCount() - 1 < populationToCheck(turnCount)) {
+    } else if (populationCount() - military < expectedVillagerPopulation(turnCount)) {
         villagers['idle'] += 1;
         updateUI();
-    } else if (turnCount + 1 >= boChecker.length || populationToCheck(turnCount) == populationToCheck(turnCount + 1)) {
+    } else if (turnCount + 1 >= boChecker.length || expectedVillagerPopulation(turnCount) == expectedVillagerPopulation(turnCount + 1)) {
         errorMessage('You should not add a villager now');
     } else if (orderMessage) {
         reset();
@@ -391,6 +421,7 @@ function changeChecker() {
     wheelbarrow = false;
     turnCount = 0;
     advancing = false;
+    military = 1;
     villagers = {
         'idle': 3,
         'builder': 0,
