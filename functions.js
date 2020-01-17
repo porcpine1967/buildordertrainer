@@ -1,4 +1,5 @@
 var boChecker = archers;
+var endPop = expectedPopulation(boChecker.length - 1);
 var bos = ['archers', 'scoutArchers', 'scoutSkirms', 'scoutCastle', 'maaArchers', 'maaTowers', 'fcBoom', 'fcKnights', 'fcUU', 'fI'];
 var popCap = 5;
 var loom = false;
@@ -34,6 +35,7 @@ var activityMapping = {
  maa: 'Man-at-Arms Upgrade',
  wb: 'Wheelbarrow',
  i: 'Idles',
+ hb: 'House Builders',
  b: 'Builders',
  h: 'Hunter/shepherds',
  lj: 'Lumberjacks',
@@ -127,6 +129,10 @@ function validateBuildOrder() {
     if (!advancing && expectedPopulation(turnCount + 2) >= popCap && villagers['housebuilder'] == 0) {
         valid = false;
         not_enough_list.push('House Builders');
+    }
+    if (villagers['housebuilder'] && popCap > endPop) {
+        too_many_list.push(activityMapping['hb']);
+        valid = false;
     }
     for (var key in errors) {
         if (errors[key] === true) {
@@ -437,6 +443,7 @@ function changeChecker() {
     maa = false;
     document.getElementById('maa').disabled = true;
     document.getElementById('maa').innerHTML = 'Man-at-Arms Upgrade';
+    endPop = expectedPopulation(boChecker.length - 1);
     popCap = 5;
     loom = false;
     age = 'Dark';
