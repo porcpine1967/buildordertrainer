@@ -1,4 +1,4 @@
-var boChecker = opening.concat(archers);
+var boChecker = archers;
 var bos = ['archers', 'scoutArchers', 'scoutSkirms', 'scoutCastle', 'maaArchers', 'maaTowers', 'fcBoom', 'fcKnights', 'fcUU', 'fI'];
 var popCap = 5;
 var loom = false;
@@ -7,6 +7,7 @@ var dba = false;
 var horsecollar = false;
 var bowsaw = false;
 var fletching = false;
+var maa = false;
 var wheelbarrow = false;
 var turnCount = 0;
 var advancing = false;
@@ -30,6 +31,7 @@ var activityMapping = {
  hc: 'Horse Collar',
  bs: 'Bow Saw',
  fl: 'Fletching',
+ maa: 'Man-at-Arms Upgrade',
  wb: 'Wheelbarrow',
  i: 'Idles',
  b: 'Builders',
@@ -45,7 +47,7 @@ var ages = ['Dark', 'Feudal', 'Castle', 'Imperial'];
 function verify(){
     for (var index in bos) {
         var boName = bos[index];
-        var boArray = opening.concat(window[boName]);
+        var boArray = window[boName];
         var lastVillPop = 3;
         var lastMilPop = 1;
         var maxPop = 5;
@@ -55,6 +57,7 @@ function verify(){
         var dbaToggled = false;
         var bsToggled = false;
         var flToggled = false;
+        var maaToggled = false;
         for (var i in boArray) {
             var check = boArray[i];
             if (check['l']) lToggled = true;
@@ -63,12 +66,14 @@ function verify(){
             if (check['dba']) dbaToggled = true;
             if (check['bs']) bsToggled = true;
             if (check['fl']) flToggled = true;
+            if (check['maa']) maaToggled = true;
             if (lToggled && !check['l']) console.log('l untoggled');
             if (wbToggled && !check['wb']) console.log('wb untoggled');
             if (hcToggled && !check['hc']) console.log('hc untoggled');
             if (dbaToggled && !check['dba']) console.log('dba untoggled');
             if (bsToggled && !check['bs']) console.log('bs untoggled');
             if (flToggled && !check['fl']) console.log('fl untoggled');
+            if (maaToggled && !check['maa']) console.log('maa untoggled');
             var currentvillpop = (check['b'] || 0) +(check['hb'] || 0) + (check['h'] || 0) + (check['fo'] || 0) + (check['fa'] || 0) + (check['lj'] || 0) + (check['gm'] || 0) + (check['sm'] || 0) + (check['i'] || 0);
             if (currentvillpop != lastVillPop && currentvillpop != lastVillPop + 1) {
                 console.log(boName + ': Pop unacceptable row ' + i);
@@ -89,6 +94,7 @@ function verify(){
 
 
 function validateBuildOrder() {
+    infoMessage(null);
     var check = boChecker[turnCount];
     if (expectedVillagerPopulation(turnCount) == 3 && villagers['housebuilder'] == 3) {
         villagers['housebuilder'] = 2;
@@ -96,13 +102,14 @@ function validateBuildOrder() {
     }
     var hbCount = villagers['housebuilder'];
     var errors = {};
-    errors['l'] = check['l'] != loom; 
+    errors['l'] = !!check['l'] != loom; 
     errors['a'] = check['a'] != age;
-    errors['dba'] = check['dba'] != dba;
-    errors['hc'] = check['hc'] != horsecollar;
-    errors['bs'] = check['bs'] != bowsaw;
-    errors['fl'] = check['fl'] != fletching;
-    errors['wb'] = check['wb'] != wheelbarrow;
+    errors['dba'] = !!check['dba'] != dba;
+    errors['hc'] = !!check['hc'] != horsecollar;
+    errors['bs'] = !!check['bs'] != bowsaw;
+    errors['fl'] = !!check['fl'] != fletching;
+    errors['maa'] = !!check['maa'] != maa;
+    errors['wb'] = !!check['wb'] != wheelbarrow;
     errors['i'] = (check['i'] || 0) - villagers['idle'];
     errors['b'] = (check['b'] || 0) - villagers['builder'];
     errors['h'] = (check['h'] || 0) - villagers['hunter'];
@@ -154,15 +161,16 @@ function validateBuildOrder() {
     if (valid) {
         if (boChecker.length <= turnCount + 1 ) {
             reset();
-            document.getElementById('messages').style.color = 'green';
-            updateUI('Success!');
+            infoMessage('Success!');
+            updateUI();
             return false;
         } else {
             if (expectedVillagerPopulation(turnCount + 1) > expectedVillagerPopulation(turnCount)) {
                 advancing = false;
             }
             document.getElementById('messages').style.color = 'blue';
-            return check['message'] || '&nbsp;';
+            infoMessage(check['message']);
+            return true;
         }
     } else {
         var msg = [];
@@ -195,6 +203,10 @@ function reset() {
         villagers['builder'] = 0;
     }
 }
+function infoMessage(str) {
+    document.getElementById('messages').style.color = 'blue';
+    document.getElementById('messages').innerHTML = str || '&nbsp;';
+}
 function errorMessage(str) {
     document.getElementById('messages').style.color = 'red';
     document.getElementById('messages').innerHTML = str;
@@ -206,7 +218,7 @@ function populationCount() {
     }
     return pc;
 }
-function updateUI(msg='&nbsp;') {
+function updateUI() {
     if (advancing) {
         document.getElementById('age').style.color = 'gray';
         document.getElementById('addVillager').disabled = true;
@@ -229,7 +241,6 @@ function updateUI(msg='&nbsp;') {
     document.getElementById('totalGoldMiners').innerHTML = villagers['goldminer'];
     document.getElementById('totalStoneMiners').innerHTML = villagers['stoneminer'];
     document.getElementById('totalMilitary').innerHTML = military;
-    document.getElementById('messages').innerHTML = msg;
 }
 function removeVillager(state) {
     if (villagers[state] > 0) {
@@ -260,19 +271,19 @@ function expectedPopulation(turn) {
     return (check['b'] || 0) +(check['hb'] || 0) + (check['h'] || 0) + (check['fo'] || 0) + (check['fa'] || 0) + (check['lj'] || 0) + (check['gm'] || 0) + (check['sm'] || 0) + check['m'];
 }
 function addIdleVillager() {
-    var orderMessage = validateBuildOrder();
     if (popCap <= populationCount()) {
         errorMessage('You are housed');
     } else if (populationCount() - military < expectedVillagerPopulation(turnCount)) {
+        infoMessage(null);
         villagers['idle'] += 1;
         updateUI();
     } else if (turnCount + 1 >= boChecker.length || expectedVillagerPopulation(turnCount) == expectedVillagerPopulation(turnCount + 1)) {
         errorMessage('You should not add a villager now');
-    } else if (orderMessage) {
+    } else if (validateBuildOrder()) {
         reset();
         villagers['idle'] += 1;
         turnCount += 1;
-        updateUI(orderMessage);
+        updateUI();
     }
 }
 function toggleLoom() {
@@ -282,7 +293,7 @@ function toggleLoom() {
         document.getElementById('loom').disabled = true;
         reset();
         turnCount += 1;
-        updateUI(orderMessage);
+        updateUI();
     } else {
         loom = false;
     }
@@ -294,7 +305,7 @@ function toggleWheelbarrow() {
         document.getElementById('wheelbarrow').disabled = true;
         reset();
         turnCount += 1;
-        updateUI(orderMessage);
+        updateUI();
     } else {
         wheelbarrow = false;
     }
@@ -308,7 +319,7 @@ function advance() {
             reset();
             turnCount += 1;
             advancing = true;
-            updateUI(orderMessage);
+            updateUI();
         } else {
             age = 'Castle';
         }
@@ -321,7 +332,7 @@ function advance() {
             reset();
             turnCount += 1;
             advancing = true;
-            updateUI(orderMessage);
+            updateUI();
         } else {
             age = 'Feudal';
         }
@@ -333,11 +344,12 @@ function advance() {
             document.getElementById('horsecollar').disabled = false;
             document.getElementById('dba').disabled = false;
             document.getElementById('fletching').disabled = false;
+            document.getElementById('maa').disabled = false;
             document.getElementById('wheelbarrow').disabled = false;
             reset();
             turnCount += 1;
             advancing = true;
-            updateUI(orderMessage);
+            updateUI();
         } else {
             age = 'Dark';
         }
@@ -383,31 +395,48 @@ function toggleFletching() {
         fletchingElement.innerHTML = 'Undo Fletching';
     }
 }
+function toggleMaa() {
+    maaElement = document.getElementById('maa');
+    if (maa) {
+        maa = false;
+        maaElement.innerHTML = 'Man-at-Arms Upgrade';
+    } else {
+        maa = true;
+        maaElement.innerHTML = 'Undo Man-at-Arms Upgrade';
+    }
+}
 function nextTurn() {
     var orderMessage = validateBuildOrder();
     if (orderMessage) {
         reset();
         turnCount += 1;
-        updateUI(orderMessage);
+        updateUI();
     }
 }
 function changeChecker() {
     var boName = document.getElementById('selectBo').value;
     if (bos.includes(boName)) {
-        boChecker = opening.concat(window[boName]);
+        boChecker = window[boName];
     } else {
         errorMessage('Something wonky: no such build order ' + boName);
         return;
     }
     document.getElementById('loom').disabled = false;
     horsecollar = false;
+    document.getElementById('horsecollar').disabled = true;
     document.getElementById('horsecollar').innerHTML = 'Horse Collar';
     dba = false;
+    document.getElementById('dba').disabled = true;
     document.getElementById('dba').innerHTML = 'Double Bit Axe';
     bowsaw = false;
+    document.getElementById('bowsaw').disabled = true;
     document.getElementById('bowsaw').innerHTML = 'Bow Saw';
     fletching = false;
+    document.getElementById('fletching').disabled = true;
     document.getElementById('fletching').innerHTML = 'Fletching';
+    maa = false;
+    document.getElementById('maa').disabled = true;
+    document.getElementById('maa').innerHTML = 'Man-at-Arms Upgrade';
     popCap = 5;
     loom = false;
     age = 'Dark';
@@ -430,5 +459,11 @@ function changeChecker() {
         'goldminer': 0,
         'stoneminer': 0
     };
+    infoMessage(null);
     updateUI();
+}
+function data(c) {
+  for (var i in c) {
+      console.log(i + ' : ' + expectedVillagerPopulation(i));
+  }
 }
