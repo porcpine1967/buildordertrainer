@@ -1,4 +1,5 @@
 var boChecker = opening.concat(archers);
+var bos = ['archers', 'scoutArchers', 'scoutSkirms', 'scoutCastle', 'maaArchers', 'maaTowers', 'fcBoom', 'fcKnights', 'fcUU', 'fI'];
 var popCap = 5;
 var loom = false;
 var age = 'Dark';
@@ -23,7 +24,6 @@ var villagers = {
 }
 
 var activityMapping = {
- p: 'Population',
  l: 'Loom',
  a: 'Advance',
  dba: 'Double-bit Axe',
@@ -32,7 +32,6 @@ var activityMapping = {
  fl: 'Fletching',
  wb: 'Wheelbarrow',
  i: 'Idles',
- hb: 'House Builders',
  b: 'Builders',
  h: 'Hunter/shepherds',
  lj: 'Lumberjacks',
@@ -44,47 +43,45 @@ var activityMapping = {
 }
 var ages = ['Dark', 'Feudal', 'Castle', 'Imperial'];
 function verify(){
-    var lastVillPop = 3;
-    var lastMilPop = 1;
-    var maxPop = 5;
-    var lToggled = false;
-    var wbToggled = false;
-    var hcToggled = false;
-    var dbaToggled = false;
-    var bsToggled = false;
-    var flToggled = false;
-    for (var i = 0; i < boChecker.length; i++) {
-        var check = boChecker[i];
-        if (check['l']) lToggled = true;
-        if (check['wb']) wbToggled = true;
-        if (check['hc']) hcToggled = true;
-        if (check['dba']) dbaToggled = true;
-        if (check['bs']) bsToggled = true;
-        if (check['fl']) flToggled = true;
-        if (lToggled && !check['l']) console.log('l untoggled');
-        if (wbToggled && !check['wb']) console.log('wb untoggled');
-        if (hcToggled && !check['hc']) console.log('hc untoggled');
-        if (dbaToggled && !check['dba']) console.log('dba untoggled');
-        if (bsToggled && !check['bs']) console.log('bs untoggled');
-        if (flToggled && !check['fl']) console.log('fl untoggled');
-        if (check['p'] != maxPop) {
-            console.log('Max pop error row ' + i);
-        }
-        var currentvillpop = (check['b'] || 0) +(check['hb'] || 0) + (check['h'] || 0) + (check['fo'] || 0) + (check['fa'] || 0) + (check['lj'] || 0) + (check['gm'] || 0) + (check['sm'] || 0) + (check['i'] || 0);
-        if (currentvillpop != lastVillPop && currentvillpop != lastVillPop + 1) {
-            console.log('Pop unacceptable row ' + i);
-        }
-        lastVillPop = currentvillpop;
-        var currentmilpop = check['m'] || 0;
-        if (currentmilpop < lastMilPop) {
-            console.log('Military pop unaccecptable row ' + i);
-        }
-        if (currentmilpop + currentvillpop >= maxPop) {
-            console.log('Housed row ' + i);
-        }
-        lastMilPop = currentmilpop;
-        if (check['hb']) {
-            maxPop += check['hb']*5;
+    for (var index in bos) {
+        var boName = bos[index];
+        var boArray = opening.concat(window[boName]);
+        var lastVillPop = 3;
+        var lastMilPop = 1;
+        var maxPop = 5;
+        var lToggled = false;
+        var wbToggled = false;
+        var hcToggled = false;
+        var dbaToggled = false;
+        var bsToggled = false;
+        var flToggled = false;
+        for (var i in boArray) {
+            var check = boArray[i];
+            if (check['l']) lToggled = true;
+            if (check['wb']) wbToggled = true;
+            if (check['hc']) hcToggled = true;
+            if (check['dba']) dbaToggled = true;
+            if (check['bs']) bsToggled = true;
+            if (check['fl']) flToggled = true;
+            if (lToggled && !check['l']) console.log('l untoggled');
+            if (wbToggled && !check['wb']) console.log('wb untoggled');
+            if (hcToggled && !check['hc']) console.log('hc untoggled');
+            if (dbaToggled && !check['dba']) console.log('dba untoggled');
+            if (bsToggled && !check['bs']) console.log('bs untoggled');
+            if (flToggled && !check['fl']) console.log('fl untoggled');
+            var currentvillpop = (check['b'] || 0) +(check['hb'] || 0) + (check['h'] || 0) + (check['fo'] || 0) + (check['fa'] || 0) + (check['lj'] || 0) + (check['gm'] || 0) + (check['sm'] || 0) + (check['i'] || 0);
+            if (currentvillpop != lastVillPop && currentvillpop != lastVillPop + 1) {
+                console.log(boName + ': Pop unacceptable row ' + i);
+            }
+            lastVillPop = currentvillpop;
+            var currentmilpop = check['m'] || 0;
+            if (currentmilpop < lastMilPop) {
+                console.log(boName + ': Military pop unaccecptable row ' + i);
+            }
+            lastMilPop = currentmilpop;
+            if (check['hb']) {
+                maxPop += check['hb']*5;
+            }
         }
     }
 }
@@ -120,11 +117,11 @@ function validateBuildOrder() {
     var should_toggle = [];
     var too_many_list = [];
     var not_enough_list = [];
-    if (expectedPopulation(turnCount + 2) >= popCap && villagers['housebuilder'] == 0) {
+    if (!advancing && expectedPopulation(turnCount + 2) >= popCap && villagers['housebuilder'] == 0) {
         valid = false;
         not_enough_list.push('House Builders');
     }
-    for (key in errors) {
+    for (var key in errors) {
         if (errors[key] === true) {
             if (['l', 'wb'].includes(key)) {
                 if (check[key]) {
@@ -156,6 +153,7 @@ function validateBuildOrder() {
     }
     if (valid) {
         if (boChecker.length <= turnCount + 1 ) {
+            reset();
             document.getElementById('messages').style.color = 'green';
             updateUI('Success!');
             return false;
@@ -395,13 +393,12 @@ function nextTurn() {
 }
 function changeChecker() {
     var boName = document.getElementById('selectBo').value;
-    if (['archers', 'scoutArchers', 'scoutSkirms', 'scoutCastle', 'maaArchers', 'maaTowers', 'fcBoom', 'fcKnights', 'fcUU', 'fI'].includes(boName)) {
+    if (bos.includes(boName)) {
         boChecker = opening.concat(window[boName]);
     } else {
         errorMessage('Something wonky: no such build order ' + boName);
         return;
     }
-    verify();
     document.getElementById('loom').disabled = false;
     horsecollar = false;
     document.getElementById('horsecollar').innerHTML = 'Horse Collar';
