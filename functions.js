@@ -12,6 +12,7 @@ var maa = false;
 var wheelbarrow = false;
 var turnCount = 0;
 var advancing = false;
+var skipHouse = false;
 var military = 1;
 var villagers = {
     'idle': 3,
@@ -26,24 +27,24 @@ var villagers = {
 }
 
 var activityMapping = {
- l: 'Loom',
- a: 'Advance',
- dba: 'Double-bit Axe',
- hc: 'Horse Collar',
- bs: 'Bow Saw',
- fl: 'Fletching',
- maa: 'Man-at-Arms Upgrade',
- wb: 'Wheelbarrow',
- i: 'Idles',
- hb: 'House Builders',
- b: 'Builders',
- h: 'Hunter/shepherds',
- lj: 'Lumberjacks',
- fa: 'Farmers',
- fo: 'Foragers',
- gm: 'Gold Miners',
- sm: 'Stone Miners',
- m: 'Military',
+    l: 'Loom',
+    a: 'Advance',
+    dba: 'Double-bit Axe',
+    hc: 'Horse Collar',
+    bs: 'Bow Saw',
+    fl: 'Fletching',
+    maa: 'Man-at-Arms Upgrade',
+    wb: 'Wheelbarrow',
+    i: 'Idles',
+    hb: 'House Builders',
+    b: 'Builders',
+    h: 'Hunter/shepherds',
+    lj: 'Lumberjacks',
+    fa: 'Farmers',
+    fo: 'Foragers',
+    gm: 'Gold Miners',
+    sm: 'Stone Miners',
+    m: 'Military',
 }
 var ages = ['Dark', 'Feudal', 'Castle', 'Imperial'];
 function verify(){
@@ -126,7 +127,7 @@ function validateBuildOrder() {
     var should_toggle = [];
     var too_many_list = [];
     var not_enough_list = [];
-    if (!advancing && expectedPopulation(turnCount + 2) >= popCap && villagers['housebuilder'] == 0) {
+    if (!skipHouse && !advancing && expectedPopulation(turnCount + 2) >= popCap && villagers['housebuilder'] == 0) {
         valid = false;
         not_enough_list.push('House Builders');
     }
@@ -160,8 +161,8 @@ function validateBuildOrder() {
                 valid = false;
             }
         } else if (errors[key] < 0) {
-          too_many_list.push(activityMapping[key]);
-          valid = false;
+            too_many_list.push(activityMapping[key]);
+            valid = false;
         }
     }
     if (valid) {
@@ -181,25 +182,36 @@ function validateBuildOrder() {
     } else {
         var msg = [];
         if (should_click.length > 0) {
-          msg.push('Should click ' + should_click.join(', '));
+            msg.push('Should click ' + should_click.join(', '));
         }
         if (not_click.length > 0) {
-          msg.push('Should not click ' + not_click.join(', '));
+            msg.push('Should not click ' + not_click.join(', '));
         }
         if (should_toggle.length > 0) {
-          msg.push('Should toggle ' + should_toggle.join(', '));
+            msg.push('Should toggle ' + should_toggle.join(', '));
         }
         if (too_many_list.length > 0) {
-          msg.push('Too many ' + too_many_list.join(', '));
+            msg.push('Too many ' + too_many_list.join(', '));
         }
         if (not_enough_list.length > 0) {
-          msg.push('Not enough ' + not_enough_list.join(', '));
+            msg.push('Not enough ' + not_enough_list.join(', '));
         }
         errorMessage(msg.join('<br/>'));
         return false;
     }
 }
 function reset() {
+    if (boChecker[turnCount]['skipHouse']) {
+        skipHouse = true;
+    }
+    if (boChecker[turnCount]['sheepDone']) {
+        villagers['idle'] += villagers['hunter'];
+        villagers['hunter'] = 0;
+    }
+    if (boChecker[turnCount]['berriesDone']) {
+        villagers['idle'] += villagers['forager'];
+        villagers['forager'] = 0;
+    }
     military = boChecker[turnCount]['m'];
     popCap += villagers['housebuilder']*5;
     villagers['idle'] += villagers['housebuilder'];
@@ -454,6 +466,7 @@ function changeChecker() {
     wheelbarrow = false;
     turnCount = 0;
     advancing = false;
+    skipHouse = false;
     military = 1;
     villagers = {
         'idle': 3,
@@ -470,7 +483,23 @@ function changeChecker() {
     updateUI();
 }
 function data(c) {
-  for (var i in c) {
-      console.log(i + ' : ' + expectedVillagerPopulation(i));
-  }
+    for (var i in c) {
+        console.log(i + ' : ' + expectedVillagerPopulation(i));
+    }
+}
+function skipOpening(){
+    villagers = {
+        'idle': 1,
+        'builder': 0,
+        'housebuilder': 0,
+        'hunter': 6,
+        'farmer': 0,
+        'forager': 0,
+        'lumberjack': 3,
+        'goldminer': 0,
+        'stoneminer': 0
+    };
+    turnCount = 7;
+    popCap = 15;
+    updateUI();
 }
