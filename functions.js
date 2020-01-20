@@ -503,3 +503,11 @@ function skipOpening(){
     popCap = 15;
     updateUI();
 }
+function toggleHelp() {
+    var helpDiv = document.getElementById('help');
+    if (helpDiv.style.display == 'none') {
+        helpDiv.style.display = 'block';
+    } else {
+        helpDiv.style.display = 'none';
+    }
+}
