@@ -266,7 +266,7 @@ function updateUI() {
     document.getElementById('totalFish').innerHTML = fish;
     document.getElementById('totalMilitary').innerHTML = military;
 }
-function removeVillager(state) {
+function deAllocateVillager(state) {
     if (villagers[state] > 0) {
         villagers[state] -= 1;
         villagers['idle'] += 1;
@@ -283,7 +283,7 @@ function removeFish() {
         updateUI();
     }
 }
-function addVillager(state) {
+function allocateVillager(state) {
     if (villagers['idle'] > 0){
         villagers['idle'] -= 1;
         villagers[state] += 1;
@@ -304,7 +304,7 @@ function expectedPopulation(turn) {
     var check = boChecker[index];
     return (check['b'] || 0) +(check['hb'] || 0) + (check['h'] || 0) + (check['fo'] || 0) + (check['fa'] || 0) + (check['lj'] || 0) + (check['gm'] || 0) + (check['sm'] || 0) + check['m'] + check['f'];
 }
-function addIdleVillager() {
+function addVillager() {
     if (popCap <= populationCount()) {
         errorMessage('You are housed');
     } else if (populationCount() - military - fish < expectedVillagerPopulation(turnCount)) {
@@ -521,6 +521,8 @@ function skipOpening(){
     };
     fish = 0;
     military = 1;
+    loom = false;
+    age = 'Dark';
     turnCount = 7;
     popCap = 15;
     updateUI();

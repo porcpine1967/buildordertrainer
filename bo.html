@@ -20,7 +20,7 @@
     <table>
       <tr>
         <td>
-          <button id="addVillager" style="font-size: 18; padding: 8px" onClick="addIdleVillager()">Add Villager</button>
+          <button id="addVillager" style="font-size: 18; padding: 8px" onClick="addVillager()">Add Villager</button>
         </td>
         <td />
         <td>
@@ -59,81 +59,81 @@
       </tr>
       <tr>
         <td>
-          <button onClick="removeVillager('housebuilder')" class="quantity">&darr;</button>
+          <button onClick="deAllocateVillager('housebuilder')" class="quantity">&darr;</button>
         </td>
         <td>House Builder</td>
         <td>
-          <button onClick="addVillager('housebuilder')" class="quantity">&uarr;</button>
+          <button onClick="allocateVillager('housebuilder')" class="quantity">&uarr;</button>
         </td>
         <td id="totalHouseBuilders" />
       </tr>
       <tr>
         <td>
-          <button onClick="removeVillager('builder')" class="quantity">&darr;</button>
+          <button onClick="deAllocateVillager('builder')" class="quantity">&darr;</button>
         </td>
         <td>Builder</td>
         <td>
-          <button onClick="addVillager('builder')" class="quantity">&uarr;</button>
+          <button onClick="allocateVillager('builder')" class="quantity">&uarr;</button>
         </td>
         <td id="totalBuilders" />
       </tr>
       <tr>
         <td>
-          <button onClick="removeVillager('hunter')" class="quantity">&darr;</button>
+          <button onClick="deAllocateVillager('hunter')" class="quantity">&darr;</button>
         </td>
         <td>Hunter/shepherd</td>
         <td>
-          <button onClick="addVillager('hunter')" class="quantity">&uarr;</button>
+          <button onClick="allocateVillager('hunter')" class="quantity">&uarr;</button>
         </td>
         <td id="totalHunters" />
       </tr>
       <tr>
         <td>
-          <button onClick="removeVillager('lumberjack')" class="quantity">&darr;</button>
+          <button onClick="deAllocateVillager('lumberjack')" class="quantity">&darr;</button>
         </td>
         <td>Lumberjack</td>
         <td>
-          <button onClick="addVillager('lumberjack')" class="quantity">&uarr;</button>
+          <button onClick="allocateVillager('lumberjack')" class="quantity">&uarr;</button>
         </td>
         <td id="totalLumberjacks" />
       </tr>
       <tr>
         <td>
-          <button onClick="removeVillager('farmer')" class="quantity">&darr;</button>
+          <button onClick="deAllocateVillager('farmer')" class="quantity">&darr;</button>
         </td>
         <td>Farmer</td>
         <td>
-          <button onClick="addVillager('farmer')" class="quantity">&uarr;</button>
+          <button onClick="allocateVillager('farmer')" class="quantity">&uarr;</button>
         </td>
         <td id="totalFarmers" />
       </tr>
       <tr>
         <td>
-          <button onClick="removeVillager('forager')" class="quantity">&darr;</button>
+          <button onClick="deAllocateVillager('forager')" class="quantity">&darr;</button>
         </td>
         <td>Forager</td>
         <td>
-          <button onClick="addVillager('forager')" class="quantity">&uarr;</button>
+          <button onClick="allocateVillager('forager')" class="quantity">&uarr;</button>
         </td>
         <td id="totalForagers" />
       </tr>
       <tr>
         <td>
-          <button onClick="removeVillager('goldminer')" class="quantity">&darr;</button>
+          <button onClick="deAllocateVillager('goldminer')" class="quantity">&darr;</button>
         </td>
         <td>Gold Miner</td>
         <td>
-          <button onClick="addVillager('goldminer')" class="quantity">&uarr;</button>
+          <button onClick="allocateVillager('goldminer')" class="quantity">&uarr;</button>
         </td>
         <td id="totalGoldMiners" />
       </tr>
       <tr>
         <td>
-          <button onClick="removeVillager('stoneminer')" class="quantity">&darr;</button>
+          <button onClick="deAllocateVillager('stoneminer')" class="quantity">&darr;</button>
         </td>
         <td>Stone Miner</td>
         <td>
-          <button onClick="addVillager('stoneminer')" class="quantity">&uarr;</button>
+          <button onClick="allocateVillager('stoneminer')" class="quantity">&uarr;</button>
         </td>
         <td id="totalStoneMiners" />
       </tr>
