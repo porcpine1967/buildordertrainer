@@ -39,6 +39,9 @@
         <td>
           <button onClick="toggleWheelbarrow()" id="wheelbarrow" disabled="true">Wheelbarrow</button>
         </td>
+        <!-- <td> -->
+        <!--   <button onClick="skipOpening()">Skip Opening</button> -->
+        <!-- </td> -->
       </tr>
     </table>
     <table>
@@ -134,6 +137,16 @@
         </td>
         <td id="totalStoneMiners" />
       </tr>
+      <tr>
+        <td>
+          <button onClick="removeFish()" class="quantity">&darr;</button>
+        </td>
+        <td>Fishing Ships</td>
+        <td>
+          <button onClick="addFish()" class="quantity">&uarr;</button>
+        </td>
+        <td id="totalFish" />
+      </tr>
     </table>
     <button class="so" onClick="toggleHorseCollar()" disabled="true" id="horsecollar">Horse Collar</button>
     <button class="so" onClick="toggleDoubleBitAxe()" disabled="true" id="dba">Double-bit Axe</button>
@@ -151,6 +164,7 @@
       <option value="fcKnights">Fast Castle to Knights</option>
       <option value="fcUU">Fast Castle to Unique Units</option>
       <option value="fI">Fast Imperial</option>
+      <option value="fGalley">Fast Galley</option>
     </select>
     <h2>Help (<span onClick="toggleHelp()" style="color: blue; cursor: hand;">toggle</span>)</h2>
     <div id="help" style="display: none;">

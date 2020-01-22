@@ -1,6 +1,6 @@
 var boChecker = archers;
 var endPop = expectedPopulation(boChecker.length - 1);
-var bos = ['archers', 'scoutArchers', 'scoutSkirms', 'scoutCastle', 'maaArchers', 'maaTowers', 'fcBoom', 'fcKnights', 'fcUU', 'fI'];
+var bos = ['archers', 'scoutArchers', 'scoutSkirms', 'scoutCastle', 'maaArchers', 'maaTowers', 'fcBoom', 'fcKnights', 'fcUU', 'fI', 'fGalley'];
 var popCap = 5;
 var loom = false;
 var age = 'Dark';
@@ -14,6 +14,7 @@ var turnCount = 0;
 var advancing = false;
 var skipHouse = false;
 var military = 1;
+var fish = 0;
 var villagers = {
     'idle': 3,
     'builder': 0,
@@ -44,6 +45,7 @@ var activityMapping = {
     fo: 'Foragers',
     gm: 'Gold Miners',
     sm: 'Stone Miners',
+    f: 'Fishing Ships',
     m: 'Military',
 }
 var ages = ['Dark', 'Feudal', 'Castle', 'Imperial'];
@@ -105,7 +107,7 @@ function validateBuildOrder() {
     }
     var hbCount = villagers['housebuilder'];
     var errors = {};
-    errors['l'] = !!check['l'] != loom; 
+    errors['l'] = !!check['l'] != loom;
     errors['a'] = check['a'] != age;
     errors['dba'] = !!check['dba'] != dba;
     errors['hc'] = !!check['hc'] != horsecollar;
@@ -121,6 +123,7 @@ function validateBuildOrder() {
     errors['lj'] = (check['lj'] || 0) - villagers['lumberjack'];
     errors['gm'] = (check['gm'] || 0) - villagers['goldminer'];
     errors['sm'] = (check['sm'] || 0) - villagers['stoneminer'];
+    errors['f'] = (check['f'] || 0) - fish;
     var valid = true;
     var should_click = [];
     var not_click = [];
@@ -203,6 +206,8 @@ function validateBuildOrder() {
 function reset() {
     if (boChecker[turnCount]['skipHouse']) {
         skipHouse = true;
+    } else if (boChecker[turnCount]['skipHouse'] == false) {
+        skipHouse = false;
     }
     if (boChecker[turnCount]['sheepDone']) {
         villagers['idle'] += villagers['hunter'];
@@ -230,7 +235,7 @@ function errorMessage(str) {
     document.getElementById('messages').innerHTML = str;
 }
 function populationCount() {
-    var pc = military;
+    var pc = military + fish;
     for (var state in villagers) {
         pc += villagers[state];
     }
@@ -258,6 +263,7 @@ function updateUI() {
     document.getElementById('totalLumberjacks').innerHTML = villagers['lumberjack'];
     document.getElementById('totalGoldMiners').innerHTML = villagers['goldminer'];
     document.getElementById('totalStoneMiners').innerHTML = villagers['stoneminer'];
+    document.getElementById('totalFish').innerHTML = fish;
     document.getElementById('totalMilitary').innerHTML = military;
 }
 function removeVillager(state) {
@@ -266,7 +272,17 @@ function removeVillager(state) {
         villagers['idle'] += 1;
         updateUI();
     }
-}     
+}
+function addFish() {
+    fish += 1;
+    updateUI();
+}
+function removeFish() {
+    if (fish > 0) {
+        fish -= 1;
+        updateUI();
+    }
+}
 function addVillager(state) {
     if (villagers['idle'] > 0){
         villagers['idle'] -= 1;
@@ -286,12 +302,12 @@ function expectedPopulation(turn) {
         index = boChecker.length - 1;
     }
     var check = boChecker[index];
-    return (check['b'] || 0) +(check['hb'] || 0) + (check['h'] || 0) + (check['fo'] || 0) + (check['fa'] || 0) + (check['lj'] || 0) + (check['gm'] || 0) + (check['sm'] || 0) + check['m'];
+    return (check['b'] || 0) +(check['hb'] || 0) + (check['h'] || 0) + (check['fo'] || 0) + (check['fa'] || 0) + (check['lj'] || 0) + (check['gm'] || 0) + (check['sm'] || 0) + check['m'] + check['f'];
 }
 function addIdleVillager() {
     if (popCap <= populationCount()) {
         errorMessage('You are housed');
-    } else if (populationCount() - military < expectedVillagerPopulation(turnCount)) {
+    } else if (populationCount() - military - fish < expectedVillagerPopulation(turnCount)) {
         infoMessage(null);
         villagers['idle'] += 1;
         updateUI();
@@ -468,6 +484,7 @@ function changeChecker() {
     advancing = false;
     skipHouse = false;
     military = 1;
+    fish = 0;
     villagers = {
         'idle': 3,
         'builder': 0,
@@ -477,15 +494,18 @@ function changeChecker() {
         'forager': 0,
         'lumberjack': 0,
         'goldminer': 0,
-        'stoneminer': 0
+        'stoneminer': 0,
     };
     infoMessage(null);
     updateUI();
 }
 function data(c) {
+    var hold = boChecker;
+    boChecker = c;
     for (var i in c) {
         console.log(i + ' : ' + expectedVillagerPopulation(i));
     }
+    boChecker = hold;
 }
 function skipOpening(){
     villagers = {
@@ -497,8 +517,10 @@ function skipOpening(){
         'forager': 0,
         'lumberjack': 3,
         'goldminer': 0,
-        'stoneminer': 0
+        'stoneminer': 0,
     };
+    fish = 0;
+    military = 1;
     turnCount = 7;
     popCap = 15;
     updateUI();
