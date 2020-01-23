@@ -61,47 +61,58 @@ var scouts = opening.concat(
     {a: 'Dark', h: 8, lj: 6, fo: 4, fa: 2, m: 1},
     {l: true, a: 'Dark', h: 8, lj: 7, fo: 4, fa: 2, message: '5th sheep done', m: 1},
     {l: true, a: 'Feudal', h: 5, lj: 10, fo: 4, fa: 2, m: 1},
-    {l: true, a: 'Feudal', h: 4, lj: 10, fo: 4, fa: 2, b: 1, builderDone: true, m: 1, message: 'Barracks complete'},
     {l: true, a: 'Feudal', h: 5, lj: 10, fo: 4, fa: 2, m: 1},
-    {l: true, a: 'Feudal', dba: true, hc: true, h: 3, lj: 10, fo: 4, fa: 3, b: 2, builderDone: true, m: 1, message: 'Stable complete'},
-    {l: true, a: 'Feudal', dba: true, hc: true, h: 3, lj: 10, fo: 4, fa: 6, m: 1},
-    {l: true, a: 'Feudal', dba: true, hc: true, h: 3, lj: 10, fo: 4, fa: 7, m: 1},
-    {l: true, a: 'Feudal', dba: true, hc: true, h: 3, lj: 10, fo: 4, fa: 8, sheepDone: true, m: 2},
-    {l: true, a: 'Feudal', dba: true, hc: true, lj: 10, fo: 4, fa: 12, m: 3},
-    {l: true, a: 'Feudal', dba: true, hc: true, lj: 10, fo: 4, fa: 13, m: 4},
-    {l: true, a: 'Feudal', dba: true, hc: true, lj: 10, fo: 4, fa: 14, m: 5},
+    {l: true, a: 'Feudal', h: 4, lj: 10, fo: 4, fa: 2, b: 1, m: 1},
+    {l: true, a: 'Feudal', h: 4, lj: 10, fo: 4, fa: 2, b: 1, builderDone: true, m: 1, message: 'Barracks complete'},
+    {l: true, a: 'Feudal', h: 5, lj: 10, fo: 4, fa: 2, m: 1, newAge: true},
+    {l: true, a: 'Feudal', dba: true, hc: true, h: 3, lj: 10, fo: 4, fa: 2, b: 2, builderDone: true, m: 1, message: 'Stable complete'},
+    {l: true, a: 'Feudal', dba: true, hc: true, h: 3, lj: 10, fo: 4, fa: 5, m: 1},
+    {l: true, a: 'Feudal', dba: true, hc: true, h: 3, lj: 10, fo: 4, fa: 6, m: 2},
+    {l: true, a: 'Feudal', dba: true, hc: true, h: 3, lj: 10, fo: 4, fa: 7, m: 3},
+    {l: true, a: 'Feudal', dba: true, hc: true, h: 3, lj: 10, fo: 4, fa: 8, sheepDone: true, m: 4},
+    {l: true, a: 'Feudal', dba: true, hc: true, lj: 10, fo: 4, fa: 12, m: 5},
+    {l: true, a: 'Feudal', dba: true, hc: true, lj: 10, fo: 4, fa: 13, m: 6},
+    {l: true, a: 'Feudal', dba: true, hc: true, lj: 10, fo: 4, fa: 14, m: 6},
 );
 
 var scoutArchers = scouts.concat(
-    {l: true, a: 'Feudal', dba: true, hc: true, lj: 9, fo: 2, fa: 14, b: 1, gm: 3, m: 5},
+    {l: true, a: 'Feudal', dba: true, hc: true, lj: 9, fo: 2, fa: 14, b: 1, gm: 3, m: 6},
     {l: true, a: 'Feudal', dba: true, hc: true, lj: 9, fo: 2, fa: 14, builderDone: true, b: 1, gm: 4, m: 6, message: 'Range complete'},
     {l: true, a: 'Feudal', dba: true, hc: true, lj: 9, fo: 2, fa: 14, b: 1, gm: 5, m: 6},
     {l: true, a: 'Feudal', dba: true, hc: true, lj: 9, fo: 2, fa: 14, builderDone: true, b: 1, gm: 6, m: 7, message: 'Range complete'},
     {l: true, a: 'Feudal', dba: true, hc: true, lj: 10, fo: 2, fa: 14, gm: 7, m: 8},
     {l: true, a: 'Feudal', dba: true, hc: true, wb: true, lj: 9, fo: 2, fa: 14, b: 1, gm: 8, berriesDone: true, builderDone: true, m: 9, message: 'Blacksmith complete'},
+    {l: true, a: 'Feudal', dba: true, hc: true, fl: true, wb: true, lj: 10, fa: 16, gm: 8, m: 11},
+    {l: true, a: 'Feudal', dba: true, hc: true, fl: true, wb: true, lj: 10, fa: 16, gm: 8, m: 12},
+    {l: true, a: 'Feudal', dba: true, hc: true, fl: true, wb: true, lj: 10, fa: 16, gm: 8, m: 14},
     {l: true, a: 'Feudal', dba: true, hc: true, fl: true, wb: true, lj: 10, fa: 17, gm: 8, m: 15},
-    {l: true, a: 'Castle', dba: true, hc: true, fl: true, wb: true, lj: 10, fa: 18, gm: 8, m: 17},
+    {l: true, a: 'Castle', dba: true, hc: true, fl: true, wb: true, lj: 10, fa: 18, gm: 8, m: 16},
 );
 
 var scoutSkirms =  scouts.concat(
-    {l: true, a: 'Feudal', dba: true, hc: true, lj: 10, fo: 4, fa: 14, b: 1, m: 5},
+    {l: true, a: 'Feudal', dba: true, hc: true, lj: 10, fo: 4, fa: 14, b: 1, m: 6},
     {l: true, a: 'Feudal', dba: true, hc: true, lj: 11, fo: 2, fa: 14, builderDone: true, b: 1, gm: 2, m: 6, message: 'Range complete'},
     {l: true, a: 'Feudal', dba: true, hc: true, lj: 12, fo: 2, fa: 14, b: 1, gm: 2, m: 7},
     {l: true, a: 'Feudal', dba: true, hc: true, wb: true, lj: 12, fo: 2, fa: 14, builderDone: true, b: 1, gm: 3, m: 11, message: 'Blacksmith complete'},
-    {l: true, a: 'Feudal', dba: true, hc: true, fl: true, wb: true, lj: 12, fo: 2, fa: 15, gm: 4, berriesDone: true, m: 12},
+    {l: true, a: 'Feudal', dba: true, hc: true, fl: true, wb: true, lj: 12, fo: 2, fa: 14, gm: 4, m: 12},
+    {l: true, a: 'Feudal', dba: true, hc: true, fl: true, wb: true, lj: 12, fo: 2, fa: 14, gm: 4, berriesDone: true, m: 12},
+    {l: true, a: 'Feudal', dba: true, hc: true, fl: true, wb: true, lj: 12, fa: 16, gm: 4, m: 12},
+    {l: true, a: 'Feudal', dba: true, hc: true, fl: true, wb: true, lj: 12, fa: 17, gm: 4, m: 12},
     {l: true, a: 'Castle', dba: true, hc: true, fl: true, wb: true, lj: 12, fa: 18, gm: 4, m: 14},
 );
 
 var scoutCastle = scouts.concat(
-    {l: true, a: 'Feudal', dba: true, hc: true, lj: 10, fo: 4, fa: 14, b: 1, m: 5},
+    {l: true, a: 'Feudal', dba: true, hc: true, lj: 10, fo: 4, fa: 14, b: 1, m: 6},
     {l: true, a: 'Feudal', dba: true, hc: true, lj: 10, fo: 2, fa: 15, builderDone: true, b: 1, gm: 2, m: 6, message: 'Blacksmith complete'},
     {l: true, a: 'Feudal', dba: true, hc: true, lj: 10, fo: 2, fa: 16, gm: 3, m: 6},
     {l: true, a: 'Feudal', dba: true, hc: true, lj: 10, fo: 2, fa: 16, gm: 4, m: 6},
     {l: true, a: 'Feudal', dba: true, hc: true, wb: true, lj: 10, fo: 2, fa: 16, gm: 5, m: 6},
+    {l: true, a: 'Feudal', dba: true, hc: true, wb: true, lj: 10, fo: 2, fa: 16, gm: 5, m: 6},
+    {l: true, a: 'Feudal', dba: true, hc: true, wb: true, lj: 10, fo: 2, fa: 16, gm: 5, m: 6},
     {l: true, a: 'Castle', dba: true, hc: true, wb: true, lj: 10, fo: 2, fa: 16, gm: 5, m: 6},
 );
 
-var maa = opening.concat(
+var maaBo = opening.concat(
     {a: 'Dark', h: 6, lj: 4, m: 1},
     {a: 'Dark', h: 7, lj: 4, m: 1},
     {a: 'Dark', h: 8, lj: 4, m: 1},
@@ -116,16 +127,20 @@ var maa = opening.concat(
     {l: true, a: 'Dark', h: 10, lj: 4, fo: 4, gm: 2, b: 1, builderDone: true, m: 1, message: 'Barracks complete'},
 );
 
-var maaArchers = maa.concat(
+var maaArchers = maaBo.concat(
     {l: true, a: 'Feudal', h: 10, lj: 5, fo: 4, gm: 2, m: 2, message: '5th sheep done'},
-    {l: true, a: 'Feudal', h: 4, lj: 7, fo: 6, fa: 2, gm: 2, sheepDone: true, m: 3},
-    {l: true, a: 'Feudal', maa: true, dba: true, lj: 12, fo: 6, fa: 2, gm: 2, m: 4},
-    {l: true, a: 'Feudal', maa: true, dba: true, lj: 12, fo: 4, b: 2, fa: 2, gm: 3, m: 4},
-    {l: true, a: 'Feudal', maa: true, dba: true, lj: 12, fo: 4, builderDone: true, b: 2, fa: 2, gm: 4, m: 4, message: 'Ranges complete'},
-    {l: true, a: 'Feudal', maa: true, dba: true, lj: 12, fo: 5, b: 1, fa: 2, gm: 5, m: 4},
-    {l: true, a: 'Feudal', maa: true, dba: true, lj: 12, fo: 5, builderDone: true, b: 1, fa: 2, gm: 6, m: 6, message: 'Blacksmith complete'},
-    {l: true, a: 'Feudal', maa: true, dba: true, fl: true, lj: 12, fo: 6, fa: 2, gm: 7, berriesDone: true, m: 8},
-    {l: true, a: 'Feudal', maa: true, dba: true, fl: true, lj: 12, fa: 8, gm: 8, m: 8},
+    {l: true, a: 'Feudal', h: 4, lj: 7, fo: 6, fa: 2, gm: 2, m: 2},
+    {l: true, a: 'Feudal', h: 4, lj: 7, fo: 6, fa: 2, gm: 2, m: 3},
+    {l: true, a: 'Feudal', h: 4, lj: 7, fo: 6, fa: 2, gm: 2, m: 4},
+    {l: true, a: 'Feudal', h: 4, lj: 7, fo: 6, fa: 2, gm: 2, m: 4},
+    {l: true, a: 'Feudal', h: 4, lj: 7, fo: 6, fa: 2, gm: 2, sheepDone: true, m: 4, newAge: true},
+    {l: true, a: 'Feudal', maa: true, dba: true, lj: 12, fo: 4, b: 2, fa: 2, gm: 2, m: 4},
+    {l: true, a: 'Feudal', maa: true, dba: true, lj: 12, fo: 4, builderDone: true, b: 2, fa: 2, gm: 3, m: 4, message: 'Ranges complete'},
+    {l: true, a: 'Feudal', maa: true, dba: true, lj: 12, fo: 5, b: 1, fa: 2, gm: 4, m: 4},
+    {l: true, a: 'Feudal', maa: true, dba: true, lj: 12, fo: 5, builderDone: true, b: 1, fa: 2, gm: 5, m: 6, message: 'Blacksmith complete'},
+    {l: true, a: 'Feudal', maa: true, dba: true, fl: true, lj: 12, fo: 6, fa: 2, gm: 6, m: 8},
+    {l: true, a: 'Feudal', maa: true, dba: true, fl: true, lj: 12, fo: 6, fa: 2, gm: 7, m: 8},
+    {l: true, a: 'Feudal', maa: true, dba: true, fl: true, lj: 12, fo: 6, fa: 2, gm: 8, m: 8, berriesDone: true},
     {l: true, a: 'Feudal', maa: true, dba: true, fl: true, lj: 12, fa: 9, gm: 8, m: 10},
     {l: true, a: 'Feudal', maa: true, dba: true, fl: true, lj: 12, fa: 10, gm: 8, m: 12},
     {l: true, a: 'Feudal', maa: true, dba: true, fl: true, lj: 12, fa: 11, gm: 8, m: 14},
@@ -136,11 +151,15 @@ var maaArchers = maa.concat(
     {l: true, a: 'Feudal', maa: true, dba: true, fl: true, lj: 12, fa: 16, gm: 8, m: 22},
     {l: true, a: 'Feudal', maa: true, dba: true, fl: true, lj: 12, fa: 17, gm: 8, m: 24},
     {l: true, a: 'Feudal', maa: true, dba: true, fl: true, wb: true, lj: 12, fa: 18, gm: 8, m: 24},
+    {l: true, a: 'Feudal', maa: true, dba: true, fl: true, wb: true, lj: 12, fa: 18, gm: 8, m: 26},
+    {l: true, a: 'Feudal', maa: true, dba: true, fl: true, wb: true, lj: 12, fa: 18, gm: 8, m: 28},
     {l: true, a: 'Castle', maa: true, dba: true, fl: true, wb: true, lj: 12, fa: 18, gm: 8, m: 28},
 );
 
-var maaTowers = maa.concat(
-    {l: true, a: 'Feudal', h: 9, lj: 4, fo: 6, gm: 2, message: '40g maa upgrade collected', m: 3},
+var maaTowers = maaBo.concat(
+    {l: true, a: 'Feudal', h: 9, lj: 4, fo: 6, gm: 2, m: 2},
+    {l: true, a: 'Feudal', h: 9, lj: 4, fo: 6, gm: 2, m: 3},
+    {l: true, a: 'Feudal', h: 9, lj: 4, fo: 6, gm: 2, message: '40g maa upgrade collected', m: 4},
     {l: true, a: 'Feudal', h: 1, lj: 4, fo: 6, sm: 5, i: 5, m: 4},
 );
 

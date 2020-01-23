@@ -87,7 +87,7 @@ function verify(){
             lastVillPop = currentvillpop;
             var currentmilpop = check['m'] || 0;
             if (currentmilpop < lastMilPop) {
-                console.log(boName + ': Military pop unaccecptable row ' + i);
+                console.log(boName + ': Military pop unacceptable row ' + i);
             }
             lastMilPop = currentmilpop;
             if (check['hb']) {
@@ -577,7 +577,6 @@ function toTurn(turn) {
     fish = check['f'] || 0;
     ageOffset = 0;
     age = check['a'];
-    newAge();
     var epop = expectedPopulation(turn);
     popCap = epop - (epop % 5) + 10;
     loom = !!check['l'];
@@ -592,28 +591,20 @@ function toTurn(turn) {
     wheelbarrow = !!check['wb'];
     advancing = false;
     skipHouse = !!check['skipHouse'];
+    newAge();
     manageToggles();
     updateUI();
 }
 function manageToggles(){
-    if (dba) {
-        document.getElementById('dba').disabled = true;
-        document.getElementById('dba').innerHTML = 'Double Bit Axe';
-    }
-    if (horsecollar) {
-        document.getElementById('horsecollar').disabled = true;
-        document.getElementById('horsecollar').innerHTML = 'Horse Collar';
-    }
-    if (bowsaw) {
-        document.getElementById('bowsaw').disabled = true;
-        document.getElementById('bowsaw').innerHTML = 'Bow Saw';
-    }
-    if (fletching) {
-        document.getElementById('fletching').disabled = true;
-        document.getElementById('fletching').innerHTML = 'Fletching';
-    }
-    if (maa) {
-        document.getElementById('maa').disabled = true;
-        document.getElementById('maa').innerHTML = 'Man-at-Arms Upgrade';
-    }
+    document.getElementById('dba').innerHTML = 'Double Bit Axe';
+    document.getElementById('horsecollar').innerHTML = 'Horse Collar';
+    document.getElementById('bowsaw').innerHTML = 'Bow Saw';
+    document.getElementById('fletching').innerHTML = 'Fletching';
+    document.getElementById('maa').innerHTML = 'Man-at-Arms Upgrade';
+    document.getElementById('dba').disabled = dba || age == 'Dark';
+    document.getElementById('horsecollar').disabled = horsecollar || age == 'Dark';
+    document.getElementById('bowsaw').disabled = bowsaw || age != 'Castle';
+    document.getElementById('fletching').disabled = fletching || age == 'Dark';
+    document.getElementById('maa').disabled = maa || age == 'Dark';
+    document.getElementById('wheelbarrow').disabled = wheelbarrow || age == 'Dark';
 }

@@ -3,7 +3,7 @@
 def run():
     archers = 0
     archers2 = 0
-    scouts = 0
+    scouts = 1
     skirms = 0
     militia = 0
     vills = 0
