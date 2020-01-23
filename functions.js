@@ -15,6 +15,7 @@ var advancing = false;
 var skipHouse = false;
 var military = 1;
 var fish = 0;
+var ageOffset = 0;
 var villagers = {
     'idle': 3,
     'builder': 0,
@@ -175,8 +176,8 @@ function validateBuildOrder() {
             updateUI();
             return false;
         } else {
-            if (expectedVillagerPopulation(turnCount + 1) > expectedVillagerPopulation(turnCount)) {
-                advancing = false;
+            if (check['newAge']) {
+                newAge();
             }
             document.getElementById('messages').style.color = 'blue';
             infoMessage(check['message']);
@@ -242,15 +243,15 @@ function populationCount() {
     return pc;
 }
 function updateUI() {
-    if (advancing) {
-        document.getElementById('age').style.color = 'gray';
-        document.getElementById('addVillager').disabled = true;
-        document.getElementById('advance').disabled = true;
-    } else {
-        document.getElementById('age').style.color = 'black';
-        document.getElementById('addVillager').disabled = false;
-        document.getElementById('advance').disabled = false;
+    var totalSeconds = turnCount*25 + ageOffset;
+    document.getElementById('minutesPassed').innerHTML = Math.floor(totalSeconds/60);
+    var seconds = totalSeconds % 60;
+    if (seconds == 0) {
+        seconds = '00';
+    } else if (seconds < 10) {
+        seconds = '0' + seconds;
     }
+    document.getElementById('secondsPassed').innerHTML = seconds;
     document.getElementById('age').innerHTML = age + ' Age';
     document.getElementById('totalVillagers').innerHTML = populationCount();
     document.getElementById('popCap').innerHTML = popCap;
@@ -302,7 +303,7 @@ function expectedPopulation(turn) {
         index = boChecker.length - 1;
     }
     var check = boChecker[index];
-    return (check['b'] || 0) +(check['hb'] || 0) + (check['h'] || 0) + (check['fo'] || 0) + (check['fa'] || 0) + (check['lj'] || 0) + (check['gm'] || 0) + (check['sm'] || 0) + check['m'] + check['f'];
+    return (check['b'] || 0) +(check['hb'] || 0) + (check['h'] || 0) + (check['fo'] || 0) + (check['fa'] || 0) + (check['lj'] || 0) + (check['gm'] || 0) + (check['sm'] || 0) + check['m'] + (check['f'] || 0);
 }
 function addVillager() {
     if (popCap <= populationCount()) {
@@ -350,6 +351,9 @@ function advance() {
         age = 'Imperial';
         orderMessage = validateBuildOrder();
         if (orderMessage) {
+            document.getElementById('age').style.color = 'gray';
+            document.getElementById('addVillager').disabled = true;
+            document.getElementById('advance').disabled = true;
             reset();
             turnCount += 1;
             advancing = true;
@@ -362,8 +366,11 @@ function advance() {
         age = 'Castle';
         orderMessage = validateBuildOrder();
         if (orderMessage) {
-            document.getElementById('bowsaw').disabled = false;
+            document.getElementById('age').style.color = 'gray';
+            document.getElementById('addVillager').disabled = true;
+            document.getElementById('advance').disabled = true;
             reset();
+            ageOffset += 10;
             turnCount += 1;
             advancing = true;
             updateUI();
@@ -375,18 +382,32 @@ function advance() {
         age = 'Feudal';
         orderMessage = validateBuildOrder();
         if (orderMessage) {
-            document.getElementById('horsecollar').disabled = false;
-            document.getElementById('dba').disabled = false;
-            document.getElementById('fletching').disabled = false;
-            document.getElementById('maa').disabled = false;
-            document.getElementById('wheelbarrow').disabled = false;
+            document.getElementById('age').style.color = 'gray';
+            document.getElementById('addVillager').disabled = true;
+            document.getElementById('advance').disabled = true;
             reset();
+            ageOffset += 5;
             turnCount += 1;
             advancing = true;
             updateUI();
         } else {
             age = 'Dark';
         }
+    }
+}
+function newAge() {
+    advancing = false;
+    document.getElementById('age').style.color = 'black';
+    document.getElementById('addVillager').disabled = false;
+    document.getElementById('advance').disabled = false;
+    if (age == 'Feudal') {
+        document.getElementById('horsecollar').disabled = false;
+        document.getElementById('dba').disabled = false;
+        document.getElementById('fletching').disabled = false;
+        document.getElementById('maa').disabled = false;
+        document.getElementById('wheelbarrow').disabled = false;
+    } else if (age == 'Castle') {
+        document.getElementById('bowsaw').disabled = false;
     }
 }
 function toggleHorseCollar() {
@@ -485,6 +506,7 @@ function changeChecker() {
     skipHouse = false;
     military = 1;
     fish = 0;
+    ageOffset = 0;
     villagers = {
         'idle': 3,
         'builder': 0,
@@ -519,8 +541,9 @@ function skipOpening(){
         'goldminer': 0,
         'stoneminer': 0,
     };
-    fish = 0;
     military = 1;
+    fish = 0;
+    ageOffset = 0;
     loom = false;
     age = 'Dark';
     turnCount = 7;
