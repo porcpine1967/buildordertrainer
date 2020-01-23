@@ -226,6 +226,7 @@ function reset() {
         villagers['idle'] += villagers['builder'];
         villagers['builder'] = 0;
     }
+    manageToggles();
 }
 function infoMessage(str) {
     document.getElementById('messages').style.color = 'blue';
@@ -556,5 +557,63 @@ function toggleHelp() {
         helpDiv.style.display = 'block';
     } else {
         helpDiv.style.display = 'none';
+    }
+}
+function toTurn(turn) {
+    turnCount = turn;
+    var check = boChecker[turn];
+    villagers = {
+        'idle': check['i'] || 0,
+        'builder': check['b'] || 0,
+        'housebuilder': check['hb'] || 0,
+        'hunter': check['h'] || 0,
+        'farmer': check['fa'] || 0,
+        'forager': check['fo'] || 0,
+        'lumberjack': check['lj'] || 0,
+        'goldminer': check['gm'] || 0,
+        'stoneminer': check['sm'] || 0,
+    };
+    military = check['m'] || 0;
+    fish = check['f'] || 0;
+    ageOffset = 0;
+    age = check['a'];
+    newAge();
+    var epop = expectedPopulation(turn);
+    popCap = epop - (epop % 5) + 10;
+    loom = !!check['l'];
+    if (loom) {
+        document.getElementById('loom').disabled = true;
+    }
+    dba = !!check['dba'];
+    horsecollar = !!check['hc'];
+    bowsaw = !!check['bs'];
+    fletching = !!check['fl'];
+    maa = !!check['maa'];
+    wheelbarrow = !!check['wb'];
+    advancing = false;
+    skipHouse = !!check['skipHouse'];
+    manageToggles();
+    updateUI();
+}
+function manageToggles(){
+    if (dba) {
+        document.getElementById('dba').disabled = true;
+        document.getElementById('dba').innerHTML = 'Double Bit Axe';
+    }
+    if (horsecollar) {
+        document.getElementById('horsecollar').disabled = true;
+        document.getElementById('horsecollar').innerHTML = 'Horse Collar';
+    }
+    if (bowsaw) {
+        document.getElementById('bowsaw').disabled = true;
+        document.getElementById('bowsaw').innerHTML = 'Bow Saw';
+    }
+    if (fletching) {
+        document.getElementById('fletching').disabled = true;
+        document.getElementById('fletching').innerHTML = 'Fletching';
+    }
+    if (maa) {
+        document.getElementById('maa').disabled = true;
+        document.getElementById('maa').innerHTML = 'Man-at-Arms Upgrade';
     }
 }
