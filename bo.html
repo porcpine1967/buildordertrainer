@@ -154,7 +154,7 @@
     <button class="so" onClick="toggleBowsaw()" disabled="true" id="bowsaw">Bow Saw</button>
     <button class="so" onClick="toggleFletching()" disabled="true" id="fletching">Fletching</button>
     <button class="so" onClick="toggleMaa()" disabled="true" id="maa">Man-at-Arms Upgrade</button>
-    <select id="selectBo" onChange="changeChecker()">
+    <label>Build Order: <select id="selectBo" onChange="changeChecker()">
       <option value="archers">Archers</option>
       <option value="scoutArchers">Scouts to Archers</option>
       <option value="scoutSkirms">Scouts to Skirms</option>
@@ -166,7 +166,7 @@
       <option value="fcUU">Fast Castle to Unique Units</option>
       <option value="fI">Fast Imperial</option>
       <option value="fGalley">Fast Galley</option>
-    </select>
+    </select></label>
     <h2>Help (<span onClick="toggleHelp()" style="color: blue; cursor: hand;">toggle</span>)</h2>
     <div id="help" style="display: none;">
       <dl>
@@ -177,7 +177,7 @@
       <li>Allocate the three idle villagers by clicking the <button>'&uarr;'</button> and <button>'&darr;'</button> buttons. (hint, they should all become house builders).</li>
       <li>Click 'Add Villager'. Clicking this will validate your allocation and either proceed to the next turn or provide you with error messages.</li>
       <li>Allocate the idle villagers. Click 'Add Villager' to verify that you have allocated them correctly and move to the next turn.</li>
-      <li>Keep repeating (using Add Villager, Next Turn, Advance, Loom, or Wheelbarrow to advance to the next turn) until you get a 'Success!' message. Note: occasionally you will need to click 'Add Villager' just to have enough villagers to meet the conditions of the turn. In these cases, clicking 'Add Villager' will not validate your allocation.</li>
+      <li>Keep repeating (using Add Villager, Next Turn, Advance, Loom, or Wheelbarrow to advance to the next turn) until you get a 'Success!' message. Note: occasionally you might need to click 'Add Villager' just to have enough villagers to meet the conditions of the turn. In these cases, clicking 'Add Villager' will not validate your allocation.</li>
       </ol>
       </dd>
       <dt>When am I supposed to add villagers to house builders?</dt>
@@ -186,6 +186,10 @@
       <dd>Once you have enough houses to cover the population at the end of the build order, the trainer won't let you make more houses. This is to give you a sense of how many houses are necessary.</dd>
       <dt>Why do villagers suddenly become idle?</dt>
       <dd>Villagers become idle when it is clear they have finished their tasks. Because it takes the same amount of time to build a house as to make a villager, all house builders become idle the next turn. Builders usually take two turns, but with Scouts you should use two builders to build the stable, so that takes just one turn. Hunter/Shepherds become idle when they run out of sheep, and Foragers become idle when they run out of berries.</dd>
+      <dt>Why do I sometimes have nothing to do but click 'Next Turn'?</dt>
+      <dd>The timer increments in blocks of villager builds (25 seconds), so sometimes you really do have nothing to do but wait. This should give a sense for when you can focus on military, optimizing villager arrangement around resources, etc.</dd>
+      <dt>Why don't I have to make military or indicate which building to build?</dt>
+      <dd>This tool focusses on training villager allocation, so I chose not to mess with military. I also thought choosing which building would make interface more complicated than the value it would add.</dd>
       <dt>What is a build order?</dt>
       <dd>In Age of Empires II, the community has worked out the most efficient order to assign villagers to various tasks in order to reach a certain goal. For example, if you want to make archers you need to click up to the Feudal Age, build Archery Ranges, and then make archers in a continuous stream. The ordering of villagers to specific tasks in a way that reaches that goal the most quickly is called a 'build order'.
       <dt>Where did you get your build orders?</dt>
@@ -194,14 +198,12 @@
       <dd>Cicero's <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=1584182924">Interactive Build Order Guide</a> used to come with recorded versions, and I used those to make decisions.</dd>
 	<dt>Can I use the trainer offline?</dt>
 	<dd>Yes you can. If you don't quit your browser app, you should be able to use the calculator without internet access as long as the browser stays in memory. The trainer is a static web page and doesn't require the use of bandwith.</dd>
-      <dt>Why don't I have to make military or indicate which building to build?</dt>
-      <dd>I am only interested in training villager allocation, so I didn't want to mess with military. I also thought choosing which building would make the interface too messy for the value.</dd>
       <dt>Which browsers work best for the trainer?</dt>
       <dd>I have only tested the trainer on Chrome.</dd>
       <dt>Why is the interface so plain and narrow?<dt>
       <dd>I designed it to practice build orders on my phone and tablet, and the page is optimized for that.</dd>
       <dt>How do I contact you?</dt>
-      <dd>Leave a message or file feature requests/bugs at the trainer's <a href="https://github.com/porcpine1967/buildordertrainer/issues">github project page</a>.</dd>
+      <dd>Please leave a message or make feature requests/report bugs at the trainer's <a href="https://github.com/porcpine1967/buildordertrainer/issues">github project page</a>.</dd>
       </dl>
     </div>
     <script>verify();updateUI()</script>
