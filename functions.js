@@ -472,6 +472,9 @@ function changeChecker() {
         errorMessage('Something wonky: no such build order ' + boName);
         return;
     }
+    document.getElementById('age').style.color = 'black';
+    document.getElementById('addVillager').disabled = false;
+    document.getElementById('advance').disabled = false;
     document.getElementById('loom').disabled = false;
     horsecollar = false;
     document.getElementById('horsecollar').disabled = true;
@@ -602,6 +605,16 @@ function manageToggles(){
     document.getElementById('fletching').disabled = fletching || age == 'Dark';
     document.getElementById('maa').disabled = maa || age == 'Dark';
     document.getElementById('wheelbarrow').disabled = advancing || wheelbarrow || age == 'Dark';
+    document.getElementById('loom').disabled = advancing || loom;
+    if(advancing) {
+        document.getElementById('age').style.color = 'gray';
+        document.getElementById('addVillager').disabled = true;
+        document.getElementById('advance').disabled = true;
+    } else {
+        document.getElementById('age').style.color = 'black';
+        document.getElementById('addVillager').disabled = false;
+        document.getElementById('advance').disabled = false;
+    }
 }
 function toggleAdvance() {
     advancing = true;
