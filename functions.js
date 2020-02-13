@@ -1,6 +1,6 @@
 var boChecker = archers;
 var endPop = expectedPopulation(boChecker.length - 1);
-var bos = ['archers', 'scoutArchers', 'scoutSkirms', 'scoutCastle', 'maaArchers', 'maaTowers', 'fcBoom', 'fcKnights', 'fcUU', 'fI', 'fGalley'];
+var bos = ['archers', 'scoutArchers', 'scoutSkirms', 'scoutCastle', 'maaArchers', 'maaTowers', 'fcBoom', 'fcKnights', 'fcUU', 'fI', 'fGalley', 'chineseFC'];
 var popCap = 5;
 var loom = false;
 var age = 'Dark';
@@ -55,6 +55,9 @@ function verify(){
         var boName = bos[index];
         var boArray = window[boName];
         var lastVillPop = 3;
+        if(boName == 'chineseFC'){
+            lastVillPop = 6;
+        }
         var lastMilPop = 1;
         var maxPop = 5;
         var lToggled = false;
@@ -517,6 +520,10 @@ function changeChecker() {
         'goldminer': 0,
         'stoneminer': 0,
     };
+    if(boName == 'chineseFC'){
+        popCap = 10;
+        villagers['idle'] = 6;
+    }
     infoMessage(null);
     updateUI();
 }
