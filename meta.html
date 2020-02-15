@@ -1,0 +1,74 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no" />
+    <title>Ideal Composition Trainer</title>
+    <style>
+      h2 { margin: 3px; font-size: 18px; text-transform: capitalize }
+      td { padding: 5px; }
+      button.quantity { width: 3em; font-size: 24 }
+      button.so {display: block; margin-bottom: 10px}
+      div {display: none}
+    </style>
+    <script src="meta.js"></script>
+    <script src="meta_functions.js"></script>
+  </head>
+  <body>
+    <h2 id="civ"></h2>
+    <div id="messages" style="margin: 10px;">&#160;</div>
+    <fieldset id="range">
+      <legend>Archery Range</legend>
+      <div id="archer"><label id="archerText" for="archerBox"></label>: <input id="archerBox" type="checkbox" name="archer"/></div>
+      <div id="skirmisher"><label id="skirmisherText" for="skirmisherBox"></label>: <input id="skirmisherBox" type="checkbox" name="skirmisher"/></div>
+      <div id="hc"><label id="hcText" for="hcBox"></label>: <input id="hcBox" type="checkbox" name="hc"/></div>
+      <div id="ca"><label id="caText" for="caBox"></label>: <input id="caBox" type="checkbox" name="ca"/></div>
+    </fieldset> 
+    <fieldset id="barracks">
+      <legend>Barracks</legend>
+      <div id="militia"><label id="militiaText" for="militiaBox"></label>: <input id="militiaBox" type="checkbox" name="militia"/></div>
+      <div id="spear"><label id="spearText" for="spearBox"></label>: <input id="spearBox" type="checkbox" name="spear"/></div>
+      <div id="eagle"><label id="eagleText" for="eagleBox"></label>: <input id="eagleBox" type="checkbox" name="eagle"/></div>
+    </fieldset>
+    <fieldset id="stable">
+      <legend>Stables</legend>
+      <div id="scout"><label id="scoutText" for="scoutBox"></label>: <input id="scoutBox" type="checkbox" name="scout"/></div>
+      <div id="knight"><label id="knightText" for="knightBox"></label>: <input id="knightBox" type="checkbox" name="knight"/></div>
+      <div id="camel"><label id="camelText" for="camelBox"></label>: <input id="camelBox" type="checkbox" name="camel"/></div>
+    </fieldset>
+    <fieldset id="siege">
+      <legend>Siege Workshop</legend>
+      <div id="mangonel"><label id="mangonelText" for="mangonelBox"></label>: <input id="mangonelBox" type="checkbox" name="mangonel"/></div>
+      <div id="ram"><label id="ramText" for="ramBox"></label>: <input id="ramBox" type="checkbox" name="ram"/></div>
+      <div id="scorpion"><label id="scorpionText" for="scorpionBox"></label>: <input id="scorpionBox" type="checkbox" name="scorpion"/></div>
+      <div id="bbc"><label id="bbcText" for="bbcBox"></label>: <input id="bbcBox" type="checkbox" name="bbc"/></div>
+    </fieldset>
+    <fieldset id="other">
+      <legend>Other</legend>
+      <div id="treb"><label id="trebText" for="trebBox"></label>: <input id="trebBox" type="checkbox" name="treb"/></div>
+      <div id="monk"><label id="monkText" for="monkBox"></label>: <input id="monkBox" type="checkbox" name="monk"/></div>
+      <div id="UU"><label id="UUText" for="UUBox"></label>: <input id="UUBox" type="checkbox" name="UU"/></div>
+    </fieldset>
+      <button style="margin: 8px" onClick="checkCiv()">Check</button><br/>
+      <button style="margin: 8px" onClick="showCorrect()">Show Correct</button><br/>
+    <label>Civilization: <select style="margin: 10px" id="selectCiv" onChange="changeCiv()">
+      <option value="aztecs">Aztecs</option>
+      <option value="britons">Britons</option>
+      <option value="byzantine">Byzantine</option>
+      <option value="celts">Celts</option>
+      <option value="chinese">Chinese</option>
+      <option value="franks">Franks</option>
+      <option value="goths">Goths</option>
+      <option value="huns">Huns</option>
+      <option value="japanese">Japanese</option>
+      <option value="koreans">Koreans</option>
+      <option value="mayans">Mayans</option>
+      <option value="mongols">Mongols</option>
+      <option value="persians">Persians</option>
+      <option value="saracens">Saracens</option>
+      <option value="spanish">Spanish</option>
+      <option value="teutons">Teutons</option>
+      <option value="turks">Turks</option>
+      <option value="vikings">Vikings</option>
+    </select></label>
+    <script>verify();updateUI()</script>
+  </body>
+</html>
