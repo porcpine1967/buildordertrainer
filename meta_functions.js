@@ -13,6 +13,7 @@ function changeCiv() {
 
 function updateUI() {
     document.getElementById('messages').innerHTML = '&nbsp;';
+    document.getElementById('messages').style.display = 'block';
     document.getElementById('civ').innerHTML = currentCiv.name;
     var disabled = currentCiv.disabled || [];
     for (var key in base) {
