@@ -17,6 +17,7 @@ function updateUI() {
     document.getElementById('civ').innerHTML = currentCiv.name;
     var disabled = currentCiv.disabled || [];
     for (var key in base) {
+        changeTextColor(key, 'black');
         if (disabled.includes(key)) {
             document.getElementById(key).style.display = 'none';
         } else {
@@ -38,6 +39,11 @@ function updateUI() {
     }
 }
 
+function changeTextColor(name, color) {
+    var element = document.getElementById(name + 'Text');
+    element.style.color = color;
+}
+
 function checkBoxes() {
     var returnable = [];
     var inputs = document.getElementsByTagName('input');
@@ -53,16 +59,26 @@ function checkBoxes() {
 function checkCiv() {
     var cbs = checkBoxes();
     var checked = [];
+    var error = false;
     for (var cbidx in cbs) {
         var cb = cbs[cbidx];
         if (cb.checked) {
+            if (currentCiv.composition.includes(cb.name)) {
+                changeTextColor(cb.name, 'blue');
+            } else {
+                changeTextColor(cb.name, 'red');
+                error = true;
+            }
             checked.push(cb.name);
+        } else if (currentCiv.composition.includes(cb.name)) {
+            changeTextColor(cb.name, 'red');
+                error = true;
         }
     }
-    if (arraysEqual(checked, currentCiv.composition)) {
-        document.getElementById('messages').innerHTML = 'Correct!';
-    } else {
+    if (error) {
         document.getElementById('messages').innerHTML = 'Sorry, this is not correct';
+    } else {
+        document.getElementById('messages').innerHTML = 'Correct!';
     }
     return checked;
 };
