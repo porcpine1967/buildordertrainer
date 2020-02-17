@@ -72,7 +72,9 @@ function checkCiv() {
             checked.push(cb.name);
         } else if (currentCiv.composition.includes(cb.name)) {
             changeTextColor(cb.name, 'red');
-                error = true;
+            error = true;
+        } else {
+            changeTextColor(cb.name, 'black');
         }
     }
     if (error) {
