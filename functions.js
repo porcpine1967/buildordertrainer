@@ -6,7 +6,6 @@ var loom = false;
 var age = 'Dark';
 var dba = false;
 var horsecollar = false;
-var bowsaw = false;
 var fletching = false;
 var maa = false;
 var wheelbarrow = false;
@@ -33,7 +32,6 @@ var activityMapping = {
     a: 'Advance',
     dba: 'Double-bit Axe',
     hc: 'Horse Collar',
-    bs: 'Bow Saw',
     fl: 'Fletching',
     maa: 'Man-at-Arms Upgrade',
     wb: 'Wheelbarrow',
@@ -115,7 +113,6 @@ function validateBuildOrder() {
     errors['a'] = check['a'] != age;
     errors['dba'] = !!check['dba'] != dba;
     errors['hc'] = !!check['hc'] != horsecollar;
-    errors['bs'] = !!check['bs'] != bowsaw;
     errors['fl'] = !!check['fl'] != fletching;
     errors['maa'] = !!check['maa'] != maa;
     errors['wb'] = !!check['wb'] != wheelbarrow;
@@ -405,8 +402,6 @@ function newAge() {
         document.getElementById('fletching').disabled = false;
         document.getElementById('maa').disabled = false;
         document.getElementById('wheelbarrow').disabled = false;
-    } else if (age == 'Castle') {
-        document.getElementById('bowsaw').disabled = false;
     }
 }
 function toggleHorseCollar() {
@@ -427,16 +422,6 @@ function toggleDoubleBitAxe() {
     } else {
         dba = true;
         dbaElement.innerHTML = 'Undo Double-bit Axe';
-    }
-}
-function toggleBowsaw() {
-    bowsawElement = document.getElementById('bowsaw');
-    if (bowsaw) {
-        bowsaw = false;
-        bowsawElement.innerHTML = 'Bow Saw';
-    } else {
-        bowsaw = true;
-        bowsawElement.innerHTML = 'Undo Bow Saw';
     }
 }
 function toggleFletching() {
@@ -485,9 +470,6 @@ function changeChecker() {
     dba = false;
     document.getElementById('dba').disabled = true;
     document.getElementById('dba').innerHTML = 'Double Bit Axe';
-    bowsaw = false;
-    document.getElementById('bowsaw').disabled = true;
-    document.getElementById('bowsaw').innerHTML = 'Bow Saw';
     fletching = false;
     document.getElementById('fletching').disabled = true;
     document.getElementById('fletching').innerHTML = 'Fletching';
@@ -500,7 +482,6 @@ function changeChecker() {
     age = 'Dark';
     dba = false;
     horsecollar = false;
-    bowsaw = false;
     fletching = false;
     wheelbarrow = false;
     turnCount = 0;
@@ -590,7 +571,6 @@ function toTurn(turn) {
     }
     dba = !!check['dba'];
     horsecollar = !!check['hc'];
-    bowsaw = !!check['bs'];
     fletching = !!check['fl'];
     maa = !!check['maa'];
     wheelbarrow = !!check['wb'];
@@ -603,12 +583,10 @@ function toTurn(turn) {
 function manageToggles(){
     document.getElementById('dba').innerHTML = 'Double Bit Axe';
     document.getElementById('horsecollar').innerHTML = 'Horse Collar';
-    document.getElementById('bowsaw').innerHTML = 'Bow Saw';
     document.getElementById('fletching').innerHTML = 'Fletching';
     document.getElementById('maa').innerHTML = 'Man-at-Arms Upgrade';
     document.getElementById('dba').disabled = dba || age == 'Dark';
     document.getElementById('horsecollar').disabled = horsecollar || age == 'Dark';
-    document.getElementById('bowsaw').disabled = bowsaw || age != 'Castle';
     document.getElementById('fletching').disabled = fletching || age == 'Dark';
     document.getElementById('maa').disabled = maa || age == 'Dark';
     document.getElementById('wheelbarrow').disabled = advancing || wheelbarrow || age == 'Dark';
