@@ -1,6 +1,6 @@
 var boChecker = archers;
 var endPop = expectedPopulation(boChecker.length - 1);
-var bos = ['archers', 'scoutArchers', 'scoutSkirms', 'scoutCastle', 'maaArchers', 'maaTowers', 'fcBoom', 'fcKnights', 'fcUU', 'fI', 'fGalley', 'chineseFC'];
+var bos = ['archers', 'scoutArchers', 'scoutSkirms', 'scoutCastle', 'maaArchers', 'maaTowers', 'maaFC', 'fcBoom', 'fcKnights', 'fcUU', 'fI', 'fGalley', 'chineseFC'];
 var popCap = 5;
 var loom = false;
 var age = 'Dark';

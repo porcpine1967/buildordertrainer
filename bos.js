@@ -164,6 +164,30 @@ var maaTowers = maaBo.concat(
     {l: true, a: 'Feudal', h: 1, lj: 4, fo: 6, sm: 5, i: 5, m: 4},
 );
 
+var maaFC = opening.concat(
+    {a: 'Dark', h: 6, lj: 4, m: 1},
+    {a: 'Dark', h: 7, lj: 4, m: 1},
+    {a: 'Dark', h: 7, lj: 4, fo: 1, m: 1},
+    {a: 'Dark', h: 7, lj: 4, fo: 2, m: 1},
+    {a: 'Dark', h: 7, lj: 4, fo: 3, m: 1},
+    {a: 'Dark', h: 7, lj: 4, fo: 4, m: 1},
+    {a: 'Dark', h: 7, lj: 4, fo: 4, gm: 1, m: 1},
+    {a: 'Dark', h: 7, lj: 4, fo: 4, gm: 1, b: 1, m: 1,},
+    {a: 'Dark', h: 7, lj: 5, fo: 4, gm: 1, b: 1, m: 1, message: '10 gold collected',},
+    {a: 'Dark', h: 7, lj: 7, fo: 4, b: 1, builderDone: true, m: 1, message: 'Barracks complete'},
+    {a: 'Dark', h: 7, lj: 8, fo: 4, hb: 1, m: 2},
+    {a: 'Dark', h: 7, lj: 8, fo: 5, hb: 1, m: 2},
+    {a: 'Dark', h: 6, lj: 8, fo: 6, fa: 2, m: 3},
+    {a: 'Dark', h: 6, lj: 8, fo: 6, fa: 3, m: 4},
+    {a: 'Dark', h: 6, lj: 8, fo: 6, fa: 4, m: 4},
+    {a: 'Dark', h: 6, lj: 8, fo: 6, fa: 5, m: 4},
+    {a: 'Dark', h: 6, lj: 8, fo: 6, fa: 6, m: 4},
+    {a: 'Dark', h: 6, lj: 8, fo: 6, fa: 7, m: 4},
+    {l: true, a: 'Dark', h: 6, lj: 8, fo: 6, fa: 8, m: 4},
+    {l: true, a: 'Feudal', h: 6, lj: 8, fo: 6, fa: 8, m: 4, sheepDone: true,},
+    {l: true, a: 'Feudal', lj: 8, fo: 8, fa: 8, gm: 4, m: 4},
+);
+
 var fcBoom = opening.concat(
     {a: 'Dark', h: 6, lj: 4, m: 1},
     {a: 'Dark', h: 7, lj: 4, m: 1},
