@@ -1,4 +1,5 @@
 function choose_civ() {
+  var vs_civ = allCivs[Math.floor(allCivs.length * Math.random())];
   var keys = Object.keys(civs);
   var civ_idx = Math.floor(keys.length * Math.random());
   var civ_name = keys[civ_idx];
@@ -23,6 +24,7 @@ function choose_civ() {
   document.getElementById('cup_instructions').innerHTML = civ_info['cup_instructions'];
   document.getElementById('castle_instructions').innerHTML = civ_info['castle_instructions'];
   document.getElementById('civ').innerHTML = civ_name;
+  document.getElementById('vsCiv').innerHTML = vs_civ;
   document.getElementById('strategy').innerHTML = civ_info['strategy'];
 };
 
