@@ -26,6 +26,15 @@ function choose_civ() {
   document.getElementById('civ').innerHTML = civ_name;
   document.getElementById('vsCiv').innerHTML = vs_civ;
   document.getElementById('strategy').innerHTML = civ_info['strategy'];
+  document.getElementById('opening').innerHTML = civ_info['opening'];
+  document.getElementById('transition').innerHTML = civ_info['transition'];
+  document.getElementById('castle_age').innerHTML = civ_info['castle'];
+  document.getElementById('imperial_age').innerHTML = civ_info['imp'];
+  document.getElementById('eco').innerHTML = civ_info['eco'];
+  document.getElementById('military').innerHTML = civ_info['military'];
+  document.getElementById('team').innerHTML = civ_info['team'];
+  document.getElementById('uu').innerHTML = civ_info['uu'];
+  document.getElementById('utech').innerHTML = civ_info['utech'];
 };
 
 function toggleHelp() {

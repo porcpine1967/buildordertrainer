@@ -16,7 +16,13 @@
   </head>
   <body>
     <h2><span id="civ"></span> vs <span id="vsCiv"></span></h2>
-    <div style="margin: 10px;">Strategy: <span id="strategy">&#160;</span></div>
+    <div style="margin: 10px;">Strategy: <span id="strategy"></span>
+      <table>
+      <caption>Meta Strategy</caption>
+        <tr><th>Opening</th><th>Transition</th><th>Castle Age</th><th>Imperial Age</th></tr>
+        <tr><td id="opening"></td><td id="transition"></td><td id="castle_age"></td><td id="imperial_age"></td></tr>
+      </table>
+    </div>
     <div id="bo" style="margin: 10px;">
       <h3>Build Order</h3>
       <h4>Dark Age</h4>
@@ -24,21 +30,31 @@
         <tr id="dark_headers"></tr>
         <tr id="dark_values"></tr>
       </table>
-      <div id="dark_instructions" style="margin: 10px;"></div>  
-      <div id="fup_instructions" style="margin: 10px;"></div>  
+      <div id="dark_instructions" style="margin: 10px;"></div>
+      <div id="fup_instructions" style="margin: 10px;"></div>
       <h4 id="feudal">Feudal Age</h4>
-      <div id="feudal_instructions" style="margin: 10px;"></div>  
+      <div id="feudal_instructions" style="margin: 10px;"></div>
       <table>
         <tr id="feudal_headers"></tr>
         <tr id="feudal_values"></tr>
       </table>
-      <div id="cup_instructions" style="margin: 10px;"></div>  
+      <div id="cup_instructions" style="margin: 10px;"></div>
       <table id="castle">
       <caption>Castle Age</caption>
         <tr id="castle_headers"></tr>
         <tr id="castle_values"></tr>
       </table>
-      <div id="castle_instructions" style="margin: 10px;"></div>  
+      <div id="castle_instructions" style="margin: 10px;"></div>
+   </div>
+   <div style="margin: 10px;">
+      <h3>Civilization Information</h3>
+      <table>
+      <tr><th>Eco Bonuses</th><td id="eco"></td></tr>
+      <tr><th>Military Bonuses</th><td id="military"></td></tr>
+      <tr><th>Team Bonus</th><td id="team"></td></tr>
+      <tr><th>Unique Unit</th><td id="uu"></td></tr>
+      <tr><th>Unique Tech</th><td id="utech"></td></tr>
+      </table>
    </div>
     <h2>Help (<span onClick="toggleHelp()" style="color: blue; cursor: hand;">toggle</span>)</h2>
     <div id="help" style="display: none;">
