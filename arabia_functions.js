@@ -1,9 +1,31 @@
+function initialize() {
+  var keys = Object.keys(civs);
+  var select =  document.getElementById('civ_picker');
+  for (var i = 0; i < keys.length; i++) {
+      var opt = document.createElement('option');
+      opt.value = i;
+      opt.innerHTML = keys[i];
+      select.appendChild(opt);
+  }
+  choose_civ();
+}
+
 function choose_civ() {
+  var keys = Object.keys(civs);
+  pick_civ(Math.floor(keys.length * Math.random()));
+}
+
+function switch_civ() {
+  var idx =  document.getElementById('civ_picker').value;
+  pick_civ(idx);
+}
+
+function pick_civ(civ_idx) {
   var vs_civ = allCivs[Math.floor(allCivs.length * Math.random())];
   var keys = Object.keys(civs);
-  var civ_idx = Math.floor(keys.length * Math.random());
   var civ_name = keys[civ_idx];
   var civ_info = civs[civ_name];
+  resetFields();
   for (var i = 0; i < civ_info['dark_headers'].length; i++) {
       document.getElementById('dark_headers').innerHTML += '<th>' + civ_info['dark_headers'][i] + '</th>';
       document.getElementById('dark_values').innerHTML += '<td>' + civ_info['dark_values'][i] + '</td>';
@@ -36,6 +58,17 @@ function choose_civ() {
   document.getElementById('uu').innerHTML = civ_info['uu'];
   document.getElementById('utech').innerHTML = civ_info['utech'];
 };
+
+function resetFields() {
+    document.getElementById('dark_headers').innerHTML = '';
+    document.getElementById('dark_values').innerHTML = '';
+    document.getElementById('feudal').style.display = 'block';
+    document.getElementById('feudal_headers').innerHTML = '';
+    document.getElementById('feudal_values').innerHTML = '';
+    document.getElementById('castle').style.display = 'block';
+    document.getElementById('castle_headers').innerHTML = '';
+    document.getElementById('castle_values').innerHTML = '';
+}
 
 function toggleHelp() {
     var helpDiv = document.getElementById('help');
