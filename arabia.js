@@ -29,7 +29,7 @@ var base_strategies = {
     },
 };
 
-var civs = ["aztecs", "britons", "byzantines", "celts", "chinese", "franks", "huns", "japanese", "magyars", "mayans", "mongols", "persians", "saracens", "slavs", "vikings"];
+var civs = ["aztecs", "britons", "byzantines", "celts", "chinese", "franks", "huns", "japanese", "magyars", "mayans", "mongols", "persians", "portuguese", "saracens", "spanish", "slavs", "vikings"];
 
 var strategies = {
     aztecs: { strategy: 'Meso eagles; imp add monks vs cavalry',
@@ -317,6 +317,30 @@ var strategies = {
         imp: 'Trashbow + Hussar + Treb/Ram',
         ...base_strategies.scouts_archers
     },
+    portuguese: { strategy: 'Meta',
+        dark_headers: [],
+        dark_values: [],
+        dark_instructions: '',
+        fup_instructions: '',
+        feudal_headers: [],
+        feudal_values: [],
+        feudal_instructions: '',
+        cup_instructions: '',
+        castle_headers: [],
+        castle_values: [],
+        castle_instructions: '',
+        eco: 'All units cost -20% gold, Can build Feitoria in Imperial Age',
+        team: 'Line of sight is shared with the team starting in the Dark Age',
+        military: 'Ships +10% HP',
+        uu: 'Organ Gun (siege), Caravel (war ship)',
+        utech: 'Carrack (Ships +1/+1 armor), Arquebus (gunpowder units more accurate)',
+        missing: 'Heavy Cav Archer, Parthian Tactics, Squires, Camel Rider, Paladin, Hussar, Heavy Camel Rider, Siege Ram, Heavy Scorpion, Siege Onager',
+        opening: 'Men at Arms',
+        transition: 'Archers',
+        castle: 'Knights',
+        imp: 'Halberdiers, Hand Cannoneers, and Bombard Cannons',
+        ...base_strategies.maa_archers
+    },
     saracens: { strategy: 'Meta',
         dark_headers: [],
         dark_values: [],
@@ -364,6 +388,24 @@ var strategies = {
         castle: 'Knights + Skirm',
         imp: 'Champions + Cav + Ram/Treb'
     },
+    spanish: Object.assign(base_strategies.scouts_castle,{ strategy: 'Meta',
+        feudal_headers: ['Farms', 'Stone', 'Farms', 'Wheelbarrow'],
+        feudal_values: ['8 (14)', '6', '1 (15)', '+'],
+        cup_instructions: '',
+        castle_headers: [],
+        castle_values: [],
+        castle_instructions: '',
+        eco: "Builders work 30% faster, Blacksmith upgrades don't cost gold",
+        team: 'Trade units generate +25% gold',
+        military: "Cannon Galleons benefit from Ballistics, Gunpowder units fire 15% faster",
+        uu: 'Conquistador (mounted hand cannoneer), Missionary (mounted Monk)',
+        utech: 'Inquisition (Monks convert faster), Supremacy (Villagers stronger in combat)',
+        missing: 'Arbalester, Crossbowman, Parthian Tactics, Camel Rider, Heavy Camel Rider, Heavy Scorpion, Siege Onager, Siege Engineers',
+        opening: 'Scouts',
+        transition: '',
+        castle: 'Conquistadors + missionaries',
+        imp: ''
+    }),
     vikings: { strategy: 'Meta',
         dark_headers: [],
         dark_values: [],
