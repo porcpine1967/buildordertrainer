@@ -1,5 +1,5 @@
 function initialize() {
-  var keys = Object.keys(civs);
+  var keys = Object.keys(strategies);
   var select =  document.getElementById('civ_picker');
   for (var i = 0; i < keys.length; i++) {
       var opt = document.createElement('option');
@@ -11,8 +11,9 @@ function initialize() {
 }
 
 function choose_civ() {
-  var keys = Object.keys(civs);
-  pick_civ(Math.floor(keys.length * Math.random()));
+  var keys = civs;
+  var idx = Math.floor(keys.length * Math.random());
+  pick_civ(idx);
 }
 
 function switch_civ() {
@@ -22,9 +23,9 @@ function switch_civ() {
 
 function pick_civ(civ_idx) {
   var vs_civ = allCivs[Math.floor(allCivs.length * Math.random())];
-  var keys = Object.keys(civs);
+  var keys = Object.keys(strategies);
   var civ_name = keys[civ_idx];
-  var civ_info = civs[civ_name];
+  var civ_info = strategies[civ_name];
   resetFields();
   for (var i = 0; i < civ_info['dark_headers'].length; i++) {
       document.getElementById('dark_headers').innerHTML += '<th>' + civ_info['dark_headers'][i] + '</th>';
@@ -34,11 +35,6 @@ function pick_civ(civ_idx) {
       document.getElementById('feudal').style.display = 'block';
       document.getElementById('feudal_headers').innerHTML += '<th>' + civ_info['feudal_headers'][i] + '</th>';
       document.getElementById('feudal_values').innerHTML += '<td>' + civ_info['feudal_values'][i] + '</td>';
-  }
-  for (var i = 0; i < civ_info['castle_headers'].length; i++) {
-      document.getElementById('castle').style.display = 'block';
-      document.getElementById('castle_headers').innerHTML += '<th>' + civ_info['castle_headers'][i] + '</th>';
-      document.getElementById('castle_values').innerHTML += '<td>' + civ_info['castle_values'][i] + '</td>';
   }
   document.getElementById('dark_instructions').innerHTML = civ_info['dark_instructions'];
   document.getElementById('fup_instructions').innerHTML = civ_info['fup_instructions'];
@@ -65,9 +61,7 @@ function resetFields() {
     document.getElementById('feudal').style.display = 'block';
     document.getElementById('feudal_headers').innerHTML = '';
     document.getElementById('feudal_values').innerHTML = '';
-    document.getElementById('castle').style.display = 'block';
-    document.getElementById('castle_headers').innerHTML = '';
-    document.getElementById('castle_values').innerHTML = '';
+    document.getElementById('castle_instructions').style.display = 'block';
 }
 
 function toggleHelp() {

@@ -1,4 +1,4 @@
-var strategies = {
+var base_strategies = {
     maa_archers: {
         dark_headers: ['Sheep', 'Wood', 'Boar', 'Berries', 'Boar/sheep', 'Build Barracks to Wood', 'Gold'],
         dark_values: [6, 4, 2, 4, '2 (10)', 1, 2],
@@ -28,7 +28,10 @@ var strategies = {
         cup_instructions: 'While advancing, build second stable',
     },
 };
-var civs = {
+
+var civs = ["aztecs", "britons", "byzantines", "celts", "chinese", "franks", "huns", "japanese", "magyars", "mayans", "mongols", "persians", "saracens", "slavs"];
+
+var strategies = {
     aztecs: { strategy: 'Meso eagles; imp add monks vs cavalry',
         dark_headers: ['Sheep', 'Wood', 'Boar', 'Berries', 'Boar to farms', 'Wood'],
         dark_values: [6, 4, 2, 4, 2, '3 (7)'],
@@ -72,7 +75,7 @@ var civs = {
         transition: 'Archers',
         castle: 'Archers + Halbs/Cav',
         imp: 'Archers + Trebs + Trash',
-        ...strategies.maa_archers
+        ...base_strategies.maa_archers
     },
     byzantines: { strategy: 'Meta',
         dark_headers: ['Sheep', 'Wood', 'Boar', 'Berries', 'Barracks to Gold', 'Wood', 'Berries', 'Sheep to Farms'],
@@ -107,7 +110,7 @@ var civs = {
         cup_instructions: '',
         castle_headers: [],
         castle_values: [],
-        castle_instructions: '<h4>Castle Age</h4>4 Siege Workshops',
+        castle_instructions: '<h4>Castle Age</h4><div style="margin: 10px;">4 Siege Workshops</div>',
         eco: 'Lumber work faster, Sheep loyalty',
         team: 'Siege works faster',
         military: 'Infantry move faster, Siege fires faster',
@@ -117,7 +120,7 @@ var civs = {
         transition: 'Archers/Skirms',
         castle: 'Halbs + Siege',
         imp: 'Halbs + Siege + Woads',
-        ...strategies.maa_archers
+        ...base_strategies.maa_archers
     },
     chinese: { strategy: 'Scout to Skirms; Elite Chu Ko Nu post imp',
         dark_headers: ['Loom', 'Sheep', 'Wood', 'Boar', 'Berries', 'Boar to farms', 'Wood'],
@@ -162,7 +165,7 @@ var civs = {
         transition: 'Fast Castle',
         castle: 'Knights + Halb/Skirm (get relics)',
         imp: 'Cav + Axemen + Trebs',
-        ...strategies.scouts_castle
+        ...base_strategies.scouts_castle
     },
     huns: { strategy: 'Meta',
         dark_headers: ['Sheep', 'Wood', 'Boar', 'Berries', 'Gold to Wood', 'Barracks to Houses', 'Wood', 'Sheep to Farms'],
@@ -185,7 +188,7 @@ var civs = {
         transition: 'Archers',
         castle: 'Cav Archers + Halbs/Skirms',
         imp: 'Cav Archers + Trash + Siege',
-        ...strategies.scouts_archers
+        ...base_strategies.scouts_archers
     },
     japanese: { strategy: 'Meta',
         dark_headers: ['Sheep', 'Wood', 'Boar',
@@ -209,7 +212,7 @@ var civs = {
         transition: 'Archers/Skirms',
         castle: 'Archers + Skirm/Light Cav',
         imp: 'Trebs + Archers + Trash',
-        ...strategies.maa_archers
+        ...base_strategies.maa_archers
     },
     magyars: { strategy: 'Meta',
         dark_headers: ['Sheep', 'Wood', 'Boar', 'Berries', 'Boar to farms', 'Wood'],
@@ -232,7 +235,7 @@ var civs = {
         transition: 'Archers',
         castle: 'Cav Archer + Light Cav',
         imp: 'Cav Archer + Light Cav + Treb',
-        ...strategies.scouts_archers
+        ...base_strategies.scouts_archers
     },
     mayans: { strategy: 'Meta',
         dark_headers: ['Sheep', 'Wood', 'Boar', 'Berries', 'Boar to farms', 'Wood'],
@@ -255,7 +258,7 @@ var civs = {
         transition: 'Archers',
         castle: 'Archers + Skirms',
         imp: 'Eagles (tech) + Treb/Ram + Archer',
-        ...strategies.maa_archers
+        ...base_strategies.maa_archers
     },
     mongols: { strategy: '19-pop scouts to skirms; castle age cav archers/light cav; imp rams/champs',
         dark_headers: ['Sheep', 'Wood', 'Boar', 'Deer to berries', 'Boar/sheep'],
@@ -264,7 +267,7 @@ var civs = {
         fup_instructions: 'On advance move 5 sheep to wood (8); build barracks',
         feudal_headers: [],
         feudal_values: [],
-        feudal_instructions: '<h4>Feudal Age</h4>build stable',
+        feudal_instructions: 'build stable',
         cup_instructions: '',
         castle_headers: [],
         castle_values: [],
@@ -300,7 +303,30 @@ var civs = {
         transition: 'Archers/Skirms',
         castle: 'Get relics + Knights + Skirms',
         imp: 'Trashbow + Hussar + Treb/Ram',
-        ...strategies.scouts_archers
+        ...base_strategies.scouts_archers
+    },
+    saracens: { strategy: 'Meta',
+        dark_headers: [],
+        dark_values: [],
+        dark_instructions: '',
+        fup_instructions: '',
+        feudal_headers: [],
+        feudal_values: [],
+        feudal_instructions: '',
+        cup_instructions: '',
+        castle_headers: [],
+        castle_values: [],
+        castle_instructions: '',
+        eco: 'Market trade cost only 5%, Market costs -100 wood',
+        team: 'Foot archers +1 attack vs. buildings',
+        military: 'Transport Ships 2x hit points, Galleys attack 20% faster, Archers (except skirmishers) +1 attack vs. buildings per age (starting in the Feudal Age)',
+        uu: 'Mameluke (camel rider)',
+        utech: 'Madrasah (Monks return 33% of their cost when killed), Zealotry (Camel units +30 hit points)',
+        opening: 'Scouts',
+        transition: 'Archers',
+        castle: 'Camels/skirms/monks',
+        imp: '',
+        ...base_strategies.scouts_archers
     },
     slavs: { strategy: 'Man-at-arms rush with 2 barracks, followed by mangonels or rams; monks/mangonels/rams; hussars post imp',
         dark_headers: ['Sheep', 'Wood', 'Boar', 'Berries', 'Boar to farms', 'Barracks', 'Gold'],
@@ -323,6 +349,50 @@ var civs = {
         transition: 'Skirms',
         castle: 'Knights + Skirm',
         imp: 'Champions + Cav + Ram/Treb'
+    },
+    water: { strategy: '26-pop up to Fire Galleys',
+        dark_headers: ['Sheep', 'Wood', 'Boar', 'House -> Dock -> shorefish/houses', 'Wood', 'Boar/sheep'],
+        dark_values: [6, 4, 1, 1, '2 (6)', '7 (14)'],
+        dark_instructions: 'Build 4 fishing ships with dock',
+        fup_instructions: 'While advancing: build 2nd dock, 8 sheep to wood, 4 sheep to gold, 2 sheep to stragglers',
+        feudal_headers: ['Gold', 'Berries'],
+        feudal_values: ['2 (6)', '+'],
+        feudal_instructions: 'Double-bit axe; build 3rd dock; stragglers to sheep/berries',
+        cup_instructions: '',
+        castle_headers: [],
+        castle_values: [],
+        castle_instructions: '',
+        eco: '',
+        team: '',
+        military: '',
+        uu: '',
+        utech: '',
+        opening: 'Fire Galleys',
+        transition: '',
+        castle: 'War Galleys/Fire Ships',
+        imp: ''
+    },
+    hybrid: { strategy: '26-pop up to Fire Galleys and Archers',
+        dark_headers: ['Sheep', 'Wood', 'Boar', 'House -> Dock -> shorefish/houses', 'Wood', 'Boar/sheep'],
+        dark_values: [6, 4, 1, 1, '2 (6)', '7 (14)'],
+        dark_instructions: 'Build 4 fishing ships with dock',
+        fup_instructions: 'While advancing: build barracks and 2nd dock, 7 sheep to wood, 3 sheep to gold, 4 sheep to stragglers',
+        feudal_headers: ['Gold', 'Berries', 'Farms', 'Wheelbarrow'],
+        feudal_values: ['4 (7)', 4, 14, '+'],
+        feudal_instructions: 'Double-bit axe; build 2 ranges, 3rd dock, blacksmith; stragglers to sheep/farms',
+        cup_instructions: '',
+        castle_headers: [],
+        castle_values: [],
+        castle_instructions: '',
+        eco: '',
+        team: '',
+        military: '',
+        uu: '',
+        utech: '',
+        opening: 'Fire Galleys',
+        transition: 'Archers',
+        castle: '',
+        imp: ''
     }
 };
 var allCivs = [
