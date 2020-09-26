@@ -6,7 +6,7 @@ var base_strategies = {
         fup_instructions: 'While advancing send 2 sheep to wood, 2 to berries, 2 to farms',
         feudal_headers: ['Wood', 'Gold', 'Farms', 'Wheelbarrow'],
         feudal_values: ['5 (12)', '6 (8)', '16 (18)', '+'],
-        feudal_instructions: 'build 2 ranges then blacksmith',
+        feudal_instructions: 'maa upgrade; build 2 ranges then blacksmith',
     },
     scouts_archers: {
         dark_headers: ['Sheep', 'Wood', 'Boar', 'Berries', 'Boar to farms', 'Wood'],
@@ -29,7 +29,7 @@ var base_strategies = {
     },
 };
 
-var civs = ["aztecs", "britons", "byzantines", "celts", "chinese", "franks", "huns", "japanese", "magyars", "mayans", "mongols", "persians", "saracens", "slavs"];
+var civs = ["aztecs", "britons", "byzantines", "celts", "chinese", "franks", "huns", "japanese", "magyars", "mayans", "mongols", "persians", "saracens", "slavs", "vikings"];
 
 var strategies = {
     aztecs: { strategy: 'Meso eagles; imp add monks vs cavalry',
@@ -349,6 +349,29 @@ var strategies = {
         transition: 'Skirms',
         castle: 'Knights + Skirm',
         imp: 'Champions + Cav + Ram/Treb'
+    },
+    vikings: { strategy: 'Meta',
+        dark_headers: [],
+        dark_values: [],
+        dark_instructions: '',
+        fup_instructions: '',
+        feudal_headers: [],
+        feudal_values: [],
+        feudal_instructions: '',
+        cup_instructions: '',
+        castle_headers: [],
+        castle_values: [],
+        castle_instructions: '',
+        eco: ' Wheelbarrow, Hand Cart free',
+        team: 'Docks cost -15%',
+        military: 'Warships cost -15% F/-15% C/-20% I, Infantry +10% hp F/+15% C/+20% I',
+        uu: 'Berserk (infantry), Longboat (warship)',
+        utech: 'Chieftains (infantry deal bonus damage to cavalry), Berserkergang (Berserks regenerate faster)',
+        opening: 'Men at Arms',
+        transition: 'Archers',
+        castle: 'Berserks or (mediocre) Knights',
+        imp: 'Champions',
+        ...base_strategies.maa_archers
     },
     water: { strategy: '26-pop up to Fire Galleys',
         dark_headers: ['Sheep', 'Wood', 'Boar', 'House -> Dock -> shorefish/houses', 'Wood', 'Boar/sheep'],
