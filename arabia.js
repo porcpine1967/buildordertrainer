@@ -56,7 +56,7 @@ var base_strategies = {
     },
 };
 
-var civs = ["aztecs", "britons", "byzantines", "celts", "chinese", "franks", "huns", "japanese", "magyars", "mayans", "mongols", "persians", "portuguese", "saracens", "spanish", "slavs", "vikings"];
+var civs = ["aztecs", "britons", "byzantines", "celts", "chinese", "franks", "huns", "incas", "japanese", "magyars", "mayans", "mongols", "persians", "portuguese", "saracens", "spanish", "slavs", "vikings"];
 
 var strategies = {
     aztecs: {...base_strategy,
@@ -162,6 +162,25 @@ var strategies = {
         missing: 'Hand Cannoneer, Arbalester, Ring Archer Armor, Champion, Plate Mail Armor, Supplies, Camel Rider, Heavy Camel Rider, Bombard Cannon, Onager, Heavy Scorpion, Siege Onager, Siege Engineers, House',
         castle: 'Cav Archers + Halbs/Skirms',
         imp: 'Cav Archers + Trash + Siege',
+    },
+    Incas: {...base_strategy,
+        strategy: "Tower Rush",
+        dark_headers: ['Sheep', 'Wood', 'Boar', 'Berries', 'Boar/sheep',],
+        dark_values: [6, 2, 3, 4, "4 {13}"],
+        fup_instructions: 'Send 8-10 villagers forward, 2 (weakest) to stone, 2/3 to stragglers',
+        feudal_headers: ['Wheelbarrow', 'Berries', 'Wood', 'Farms'],
+        feudal_values: ['+', 'n', 'n', 'n'],
+        feudal_instructions: 'Build forward Blacksmith; Scale Mail then Forging',
+        eco: 'Start with a free Llama, Houses support 10 population, Buildings cost -15% stone',
+        team: 'Farms built 50% faster',
+        military: 'Villagers affected by Blacksmith upgrades',
+        uu: 'Kamayuk (infantry), Slinger (archer)',
+        utech: 'Andean Sling (Skirmishers and Slingers no minimum range), Fabric Shields (Kamayuks, Slingers, Eagles +1/+2P armor)',
+        missing: 'Hand Cannoneer, Horses, Bombard Cannon, Siege Onager',
+        opening: 'Towers',
+        transition: '',
+        castle: '',
+        imp: '',
     },
     japanese: {...base_strategies.maa_archers,
         eco: 'Fish ships faster & tanky, Mining/Mill/Lumber cheaper',
