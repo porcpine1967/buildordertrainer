@@ -53,6 +53,7 @@ function pick_civ(civ_idx) {
   document.getElementById('team').innerHTML = civ_info['team'];
   document.getElementById('uu').innerHTML = civ_info['uu'];
   document.getElementById('utech').innerHTML = civ_info['utech'];
+  document.getElementById('missing').innerHTML = civ_info['missing'];
 };
 
 function resetFields() {
