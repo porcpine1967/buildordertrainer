@@ -71,7 +71,7 @@ var base_strategies = {
     },
 };
 
-var civs = ["aztecs", "berbers", "britons", "bulgarians", "burmese", "byzantines", "celts", "chinese", "franks", "huns", "incas", "japanese", "khmer", "koreans", "magyars", "malay", "mayans", "mongols", "persians", "portuguese", "saracens", "spanish", "slavs", "teutons", "vietnamese", "vikings"];
+var civs = ["aztecs", "berbers", "britons", "bulgarians", "burmese", "byzantines", "celts", "chinese", "cumans", "franks", "huns", "incas", "japanese", "khmer", "koreans", "magyars", "malay", "mayans", "mongols", "persians", "portuguese", "saracens", "spanish", "slavs", "teutons", "vietnamese", "vikings"];
 
 var strategies = {
     aztecs: {...base_strategy,
@@ -183,6 +183,25 @@ var strategies = {
         transition: 'Archers/Skirms',
         castle: 'Archers + Cav',
         imp: 'Chu Ko Nu + Trash + Rams/Trebs'
+    },
+    cumans: {...base_strategy,
+        strategy: '2 TC boom to scouts',
+        dark_headers: ['Sheep', 'Wood', 'Boar', 'Berries', 'Sheep/Boar', 'Wood'],
+        dark_values: [6, 4, 2, 4, 3, 1],
+        dark_instructions: 'Try to palisade up with lumberjacks',
+        fup_instructions: 'On advance, move one sheep to wood',
+        feudal_headers: ['Wood', 'Berries/Farm'],
+        feudal_values: [3, '+'],
+        feudal_instructions: 'Barracks and stable after TC',
+        eco: 'Additional Town Center can be built in the Feudal Age',
+        team: 'Palisade Walls +50% HP',
+        military: 'Siege Workshop and Battering Ram available in the Feudal Age; Capped Ram upgrade available in Castle Age, Cavalry 5% faster each age',
+        uu: 'Kipchak (cavalry archer)',
+        utech: 'Steppe Husbandry (Light Cavalry, Steppe Lancers and Cavalry Archers trained 50% faster), Cuman Mercenaries (team members can create 10 free Elite Kipchaks in the Castle)',
+        missing: 'Arbalester, Hand Cannoneer, Bracer, Supplies, Heavy Camel Rider, Husbandry, Bombard Cannon, Heavy Scorpion, Siege Engineers',
+        opening: '2nd TC',
+        transition: 'Scouts',
+        castle: 'Knights or Steppe Lancers with Steppe Husbandry',
     },
     franks: {...base_strategies.scouts_castle,
         cup_instructions: 'While advancing: 1 berries to gold (6), 2 berries to farms (10), build second stable',
