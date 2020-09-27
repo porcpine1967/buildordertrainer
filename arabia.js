@@ -71,7 +71,7 @@ var base_strategies = {
     },
 };
 
-var civs = ["aztecs", "britons", "burmese", "byzantines", "celts", "chinese", "franks", "huns", "incas", "japanese", "khmer", "malay", "magyars", "mayans", "mongols", "persians", "portuguese", "saracens", "spanish", "slavs", "teutons", "vietnameses", "vikings"];
+var civs = ["aztecs", "berbers", "britons", "burmese", "byzantines", "celts", "chinese", "franks", "huns", "incas", "japanese", "khmer", "koreans", "magyars", "malay", "mayans", "mongols", "persians", "portuguese", "saracens", "spanish", "slavs", "teutons", "vietnamese", "vikings"];
 
 var strategies = {
     aztecs: {...base_strategy,
@@ -92,6 +92,15 @@ var strategies = {
         transition: 'Archers',
         castle: 'Monks + Relics + Eagles',
         imp: 'Eagles + Trash + Siege'
+    },
+    berbers: {...base_strategies.scouts_castle,
+        eco: 'Villagers move 10% faster, Stable units cost -15% in Castle, -20% in Imperial Age',
+        team: 'Genitour available in the Archery Range starting in the Castle Age',
+        military: 'Ships move 10% faster',
+        uu: 'Camel Archer (cavalry archer), Genitour (mounted skirmisher)',
+        utech: 'Kasbah (team castles work 25% faster), Maghrebi Camels (Camel units regenerate)',
+        missing: 'Arbalester, Parthian Tactics, Halberdier, Paladin, Siege Onager, Siege Ram, Sappers',
+        castle: 'Knight rush',
     },
     britons: {...base_strategies.maa_archers,
         dark_values: [5, 4, 2, 4, '2 (9)', 1, 2],
@@ -224,6 +233,18 @@ var strategies = {
         missing: 'Thumb Ring, Champion, Supplies, Plate Mail Armor, Squires, Paladin, Camel Rider, Heavy Camel Rider, Bombard Cannon, Siege Onager',
         castle: 'Scorpions',
         imp: '',
+    },
+    koreans: {...base_strategies.drush_fc_xbow,
+        feudal_headers: ['Stone'],
+        feudal_values: ['2'],
+        cup_instructions: 'While advancing: build range then blacksmith',
+        eco: 'Stone miners work 20% faster, Tower upgrades free (Bombard Tower requires Chemistry), Military units (except siege weapons) cost -20% wood',
+        team: 'Mangonel-line minimum range reduced',
+        military: 'Villagers +3 line of sight, Tower range +1 Castle, +2 Imperial Age',
+        uu: 'War Wagon (cavalry archer), Turtle Ship (war ship)',
+        utech: 'Panokseon (Turtle Ships move 15% faster), Shinkichon (Mangonel-line +1 range)',
+        missing: 'Parthian Tactics, Blast Furnace, Camel Rider, Heavy Camel Rider, Paladin, Bloodlines, Plate Barding Armor, Siege Ram, Heavy Scorpion, Sappers',
+        castle: 'War Wagons',
     },
     magyars: {...base_strategies.scouts_archers,
         eco: 'Villagers kill wolves with 1 strike; Forging, Iron Casting, Blast Furnace free; Scout Cavalry, Light Cavalry, Hussar cost -15%',
