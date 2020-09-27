@@ -71,7 +71,7 @@ var base_strategies = {
     },
 };
 
-var civs = ["aztecs", "berbers", "britons", "burmese", "byzantines", "celts", "chinese", "franks", "huns", "incas", "japanese", "khmer", "koreans", "magyars", "malay", "mayans", "mongols", "persians", "portuguese", "saracens", "spanish", "slavs", "teutons", "vietnamese", "vikings"];
+var civs = ["aztecs", "berbers", "britons", "bulgarians", "burmese", "byzantines", "celts", "chinese", "franks", "huns", "incas", "japanese", "khmer", "koreans", "magyars", "malay", "mayans", "mongols", "persians", "portuguese", "saracens", "spanish", "slavs", "teutons", "vietnamese", "vikings"];
 
 var strategies = {
     aztecs: {...base_strategy,
@@ -91,7 +91,7 @@ var strategies = {
         opening: 'Man-At-Arms',
         transition: 'Archers',
         castle: 'Monks + Relics + Eagles',
-        imp: 'Eagles + Trash + Siege'
+        imp: 'Eagles + Trash + Siege',
     },
     berbers: {...base_strategies.scouts_castle,
         eco: 'Villagers move 10% faster, Stable units cost -15% in Castle, -20% in Imperial Age',
@@ -112,6 +112,16 @@ var strategies = {
         missing: 'Arbalester, Parthian Tactics, Halberdier, Paladin, Siege Onager, Siege Ram, Sappers',
         castle: 'Archers + Halbs/Cav',
         imp: 'Archers + Trebs + Trash'
+    },
+    bulgarians: {...base_strategies.scouts_castle,
+        eco: 'Militia-line upgrades free, Town Centers cost -50% stone',
+        team: 'Blacksmiths work 50% faster',
+        military: 'Militia-line upgrades free, Can build Krepost', 
+        uu: 'Konnik (cavalry/infantry)',
+        utech: 'Stirrups (Cavalry attack 25% faster), Bagains (Militia-line gains +5 armor)',
+        missing: 'Hand Cannoneer, Arbalester, Crossbowman, Ring Archer Armor, Champion, Paladin, Camel Rider, Heavy Camel Rider, Bombard Cannon, Sappers',
+        castle: 'Knights and Stirrups',
+        imp: 'Champs with Bagains',
     },
     burmese: {...base_strategies.scouts_castle,
         eco: 'Lumber Camp upgrades free, Monastery techs cost -50%',
