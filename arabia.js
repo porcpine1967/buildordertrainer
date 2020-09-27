@@ -71,7 +71,7 @@ var base_strategies = {
     },
 };
 
-var civs = ["aztecs", "berbers", "britons", "bulgarians", "burmese", "byzantines", "celts", "chinese", "cumans", "ethiopians", "franks", "goths", "huns", "incas", "indians", "japanese", "khmer", "koreans", "magyars", "malay", "mayans", "mongols", "persians", "portuguese", "saracens", "spanish", "slavs", "teutons", "vietnamese", "vikings"];
+var civs = ["aztecs", "berbers", "britons", "bulgarians", "burmese", "byzantines", "celts", "chinese", "cumans", "ethiopians", "franks", "goths", "huns", "incas", "indians", "italians", "japanese", "khmer", "koreans", "magyars", "malay", "mayans", "mongols", "persians", "portuguese", "saracens", "spanish", "slavs", "teutons", "vietnamese", "vikings"];
 
 var strategies = {
     aztecs: {...base_strategy,
@@ -278,6 +278,16 @@ var strategies = {
         missing: 'Arbalester, Plate Mail Armor, Paladin, Knight, Cavalier, Siege Ram, Heavy Scorpion, Siege Onager, Sappers',
         castle: 'Camels and skirms',
         imp: 'Imperial Camels, hand cannons, and bombard cannons',
+    },
+    italians: {...base_strategies.scouts_archers,
+        eco: 'Advancing to the next age costs -15%, Dock technologies cost -50%, Fishing Ships cost -15%',
+        team: 'Condottiero available in the Barracks in Imperial Age',
+        military: 'Gunpowder units cost -20%',
+        uu: 'Genoese Crossbowman (archer), Condottiero (infantry)',
+        utech: 'Pavise (foot archers and Condottieri +1 armor/+1 pierce armor), Silk Road (trade units cost -50%)',
+        missing: 'Heavy Cav Archer, Parthian Tactics, Halberdier, Camel Rider, Paladin, Heavy Camel Rider, Siege Ram, Heavy Scorpion, Siege Onager, Siege Engineers, Sappers',
+        castle: 'Knights, Genoese Crossbows',
+        imp: 'Hand cannons and bombard cannons, maybe Condotierri',
     },
     japanese: {...base_strategies.maa_archers,
         eco: 'Fish ships faster & tanky, Mining/Mill/Lumber cheaper',
