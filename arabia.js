@@ -68,7 +68,7 @@ var base_strategies = {
     },
 };
 
-var civs = ["aztecs", "britons", "byzantines", "celts", "chinese", "franks", "huns", "incas", "japanese", "malay", "magyars", "mayans", "mongols", "persians", "portuguese", "saracens", "spanish", "slavs", "vikings"];
+var civs = ["aztecs", "britons", "byzantines", "celts", "chinese", "franks", "huns", "incas", "japanese", "khmer", "malay", "magyars", "mayans", "mongols", "persians", "portuguese", "saracens", "spanish", "slavs", "vikings"];
 
 var strategies = {
     aztecs: {...base_strategy,
@@ -200,6 +200,17 @@ var strategies = {
         transition: 'Archers/Skirms',
         castle: 'Archers + Skirm/Light Cav',
         imp: 'Trebs + Archers + Trash',
+    },
+    khmer: {...base_strategies.scouts_archers,
+        fup_instructions: 'Don\'t bother with barracks',
+        eco: 'No buildings required to advance to the next age or to unlock other buildings, Farmers don\'t require Mills/Town Centers to drop off food',
+        team: 'Scorpions +1 range',
+        military: 'Battle Elephants move 15% faster, Villagers can garrison in Houses, Scorpions +1 range (team)',
+        uu: 'Ballista Elephant (mounted scorpion)',
+        utech: 'Tusk Swords (Battle Elephants +3 attack), Double Crossbow (Ballista Elephants and Scorpions fire two projectiles)',
+        missing: 'Thumb Ring, Champion, Supplies, Plate Mail Armor, Squires, Paladin, Camel Rider, Heavy Camel Rider, Bombard Cannon, Siege Onager',
+        castle: 'Scorpions',
+        imp: '',
     },
     magyars: {...base_strategies.scouts_archers,
         eco: 'Villagers kill wolves with 1 strike; Forging, Iron Casting, Blast Furnace free; Scout Cavalry, Light Cavalry, Hussar cost -15%',
