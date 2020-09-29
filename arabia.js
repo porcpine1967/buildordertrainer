@@ -71,7 +71,7 @@ var base_strategies = {
     },
 };
 
-var civs = ["aztecs", "berbers", "britons", "bulgarians", "burmese", "byzantines", "celts", "chinese", "cumans", "ethiopians", "franks", "goths", "huns", "incas", "indians", "italians", "japanese", "khmer", "koreans", "magyars", "malay", "mayans", "mongols", "persians", "portuguese", "saracens", "spanish", "slavs", "teutons", "vietnamese", "vikings"];
+var civs = ["aztecs", "berbers", "britons", "bulgarians", "burmese", "byzantines", "celts", "chinese", "cumans", "ethiopians", "franks", "goths", "huns", "incas", "indians", "italians", "japanese", "khmer", "koreans", "lithuanians", "magyars", "malay", "mayans", "mongols", "persians", "portuguese", "saracens", "spanish", "slavs", "teutons", "turks", "vietnamese", "vikings"];
 
 var strategies = {
     aztecs: {...base_strategy,
@@ -324,6 +324,16 @@ var strategies = {
         missing: 'Parthian Tactics, Blast Furnace, Camel Rider, Heavy Camel Rider, Paladin, Bloodlines, Plate Barding Armor, Siege Ram, Heavy Scorpion, Sappers',
         castle: 'War Wagons',
     },
+    lithuanians: {...base_strategies.scouts_archers,
+        strategy: 'Scouts/archers to Knights/skirms',
+        eco: 'Start with +150 food',
+        team: 'Monasteries work 20% faster',
+        military: 'Spearman-line and Skirmishers move 10% faster, Each garrisoned relic gives +1 attack to Knights and Leitis (maximum +4)',
+        uu: 'Leitis (cavalry)',
+        utech: 'Hill Forts (Town Centers +3 range), Tower Shields (Spearman-line and Skirmishers +2P armor)',
+        missing: 'Arbalester, Parthian Tactics, Plate Mail Armor, Supplies, Camel Rider, Heavy Camel Rider, Siege Ram, Heavy Scorpion, Siege Onager, Siege Engineers, Sappers',
+        castle: 'Knights/skirms + relics',
+    },
     magyars: {...base_strategies.scouts_archers,
         eco: 'Villagers kill wolves with 1 strike; Forging, Iron Casting, Blast Furnace free; Scout Cavalry, Light Cavalry, Hussar cost -15%',
         team: 'Foot archers +2 LOS',
@@ -445,6 +455,14 @@ var strategies = {
         missing: 'Arbalester, Heavy Cav Archer, Thumb Ring, Parthian Tactics, Bracer, Camel Rider, Light Cavalry, Hussar, Heavy Camel Rider, Husbandry, Siege Ram',
         castle: 'Knights',
         imp: '',
+    },
+    turks: {...base_strategies.scouts_castle,
+        eco: 'researching gunpowder technologies costs -50%; Gold miners work 20% faster; Chemistry free',
+        team: 'Gunpowder units created 20% faster',
+        military: 'Gunpowder units +25% hit points; researching gunpowder technologies costs -50%; Light Cavalry and Hussar upgrades free',
+        uu: 'Janissary (hand cannoneer)',
+        utech: 'Sipahi (Cavalry Archers +20 HP), Artillery (+2 range Bombard Towers, Bombard Cannons, Cannon Galleons)',
+        missing: 'Elite Skirmisher, Arbalester, Pikeman, Halberdier, Paladin, Onager, Siege Onager, Siege Engineers',
     },
     vietnamese: {...base_strategies.scouts_archers,
         eco: 'Economic upgrades cost no wood, Conscription free',
