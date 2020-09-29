@@ -528,6 +528,3 @@ var strategies = {
         imp: '',
     }
 };
-var allCivs = [
-    'Aztecs', 'Berbers', 'Britons', 'Burmese', 'Byzantines', 'Celts', 'Chinese', 'Ethiopians', 'Franks', 'Goths', 'Huns', 'Incas', 'Indians', 'Italians', 'Japanese', 'Khmer', 'Koreans', 'Magyars', 'Malay', 'Malians', 'Mayans', 'Mongols', 'Persians', 'Portuguese', 'Saracens', 'Slavs', 'Spanish', 'Teutons', 'Turks', 'Vietnamese', 'Vikings',
-];

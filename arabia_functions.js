@@ -22,7 +22,6 @@ function switch_civ() {
 }
 
 function pick_civ(civ_idx) {
-  var vs_civ = allCivs[Math.floor(allCivs.length * Math.random())];
   var keys = Object.keys(strategies);
   var civ_name = keys[civ_idx];
   var civ_info = strategies[civ_name];
@@ -42,7 +41,6 @@ function pick_civ(civ_idx) {
   document.getElementById('cup_instructions').innerHTML = civ_info['cup_instructions'];
   document.getElementById('castle_instructions').innerHTML = civ_info['castle_instructions'];
   document.getElementById('civ').innerHTML = civ_name;
-  document.getElementById('vsCiv').innerHTML = vs_civ;
   document.getElementById('strategy').innerHTML = civ_info['strategy'];
   document.getElementById('opening').innerHTML = civ_info['opening'];
   document.getElementById('transition').innerHTML = civ_info['transition'];
