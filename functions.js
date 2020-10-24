@@ -1,6 +1,6 @@
 var boChecker = archers;
 var endPop = expectedPopulation(boChecker.length - 1);
-var bos = ['archers', 'scoutArchers', 'scoutSkirms', 'scoutCastle', 'maaArchers', 'maaTowers', 'drushFC', 'fcBoom', 'fcKnights', 'fcUU', 'fI', 'fGalley', 'chineseFC'];
+var bos = ['archers', 'scoutArchers', 'scoutSkirms', 'scoutCastle', 'maaArchers', 'maaTowers', 'drushFC', 'fcBoom', 'fcKnights', 'fcUU', 'fI', 'fGalley', 'chineseFC', 'hybrid'];
 var popCap = 5;
 var loom = false;
 var age = 'Dark';
@@ -83,7 +83,7 @@ function verify(){
             if (maaToggled && !check['maa']) console.log('maa untoggled');
             var currentvillpop = (check['b'] || 0) +(check['hb'] || 0) + (check['h'] || 0) + (check['fo'] || 0) + (check['fa'] || 0) + (check['lj'] || 0) + (check['gm'] || 0) + (check['sm'] || 0) + (check['i'] || 0);
             if (currentvillpop != lastVillPop && currentvillpop != lastVillPop + 1) {
-                console.log(boName + ': Pop unacceptable row ' + i);
+                console.log(boName + ': Pop unacceptable row ' + i + ': cvp: ' + currentvillpop + '; lvp: ' + lastVillPop);
             }
             lastVillPop = currentvillpop;
             var currentmilpop = check['m'] || 0;
