@@ -423,7 +423,7 @@ var hybrid = opening.concat(
     {a: 'Feudal', dba: true, l: true, h: 4, fo: 2, lj: 14, f: 4, gm: 7, m: 1, sheepDone: true},
     {a: 'Feudal', dba: true, l: true, fo: 7, lj: 14, f: 4, gm: 7, m: 1},
     {a: 'Feudal', dba: true, hc: true, l: true, fo: 8, lj: 14, f: 4, gm: 7, m: 1},
-    {a: 'Feudal', dba: true, hc: true, l: true, fa: 1, fo: 8, lj: 14, f: 4, gm: 7, m: 1, message: 'Berries done'},
+    {a: 'Feudal', dba: true, hc: true, l: true, fa: 1, fo: 8, lj: 14, f: 4, gm: 7, m: 1, berriesDone: true},
     {a: 'Feudal', dba: true, hc: true, l: true, fa: 10, lj: 14, f: 4, gm: 7, m: 1},
     {a: 'Feudal', dba: true, hc: true, l: true, fa: 11, lj: 14, f: 4, gm: 7, m: 1},
     {a: 'Feudal', dba: true, hc: true, l: true, fa: 12, lj: 14, f: 4, gm: 7, m: 1},
