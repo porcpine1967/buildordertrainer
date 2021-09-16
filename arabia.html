@@ -7,6 +7,7 @@
       #civ { text-transform: capitalize }
       td,th { padding: 5px; border: 1px solid black}
       td {text-align: center;}
+	  .civ_info td {text-align: left; vertical-align: top}
       button.quantity { width: 3em; font-size: 24 }
       button.so {display: block; margin-bottom: 10px}
       #feudal, #castle {display: none}
@@ -43,13 +44,9 @@
    </div>
    <div style="margin: 10px;">
       <h3>Civilization Information</h3>
-      <table>
-      <tr><th>Eco Bonuses</th><td id="eco"></td></tr>
-      <tr><th>Military Bonuses</th><td id="military"></td></tr>
-      <tr><th>Team Bonus</th><td id="team"></td></tr>
-      <tr><th>Unique Unit</th><td id="uu"></td></tr>
-      <tr><th>Unique Tech</th><td id="utech"></td></tr>
-      <tr><th>Missing</th><td id="missing"></td></tr>
+      <table class="civ_info">
+		<tr><th>Bonuses</th><th>Uniques</th><th>Production</th></tr>
+		  <tr><td id="bonuses"></td><td id="uniques"></td><td id="production"></td></tr>
       </table>
    </div>
     <h2>Help (<span onClick="toggleHelp()" style="color: blue; cursor: hand;">toggle</span>)</h2>

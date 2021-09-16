@@ -46,12 +46,9 @@ function pick_civ(civ_idx) {
   document.getElementById('transition').innerHTML = civ_info['transition'];
   document.getElementById('castle_age').innerHTML = civ_info['castle'];
   document.getElementById('imperial_age').innerHTML = civ_info['imp'];
-  document.getElementById('eco').innerHTML = civ_info['eco'];
-  document.getElementById('military').innerHTML = civ_info['military'];
-  document.getElementById('team').innerHTML = civ_info['team'];
-  document.getElementById('uu').innerHTML = civ_info['uu'];
-  document.getElementById('utech').innerHTML = civ_info['utech'];
-  document.getElementById('missing').innerHTML = civ_info['missing'];
+  document.getElementById('bonuses').innerHTML = civ_info['bonuses'];
+  document.getElementById('uniques').innerHTML = civ_info['uniques'];
+  document.getElementById('production').innerHTML = civ_info['production'];
 };
 
 function resetFields() {
