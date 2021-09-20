@@ -220,7 +220,7 @@ var strategies = {
         transition: 'Archers/Skirms',
         castle: 'Archers + Cav',
 		imp: 'Chu Ko Nu + Trash + Rams/Trebs',
-        bonuses: "Start with +3 villagers, -50 wood, -200 food <br>Technologies cost -10% Feudal,  <br>Town Centers support 10 population and +5 LOS<br>Demolition ships +50% hit points <br>Farms +10% food",
+        bonuses: "Start with +3 villagers, -50 wood, -200 food <br>Technologies cost -10% Feudal, -15% Castle, -20% Imperial Age <br>Town Centers support 10 population and +5 LOS<br>Demolition ships +50% hit points <br>Farms +10% food",
         uniques: "Chu Ko Nu: archer with rapid-fire attack<br><br>Great Wall: Makes your walls and towers stronger by giving them +30% hit points.<br>Rocketry: Chu Ko Nu have +2 piercing attack; scorpions have +4 piercing attack.",
         production: "<b>Archery Range</b><br>Attack: 3, Armor: 3<br>Arbalester<br>Heavy Cavalry Archer<br><b>Stable</b><br>Attack: 3, Armor: 3<br>Light Cavalry<br>Cavalier<br>Camel Rider<br><b>Barracks</b><br>Attack: 3, Armor: 3, MISSING Supplies<br>Champion<br>Halberdier<br><b>Siege Workshop</b><br>Siege Ram<br>Onager<br>Heavy Scorpion",
     },

@@ -4,51 +4,23 @@ from argparse import ArgumentParser
 from collections import Counter, defaultdict
 import json
 from pathlib import Path
-import regex
+import re
 
 TECHTREE_PATH = Path("~/opensrc/aoe2techtree/data").expanduser()
 
-UU_PATTERN = regex.compile(".*?unique (unit)?(.*?([^ ]+|.*unit)[^.]+)")
-
-UNIT_HIERARCHIES = (
-    ("ARCHER", "CROSSBOWMAN", "ARBALESTER",),
-    ("CAVALRY_ARCHER", "HEAVY_CAV_ARCHER",),
-    ("HAND_CANNONEER",),
-    ("SCOUT_CAVALRY", "LIGHT_CAVALRY", "HUSSAR", "WINGED_HUSSAR",),
-    ("KNIGHT", "CAVALIER", "PALADIN",),
-    ("CAMEL_RIDER", "HEAVY_CAMEL_RIDER", "IMPERIAL_CAMEL_RIDER",),
-    ("BATTLE_ELEPHANT", "ELITE_BATTLE_ELEPHANT",),
-    ("STEPPE_LANCER", "ELITE_STEPPE_LANCER",),
-    ("MILITIA", "MAN_AT_ARMS", "LONG_SWORDSMAN", "TWO_HANDED_SWORDSMAN", "CHAMPION",),
-    ("SPEARMAN", "PIKEMAN", "HALBERDIER",),
-    ("EAGLE_SCOUT", "EAGLE_WARRIOR", "ELITE_EAGLE_WARRIOR",),
-    ("BATTERING_RAM", "CAPPED_RAM", "SIEGE_RAM",),
-    ("MANGONEL", "ONAGER", "SIEGE_ONAGER",),
-    ("SCORPION", "HEAVY_SCORPION",),
-    ("BOMBARD_CANNON", "HOUFNICE",),
-)
-
-TECH_HIERARCHIES = (
-    ("FLETCHING", "BODKIN_ARROW", "BRACER",),
-    ("PADDED_ARCHER_ARMOR", "LEATHER_ARCHER_ARMOR", "RING_ARCHER_ARMOR",),
-    ("THUMB_RING", "BLOODLINES", "HUSBANDRY",),
-    ("FORGING", "IRON_CASTING", "BLAST_FURNACE",),
-    ("SCALE_BARDING_ARMOR", "CHAIN_BARDING_ARMOR", "PLATE_BARDING_ARMOR",),
-    ("SCALE_MAIL_ARMOR", "CHAIN_MAIL_ARMOR", "PLATE_MAIL_ARMOR",),
-    ("SQUIRES", "ARSON", "SUPPLIES",),
-)
+UU_PATTERN = re.compile(".*?unique (unit)?(.*?([^ ]+|.*unit)[^.]+)")
 
 BUILDINGS = {
     "ARCHERY_RANGE": {
         "PRESENT_UNITS": (
-            ("ARCHER", "CROSSBOWMAN", "ARBALESTER",),
+            ("CROSSBOWMAN", "ARBALESTER",),
             ("SLINGER",),
             ("IMPERIAL_SKIRMISHER",),
             ("CAVALRY_ARCHER", "HEAVY_CAV_ARCHER",),
             ("HAND_CANNONEER",),
             ("GENITOUR",),
         ),
-        "MISSING_UNITS": ("ELITE_SKIRMISHER",),
+        "MISSING_UNITS": ("CROSSBOWMAN", "ELITE_SKIRMISHER",),
         "ARMOR": ("PADDED_ARCHER_ARMOR", "LEATHER_ARCHER_ARMOR", "RING_ARCHER_ARMOR",),
         "ATTACK": ("FLETCHING", "BODKIN_ARROW", "BRACER",),
         "MISSING_TECHS": (
@@ -102,6 +74,149 @@ BUILDINGS = {
     },
 }
 
+CIV_UNIT_BONUSES = {
+    "Aztecs": {
+        "Archer": 0.11,
+        "Skirmisher": 1.11,
+        "Man-At-Arms": 4.11,
+        "Pike": 4.11,
+        "Eagle": 4.11,
+        "Ram": 0.11,
+        "Onager": 0.11,
+        "Scorpion": 0.11,
+    },
+    "Berbers": {"Knight": 0.2, "Light Cav": 0.2, "Camel": 1.2},
+    "Bohemians": {
+        "Archer": 0.5,
+        "Skirmisher": 0.5,
+        "Hand Cannoneer": 1.5,
+        "Pike": 0.12,
+    },
+    "Britons": {"Archer": 1.7, "Skirmisher": 0.7, "Trebuchet": 1},
+    "Bulgarians": {"Knight": 0.33, "Light Cav": 0.33, "Man-At-Arms": 2.5,},
+    "Burgundians": {"Knight": 1, "BBC": 0.25, "Hand Cannoneer": 0.25,},
+    "Burmese": {
+        "Knight": 0.6,
+        "Light Cav": 0.6,
+        "Elephant": 1.6,
+        "Man-At-Arms": 3.0,
+        "Pike": 3.0,
+    },
+    "Byzantines": {"Camel": 0.25, "Skirmisher": 0.25, "Pike": 0.25},
+    "Celts": {
+        "Man-At-Arms": 0.03,
+        "Pike": 0.03,
+        "Ram": 2.25,
+        "Onager": 2.25,
+        "Scorpion": 2.25,
+    },
+    "Chinese": {"Scorpion": 2.0,},
+    "Cumans": {
+        "Knight": 0.03,
+        "Light Cav": 0.53,
+        "Steppe Lancer": 0.53,
+        "Cavalry Archer": 0.53,
+        "Ram": 2.0,
+    },
+    "Ethiopians": {"Archer": 0.18, "Onager": 0.25, "BBC": 0.25},
+    "Franks": {"Knight": 2.2, "Light Cav": 2.2},
+    "Goths": {"Man-At-Arms": 1.65, "Pike": 1.65},
+    "Huns": {"Knight": 0.2, "Light Cav": 0.2, "Cavalry Archer": 0.2, "Trebuchet": 2},
+    "Incas": {"Skirmisher": 0.5, "Eagle": 1},
+    "Indians": {"Light Cav": 1.0, "Camel": 1.4, "Hand Cannoneer": 0.5},
+    "Italians": {"Hand Cannoneer": 0.2, "BBC": 0.2},
+    "Japanese": {"Man-At-Arms": 0.33, "Pike": 0.33, "Trebuchet": 1},
+    "Khmer": {"Elephant": 3.01, "Scorpion": 10.5},
+    "Koreans": {"Archer": 0.1, "Skirmisher": 0.1, "Cavalry Archer": 0.1, "Onager": 1.5},
+    "Lithuanians": {"Pike": 0.51, "Knight": 2, "Skirmisher": 0.5},
+    "Magyars": {
+        "Light Cav": 0.15,
+        "Cavalry Archer": 1,
+        "Archer": 0.2,
+        "Skirmisher": 0.2,
+    },
+    "Malay": {"Elephant": 0.4, "Man-At-Arms": 1},
+    "Malians": {
+        "Knight": 5.0,
+        "Light Cav": 5.0,
+        "Camel": 5.0,
+        "Man-At-Arms": 3.0,
+        "Pike": 3.0,
+    },
+    "Mayans": {"Archer": 0.3, "Skirmisher": 0.8, "Eagle": 5},
+    "Mongols": {
+        "Light Cav": 1.9,
+        "Steppe Lancer": 1.9,
+        "Cavalry Archer": 0.25,
+        "Onager": 0.5,
+        "Scorpion": 0.5,
+        "Ram": 0.5,
+    },
+    "Persians": {"Knight": 2, "Archer": 1},
+    "Poles": {"Knight": 1, "Light Cav": 1.25},
+    "Portuguese": {
+        "Knight": 0.1,
+        "Archer": 0.1,
+        "Cavalry Archer": 0.1,
+        "Hand Cannoneer": 1.1,
+        "Man-At-Arms": 0.1,
+        "Onager": 0.1,
+        "Scorpion": 0.1,
+        "Trebuchet": 0.1,
+        "BBC": 1.1,
+        "Ram": 0.1,
+    },
+    "Saracens": {"Archer": 0.2, "Camel": 1.5},
+    "Sicilians": {"Knight": 3, "Light Cav": 2.0, "Archer": 2.0},
+    "Slavs": {
+        "Man-At-Arms": 0.25,
+        "Pike": 0.25,
+        "Onager": 0.15,
+        "Scorpion": 0.15,
+        "Ram": 0.15,
+    },
+    "Spanish": {"Hand Cannoneer": 0.18},
+    "Tatars": {
+        "Light Cav": 1.1,
+        "Knight": 0.1,
+        "Camel": 0.1,
+        "Steppe Lancer": 1.1,
+        "Cavalry Archer": 1.65,
+        "Archer": 0.25,
+        "Skirmisher": 0.25,
+        "Hand Cannoneer": 0.25,
+        "Man-At-Arms": 0.1,
+        "Pike": 0.1,
+        "Scorpion": 0.25,
+        "Onager": 0.25,
+        "Trebuchet": 1.25,
+        "Ram": 0.1,
+    },
+    "Teutons": {
+        "Knight": 2.0,
+        "Man-At-Arms": 2.0,
+        "Pike": 2.0,
+        "Onager": 1.0,
+        "Scorpion": 1.0,
+        "Trebuchet": 1.0,
+        "BBC": 1.0,
+        "Ram": 1.0,
+    },
+    "Turks": {
+        "Light Cav": 0.5,
+        "Cavalry Archer": 1.5,
+        "Hand Cannoneer": 1.25,
+        "BBC": 2.25,
+    },
+    "Vietnamese": {
+        "Elephant": 2.0,
+        "Cavalry Archer": 1.5,
+        "Archer": 1.5,
+        "Skirmisher": 1.5,
+    },
+    "Vikings": {"Man-At-Arms": 4.0, "Pike": 4.0},
+}
+
 
 class Civilization:
     """ Holds buildings, techs, and unit codes for given civilization."""
@@ -145,38 +260,38 @@ in a given building and their associated techs."""
         info = BUILDINGS[building]
         for units in info["PRESENT_UNITS"]:
             for unit in reversed(units):
-                key = int(self.key_lookup[unit])
+                key = self.key_lookup[unit]
                 if key in self.units:
                     data["units"].append(key)
                     break
         for unit in info["MISSING_UNITS"]:
-            key = int(self.key_lookup[unit])
+            key = self.key_lookup[unit]
             if key not in self.units:
                 data["units"].append(-1 * key)
         if info["ATTACK"] and info["ARMOR"]:
             attack = 0
             for tech in info["ATTACK"]:
-                key = int(self.key_lookup[tech])
+                key = self.key_lookup[tech]
                 if key in self.techs:
                     attack += 1
             data["blacksmith_techs"].append(attack)
             armor = 0
             for tech in info["ARMOR"]:
-                key = int(self.key_lookup[tech])
+                key = self.key_lookup[tech]
                 if key in self.techs:
                     armor += 1
             data["blacksmith_techs"].append(armor)
         for tech in info["PRESENT_TECHS"]:
             if not self.verify_tech(tech):
                 continue
-            key = int(self.key_lookup[tech])
+            key = self.key_lookup[tech]
             if key in self.techs:
                 data["techs"].append(key)
                 break
         for tech in info["MISSING_TECHS"]:
             if not self.verify_tech(tech):
                 continue
-            key = int(self.key_lookup[tech])
+            key = self.key_lookup[tech]
             if key not in self.techs:
                 data["techs"].append(-1 * key)
         return data
@@ -215,6 +330,142 @@ class CivilizationManager:
                     self.unit_counts[unit] += 1
                 return civ
         return None
+
+    def display_bonuses(self):
+        """ Display civ bonuses to help evaluate units."""
+        for civ_name in self.civilizations:
+            print("*" * len(civ_name))
+            print(civ_name)
+            print("*" * len(civ_name))
+            for info in self.building_info(civ_name).values():
+                for items in info.values():
+                    for item in items:
+                        print(item)
+
+    def calculate_unit_values(self, civ_name=None):
+        for _civ_name in self.civilizations:
+            if civ_name and _civ_name != civ_name:
+                continue
+            print("*" * len(_civ_name))
+            print(_civ_name)
+            print("*" * len(_civ_name))
+            self.calculate_unit_value(_civ_name)
+            print()
+
+    def calculate_unit_value(self, civ_name):
+        """ Calculate the pre-bonus value of the given units in a civ."""
+        lookup = self.dependency_manager.constant_lookup
+        civ = self.civilizations[civ_name]
+        values = defaultdict(float)
+        range_units = [
+            "Archer",
+            "Skirmisher",
+        ]
+        stable = civ.verify_building("STABLE")
+        # Stable
+        if stable:
+            info = civ.building_data("STABLE")
+            stable_units = []
+            if -1 * lookup["KNIGHT"] not in info["units"]:
+                stable_units.append("Knight")
+            if lookup["KNIGHT"] in info["units"]:
+                values["Knight"] -= 1
+            if lookup["PALADIN"] in info["units"]:
+                values["Knight"] += 1
+            if -1 * lookup["LIGHT_CAVALRY"] not in info["units"]:
+                stable_units.append("Light Cav")
+            if lookup["HUSSAR"] in info["units"]:
+                values["Light Cav"] += 1
+            if lookup["WINGED_HUSSAR"] in info["units"]:
+                values["Light Cav"] += 2
+            if lookup["CAMEL_RIDER"] in info["units"]:
+                stable_units.append("Camel")
+            if lookup["IMPERIAL_CAMEL_RIDER"] in info["units"]:
+                stable_units.append("Camel")
+                values["Camel"] += 1
+            if lookup["BATTLE_ELEPHANT"] in info["units"]:
+                stable_units.append("Elephant")
+            if lookup["STEPPE_LANCER"] in info["units"]:
+                stable_units.append("Steppe Lancer")
+            for unit in stable_units:
+                for tech in info["blacksmith_techs"]:
+                    values[unit] += tech - 2
+                if -1 * lookup["BLOODLINES"] in info["techs"]:
+                    values[unit] -= 1
+                if -1 * lookup["HUSBANDRY"] in info["techs"]:
+                    values[unit] -= 0.1
+
+        # Range
+        info = civ.building_data("ARCHERY_RANGE")
+        if stable:
+            range_units.append("Cavalry Archer")
+            if lookup["HEAVY_CAV_ARCHER"] in info["units"]:
+                values["Cavalry Archer"] += 1
+            if -1 * lookup["BLOODLINES"] in info["techs"]:
+                values["Cavalry Archer"] -= 1
+            if -1 * lookup["HUSBANDRY"] in info["techs"]:
+                values["Cavalry Archer"] -= 0.1
+            if lookup["PARTHIAN_TACTICS"] in info["techs"]:
+                values["Cavalry Archer"] += 1.5
+
+        if lookup["ARBALESTER"] in info["units"]:
+            values["Archer"] += 1
+        if lookup["IMPERIAL_SKIRMISHER"] in info["units"]:
+            values["Skirmisher"] += 1
+        for unit in range_units:
+            for tech in info["blacksmith_techs"]:
+                values[unit] += tech - 2
+            if -1 * lookup["THUMB_RING"] in info["techs"]:
+                values[unit] -= 1
+        # HC
+        if lookup["HAND_CANNONEER"] in info["units"]:
+            values["Hand Cannoneer"] += info["blacksmith_techs"][1] - 2
+
+        # Barracks
+        info = civ.building_data("BARRACKS")
+        barracks_units = ["Man-At-Arms", "Pike"]
+        if lookup["EAGLE_WARRIOR"] in info["units"]:
+            barracks_units.append("Eagle")
+        if lookup["CHAMPION"] in info["units"]:
+            values["Man-At-Arms"] += 1
+        if -1 * lookup["SUPPLIES"] in info["techs"]:
+            values["Man-At-Arms"] -= 0.15
+        if lookup["HALBERDIER"] in info["units"]:
+            values["Pike"] += 1
+        for unit in barracks_units:
+            for tech in info["blacksmith_techs"]:
+                values[unit] += tech - 2
+            if -1 * lookup["SQUIRES"] in info["techs"]:
+                values[unit] -= 0.1
+
+        # Siege
+        info = civ.building_data("SIEGE_WORKSHOP")
+        siege_units = [
+            "Onager",
+            "Scorpion",
+            "Trebuchet",
+        ]
+        if lookup["BOMBARD_CANNON"] in info["units"]:
+            siege_units.append("BBC")
+        if lookup["SIEGE_ONAGER"] in info["units"]:
+            values["Onager"] += 1
+        if lookup["HEAVY_SCORPION"] in info["units"]:
+            values["Scorpion"] += 1
+        for unit in siege_units:
+            values[unit] += 0
+            if lookup["SIEGE_ENGINEERS"] in info["techs"]:
+                values[unit] += 1
+        siege_units.append("Ram")
+        values["Ram"] = 0
+        if lookup["SIEGE_RAM"] in info["units"]:
+            values["Ram"] += 1
+        try:
+            for unit, bonus in CIV_UNIT_BONUSES[civ_name].items():
+                values[unit] += bonus
+
+        except KeyError:
+            pass
+        print(values)
 
     def display_civs(self):
         """ Call display civ on all loaded civs."""
@@ -357,8 +608,8 @@ class DependencyManager:
     def __init__(self):
         self.buildings = defaultdict(set)
         self.constant_lookup = {}
-        self.const_pattern = regex.compile(r"const ([A-Z0-9_]+) = ([0-9]+)")
-        self.pattern = regex.compile(r"(b|u|t)\(([A-Z_]+)\), (u|t)\(([A-Z0-9_]+)")
+        self.const_pattern = re.compile(r"const ([A-Z0-9_]+) = ([0-9]+)")
+        self.pattern = re.compile(r"(b|u|t)\(([A-Z_]+)\), (u|t)\(([A-Z0-9_]+)")
         self.building_lookups = {}
 
     def load(self):
@@ -391,7 +642,7 @@ class DependencyManager:
                 const = self.const_pattern.match(line)
                 if const:
                     key, value = const.groups()
-                    self.constant_lookup[key] = value
+                    self.constant_lookup[key] = int(value)
                 if in_connections:
                     if ";" in line:
                         in_connections = False
@@ -413,13 +664,14 @@ class DependencyManager:
         # Not interesting, as civs with these always have all of them
         accounted = set(
             (
+                "ARCHER",
+                "SKIRMISHER",
+                "SLINGER",
+                "ELITE_GENITOUR",
                 "MAN_AT_ARMS",
                 "MILITIA",
                 "SPEARMAN",
                 "LONG_SWORDSMAN",
-                "SKIRMISHER",
-                "SLINGER",
-                "ELITE_GENITOUR",
                 "SCOUT_CAVALRY",
                 "HEAVY_CAMEL_RIDER",
                 "ELITE_STEPPE_LANCER",
@@ -463,6 +715,20 @@ def heuristics(key):
     c_m.heuristics(key)
 
 
+def bonuses():
+    """ Show the bonuses."""
+    c_m = CivilizationManager()
+    c_m.load_civs()
+    c_m.display_bonuses()
+
+
+def unit_values(cname):
+    """ Show the unit values of civ."""
+    c_m = CivilizationManager()
+    c_m.load_civs(cname)
+    c_m.calculate_unit_values(cname)
+
+
 def verify():
     """ Runs dependency manager unit/tech verification."""
     dep = DependencyManager()
@@ -478,6 +744,8 @@ if __name__ == "__main__":
     parser.add_argument("-v", action="store_true", help="Run verify")
     parser.add_argument("-civ", type=str, help="Run for specific civ")
     parser.add_argument("-html", action="store_true", help="Display html")
+    parser.add_argument("-bonuses", action="store_true", help="Display bonuses")
+    parser.add_argument("-values", action="store_true", help="Display unit values")
     args = parser.parse_args()
     if args.heur:
         heuristics(args.heur)
@@ -485,5 +753,9 @@ if __name__ == "__main__":
         verify()
     elif args.html:
         html(args.civ)
+    elif args.bonuses:
+        bonuses()
+    elif args.values:
+        unit_values(args.civ)
     else:
         run(args.civ)
