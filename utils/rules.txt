@@ -1,0 +1,39 @@
+All:
++1/+1|2 armor: 1 point
++x melee attach: x
++x range/+x range attack: x
+%x creation speed: x/2
+%x attack speed: x
+%x movement speed: .1 * x
+%x cost decrease: x
+%x damage to everything: x
+%x damage to unit: x/2
+%x damage to building: x/10
+Tech available early: 1 point
+Tech cheaper: 0
+15% foot hp: 1 point
+20% cav/siege hp: 1 point
+
+blast damage: .25
+regeneration: 1
+min range lessened: .5
+line of sight:  .1 * x
+trashify: 1
+
+Range:
+# Hitpoints:Range:Attack:MeleeArmor:PierceArmor
+=(B12-$B$12)/$B$12/0.15 + (C12- C$12)/2 + (D12-D$12)/2  + (E12- E$12)/2 + (F12-F$12)/2
+
+Siege:
+=(B36-$B$36)/$B$36/0.2 + (C36- C$36)/2 + (D36-D$36)/2  + (E36- E$36)/2 + (F36-F$36)/2
+Mangonel:
+=(B26-$B$26)/$B$26/0.2 + (C26- C$26)/2 + (0.1*D26-0.1*D$26)/2  + (E26- E$26)/2 + (F26-F$26)/2
+Ram
+=(B32-$B$32)/$B$32/0.25 + (D32-D$32)/37.5  + (E32- E$32)/2 + (0.01*F32-0.01*F$32)/2
+
+Infantry
+=(B22-$B$22)/$B$22/0.15 + (D22-D$22)  + (E22- E$22)/2 + (F22-F$22)/2
+
+Cav
+=(B50-$B$50)/$B$50/0.3 + (D50-D$50)  + (E50- E$50)/2 + (F50-F$50)/2 
+

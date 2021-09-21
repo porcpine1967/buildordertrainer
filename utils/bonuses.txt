@@ -1,0 +1,348 @@
+  ******
+  Aztecs
+  ******
+  Military units created 11% faster
+  + .11
+  Atlatl: Skirmishers have +1 attack, +1 range.
+  + 1
+  Garland Wars: Infantry have +4 attack.
+  + 4
+  *******
+  Berbers
+  *******
+  Stable units cost -15% in Castle, -20% in Imperial Age
+  + .2
+  Maghrebi Camels: Camel troops regenerate.
+  + 1
+  *********
+  Bohemians
+  *********
+  Chemistry and Hand Cannoneer available in Castle Age
+  + .5 (Range); +1 HC
+  Spearman-line deals +25% bonus damage
+  + .12
+  *******
+  Britons
+  *******
+  Foot archers (except skirmishers) +1 range in Castle and Imperial Age (+2 total)
+  + 1
+  Archery Ranges work 20% faster
+  + .2 
+  Yeomen: Foot archers have +1 range
+  + .5
+  Warwolf: Improves your Trebuchets by giving them blast damage.
+  + 1
+  **********
+  Bulgarians
+  **********
+  Militia-line upgrades free
+  + 0
+  Blacksmith and Siege Workshop technologies cost -50% food
+  + 0
+  Stirrups: Cavalry attack 33% faster.
+  + .33
+  Bagains: Militia-line receives +5 melee armor.
+  + 2.5
+  ***********
+  Burgundians
+  ***********
+  Stable technologies cost -50%
+  + 0
+  Cavalier upgrade available in Castle Age
+  + 1
+  Gunpowder units +25% attack
+  + .25
+  *******
+  Burmese
+  *******
+  Infantry +1 attack per age (starting in the Feudal Age)
+  + 3
+  Howdah: Battle Elephants receive +1 normal/+2 pierce armor.
+  + 1
+  Manipur Cavalry: Cavalry and Arambai deal +6 bonus attack vs buildings.
+  + .6
+  **********
+  Byzantines
+  **********
+  Camel Riders, Skirmishers, Pikemen, Halberdiers cost -25%
+  + .25
+  *****
+  Celts
+  *****
+  Infantry move 15% faster (starting in the Feudal Age)
+  .03
+  Siege weapons fire 25% faster
+  .5
+  Siege Workshops work 20% faster
+  .2
+  Furor Celtica: Siege Workshop units have +40% hit points.
+  + 2
+  *******
+  Chinese
+  *******
+  Technologies cost -10% Feudal, -15% Castle, -20% Imperial Age
+   + 0
+  Rocketry: scorpions have +4 piercing attack.
+  +2
+  ******
+  Cumans
+  ******
+  Siege Workshop and Battering Ram available in the Feudal Age; Capped Ram upgrade available in Castle Age
+   + 2 (each early)
+  Cavalry 5% faster each age (starting in Feudal Age)
+   + .015 * 2 = .03
+  Steppe Husbandry: Light Cavalry, Steppe Lancers and Cavalry Archers trained 100% faster.
+   + .5
+  **********
+  Ethiopians
+  **********
+  Archers fire 18% faster
+   + .18
+  Pikeman upgrade free
+   + 0
+  Torsion Engines: Siege workshop units blast radius increased.
+   + .25
+  ******
+  Franks
+  ******
+  Cavalry +20% hit points starting in Feudal Age
+   + 2
+  Chivalry: Increases the production speed of stables by +40%.
+   + .2
+  *****
+  Goths
+  *****
+  Infantry cost -20% in Dark, -25% in Feudal, -30% in Castle, -35% in Imperial Age
+  + .35
+  Infantry +1 attack vs. buildings per age (starting from Feudal Age)
+  + .3 * 2 = .6
+  Barracks work 20% faster
+  + .1 * 2 = .2
+  Perfusion: Barracks units are created 100% faster.
+  + .5
+  ****
+  Huns
+  ****
+  Cavalry Archers cost -10% Castle, -20% Imperial Age
+   + .2
+  Trebuchets +30% accuracy
+   + 1 * 2 = 2
+  Stables work 20% faster
+   + .1 * 2 = .2
+  *****
+  Incas
+  *****
+  Andean Sling: Upgrades your skirmishers and slingers by removing their minimum range.
+  + .5
+  Fabric Shields: Eagles have +1 armor/+2 pierce armor.
+  + 1
+  *******
+  Indians
+  *******
+  Stable units +1P armor in Castle and Imperial Age (+2 total)
+  + 1
+  Camel units +4 attack vs. buildings
+   + .4
+  Shatagni: Hand cannoneers have +1 range.
+  + .5
+  ********
+  Italians
+  ********
+  Dock and University technologies cost -33%
+   + 0
+  Gunpowder units cost -20%
+   BBC: .2
+  Pavise: Foot Archers and Condottieri have +1 armor/+1 pierce armor.
+   + 1
+  ********
+  Japanese
+  ********
+  Infantry attack 33% faster starting in Feudal Age
+  + .33
+  Kataparuto: Trebuchets fire and pack/unpack faster.
+   + 1
+  *****
+  Khmer
+  *****
+  Battle Elephants move 10% faster
+   + .01
+  Scorpions +1 range
+   + .5
+  Tusk Swords: Battle Elephants receive +3 attack
+   + 3
+  Double Crossbow: Ballista Elephants and Scorpions fire two projectiles.
+   + 10 (11 more damage, but less accurate)
+  *******
+  Koreans
+  *******
+  Archer armor upgrades free
+   + 0
+  Military units (except siege weapons) cost -20% wood
+   + .1
+  Mangonel-line minimum range reduced
+   + .66
+  Shinkichon: Mangonels, Onagers, and Siege Onagers have +1 range.
+   + .5
+  ***********
+  Lithuanians
+  ***********
+  Spearman-line and Skirmishers move 10% faster
+   + .01
+  Each garrisoned relic gives +1 attack to Knights and Leitis (maximum +4)
+   + 2
+  Tower Shields: Pikemen and Skirmishers receive +2 pierce armor.
+   + .5
+  *******
+  Magyars
+  *******
+  Forging, Iron Casting, Blast Furnace free
+  + 0
+  Scout Cavalry, Light Cavalry, Hussar cost -15%
+  + .15
+  Foot archers +2 LOS
+  + .2
+  Recurve Bow: Cavalry archers have +1 range, +1 attack.
+  + 1
+  *****
+  Malay
+  *****
+  Battle Elephants cost -30% in Castle, -40% in Imperial Age
+  + .4
+  Forced Levy: Militia-line gold cost is replaced by additional food cost.
+  + 1
+  *******
+  Malians
+  *******
+  Barracks units +1P armor per age (starting from Feudal Age)
+   + 3 (1.5 * 2)
+  Farimba: Cavalry +5 attack.
+   + 5
+  ******
+  Mayans
+  ******
+  Archers cost -10% Feudal, -20% Castle, -30% Imperial Age
+  + .3
+  Hul'che Javelineers: Improves your Skirmishers by making them throw a second projectile.
+  + .8
+  El Dorado: Eagle Warriors have +40 hit points.
+  + 5 ((40/60) / .15)
+  *******
+  Mongols
+  *******
+  Cavalry archers fire 25% faster
+  + .25
+  Light Cavalry, Hussars, Steppe Lancers +30% hit points
+  + 1.5
+  Scout Cavalry, Light Cavalry, Hussar +2 line of sight
+  + .4
+  Drill: Siege Workshop units move 50% faster.
+  + .5
+  ********
+  Persians
+  ********
+  Knights +2 attack vs. Archers
+  + 2
+  Kamandaran: Archer-line gold cost is replaced by additional wood cost.
+  + 1
+  *****
+  Poles
+  *****
+  Scout Cavalry, Light Cavalry, Hussar +1 attack vs. Archers
+  + 1
+  Szlachta Privileges: Knights cost -60% gold.
+  + 1
+  Lechitic Legacy: Light Cavalry deals trample damage.
+  + .25
+  **********
+  Portuguese
+  **********
+  All units cost -20% gold
+  + .1
+  Arquebus: Ballistics for gunpowder units.
+  + 1
+  ********
+  Saracens
+  ********
+  Camel units +10 hit points
+  + .5
+  Foot archers +2 attack vs. buildings
+  + .2
+  Zealotry: Camel units have +20 hit points.
+  + 1
+  *********
+  Sicilians
+  *********
+  Land military units (except siege weapons) receive 50% less bonus damage
+   + 2
+  Hauberk: Knights receive +1 normal/+2 pierce armor.
+  + 1
+  *****
+  Slavs
+  *****
+  Supplies free
+  + 0
+  Siege Workshop units 15% cheaper
+  + .15
+  Druzhina: Infantry damage adjacent units.
+  + .25
+  *******
+  Spanish
+  *******
+  Blacksmith upgrades don't cost gold
+  + 0
+  Gunpowder units fire 18% faster
+  + .18
+  ******
+  Tatars
+  ******
+  Units deal +25% damage when fighting from higher elevation
+  + .25 Range; .1 else
+  Thumb Ring, Parthian Tactics free
+  + 0
+  Cavalry Archers +2 LOS
+  + .4
+  Silk Armor: Light Cavalry, Steppe Lancers and Cavalry Archers receive +1 normal/+1 pierce armor.
+  + 1
+  Timurid Siegecraft: Trebuchets receive +2 range. Enables Flaming Camels.
+  + 1
+  *******
+  Teutons
+  *******
+  Barracks and Stable units +1 armor in Castle and Imperial Age (+2 total)
+  + 2
+  Ironclad: Increases the armor of all siege weapons so they're more resistant to melee attack.
+  + 1
+  *****
+  Turks
+  *****
+  Gunpowder units +25% hit points; researching gunpowder technologies costs -50%; Chemistry free
+  + 1
+  Scout Cavalry, Light Cavalry, Hussar +1P armor
+  + .5
+  Light Cavalry and Hussar upgrades free
+  + 0
+  Gunpowder units created 25% faster
+  + .25
+  Sipahi: Cavalry archers have +20 hit points.
+  + 1.5
+  Artillery: Bombard Towers, Bombard Cannons, and Cannon Galleons have +2 range.
+  + 1
+  **********
+  Vietnamese
+  **********
+  Archery Range units +20% HP
+  + 1.5
+  Conscription free
+  + 0
+  Imperial Skirmisher upgrade available in the Imperial Age
+  Chatras: Battle Elephants receive +50 HP.
+  +2
+  *******
+  Vikings
+  *******
+  Infantry +10% hit points Feudal, +15% Castle, +20% Imperial Age
+  + 1.5
+  Chieftains: Infantry get attack bonus vs. cavalry.
+  + 2.5
+
+  

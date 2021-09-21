@@ -93,8 +93,8 @@ CIV_UNIT_BONUSES = {
         "Pike": 0.12,
     },
     "Britons": {"Archer": 1.7, "Skirmisher": 0.7, "Trebuchet": 1},
-    "Bulgarians": {"Knight": 0.33, "Light Cav": 0.33, "Man-At-Arms": 2.5,},
-    "Burgundians": {"Knight": 1, "BBC": 0.25, "Hand Cannoneer": 0.25,},
+    "Bulgarians": {"Knight": 0.33, "Light Cav": 0.33, "Man-At-Arms": 2.5},
+    "Burgundians": {"Knight": 1, "BBC": 0.25, "Hand Cannoneer": 0.25},
     "Burmese": {
         "Knight": 0.6,
         "Light Cav": 0.6,
@@ -127,7 +127,12 @@ CIV_UNIT_BONUSES = {
     "Italians": {"Hand Cannoneer": 0.2, "BBC": 0.2},
     "Japanese": {"Man-At-Arms": 0.33, "Pike": 0.33, "Trebuchet": 1},
     "Khmer": {"Elephant": 3.01, "Scorpion": 10.5},
-    "Koreans": {"Archer": 0.1, "Skirmisher": 0.1, "Cavalry Archer": 0.1, "Onager": 1.5},
+    "Koreans": {
+        "Archer": 0.1,
+        "Skirmisher": 0.1,
+        "Cavalry Archer": 0.1,
+        "Onager": 1.16,
+    },
     "Lithuanians": {"Pike": 0.51, "Knight": 2, "Skirmisher": 0.5},
     "Magyars": {
         "Light Cav": 0.15,
@@ -343,14 +348,12 @@ class CivilizationManager:
                         print(item)
 
     def calculate_unit_values(self, civ_name=None):
+        unit_values = {}
         for _civ_name in self.civilizations:
             if civ_name and _civ_name != civ_name:
                 continue
-            print("*" * len(_civ_name))
-            print(_civ_name)
-            print("*" * len(_civ_name))
-            self.calculate_unit_value(_civ_name)
-            print()
+            unit_values[_civ_name] = self.calculate_unit_value(_civ_name)
+        return unit_values
 
     def calculate_unit_value(self, civ_name):
         """ Calculate the pre-bonus value of the given units in a civ."""
@@ -369,20 +372,20 @@ class CivilizationManager:
             if -1 * lookup["KNIGHT"] not in info["units"]:
                 stable_units.append("Knight")
             if lookup["KNIGHT"] in info["units"]:
-                values["Knight"] -= 1
+                values["Knight"] -= 2.5
             if lookup["PALADIN"] in info["units"]:
-                values["Knight"] += 1
+                values["Knight"] += 3.6
             if -1 * lookup["LIGHT_CAVALRY"] not in info["units"]:
                 stable_units.append("Light Cav")
             if lookup["HUSSAR"] in info["units"]:
                 values["Light Cav"] += 1
             if lookup["WINGED_HUSSAR"] in info["units"]:
-                values["Light Cav"] += 2
+                values["Light Cav"] += 4
             if lookup["CAMEL_RIDER"] in info["units"]:
                 stable_units.append("Camel")
             if lookup["IMPERIAL_CAMEL_RIDER"] in info["units"]:
                 stable_units.append("Camel")
-                values["Camel"] += 1
+                values["Camel"] += 2.8
             if lookup["BATTLE_ELEPHANT"] in info["units"]:
                 stable_units.append("Elephant")
             if lookup["STEPPE_LANCER"] in info["units"]:
@@ -400,7 +403,7 @@ class CivilizationManager:
         if stable:
             range_units.append("Cavalry Archer")
             if lookup["HEAVY_CAV_ARCHER"] in info["units"]:
-                values["Cavalry Archer"] += 1
+                values["Cavalry Archer"] += 2
             if -1 * lookup["BLOODLINES"] in info["techs"]:
                 values["Cavalry Archer"] -= 1
             if -1 * lookup["HUSBANDRY"] in info["techs"]:
@@ -409,9 +412,13 @@ class CivilizationManager:
                 values["Cavalry Archer"] += 1.5
 
         if lookup["ARBALESTER"] in info["units"]:
-            values["Archer"] += 1
+            values["Archer"] += 1.5
+        if -1 * lookup["CROSSBOWMAN"] in info["units"]:
+            values["Archer"] -= 2.0
         if lookup["IMPERIAL_SKIRMISHER"] in info["units"]:
             values["Skirmisher"] += 1
+        if -1 * lookup["ELITE_SKIRMISHER"] in info["units"]:
+            values["Skirmisher"] -= 2.0
         for unit in range_units:
             for tech in info["blacksmith_techs"]:
                 values[unit] += tech - 2
@@ -427,11 +434,15 @@ class CivilizationManager:
         if lookup["EAGLE_WARRIOR"] in info["units"]:
             barracks_units.append("Eagle")
         if lookup["CHAMPION"] in info["units"]:
-            values["Man-At-Arms"] += 1
+            values["Man-At-Arms"] += 2.6
+        if -1 * lookup["TWO_HANDED_SWORDSMAN"] in info["units"]:
+            values["Man-At-Arms"] -= 3
         if -1 * lookup["SUPPLIES"] in info["techs"]:
             values["Man-At-Arms"] -= 0.15
         if lookup["HALBERDIER"] in info["units"]:
-            values["Pike"] += 1
+            values["Pike"] += 2.6
+        if -1 * lookup["PIKEMAN"] in info["units"]:
+            values["Pike"] -= 2.2
         for unit in barracks_units:
             for tech in info["blacksmith_techs"]:
                 values[unit] += tech - 2
@@ -447,25 +458,29 @@ class CivilizationManager:
         ]
         if lookup["BOMBARD_CANNON"] in info["units"]:
             siege_units.append("BBC")
+        if lookup["MANGONEL"] in info["units"]:
+            values["Onager"] -= 2.3
         if lookup["SIEGE_ONAGER"] in info["units"]:
-            values["Onager"] += 1
+            values["Onager"] += 2.6
         if lookup["HEAVY_SCORPION"] in info["units"]:
-            values["Scorpion"] += 1
+            values["Scorpion"] += 3.25
         for unit in siege_units:
             values[unit] += 0
             if lookup["SIEGE_ENGINEERS"] in info["techs"]:
                 values[unit] += 1
         siege_units.append("Ram")
         values["Ram"] = 0
+        if lookup["BATTERING_RAM"] in info["units"]:
+            values["Ram"] -= 1.2
         if lookup["SIEGE_RAM"] in info["units"]:
-            values["Ram"] += 1
+            values["Ram"] += 2.75
         try:
             for unit, bonus in CIV_UNIT_BONUSES[civ_name].items():
                 values[unit] += bonus
 
         except KeyError:
             pass
-        print(values)
+        return values
 
     def display_civs(self):
         """ Call display civ on all loaded civs."""
@@ -726,7 +741,30 @@ def unit_values(cname):
     """ Show the unit values of civ."""
     c_m = CivilizationManager()
     c_m.load_civs(cname)
-    c_m.calculate_unit_values(cname)
+    for name, units in c_m.calculate_unit_values(cname).items():
+        print("*" * len(name))
+        print(name)
+        print("*" * len(name))
+        print(units)
+
+
+def units_ranked(unit_name):
+    """ Print ranked list of civs by unit strength."""
+    c_m = CivilizationManager()
+    c_m.load_civs()
+    unit_strengths = c_m.calculate_unit_values()
+    civs = Counter()
+    for civ, units in unit_strengths.items():
+        if unit_name in units:
+            civs[civ] = units[unit_name]
+    last_rank = 0
+    last_strength = 0
+    for idx, pair in enumerate(civs.most_common(), 1):
+        name, strength = pair
+        if strength != last_strength:
+            last_rank = idx
+            last_strength = strength
+        print("{:2}. {:15} {:5.2f}".format(last_rank, name, last_strength))
 
 
 def verify():
@@ -746,6 +784,7 @@ if __name__ == "__main__":
     parser.add_argument("-html", action="store_true", help="Display html")
     parser.add_argument("-bonuses", action="store_true", help="Display bonuses")
     parser.add_argument("-values", action="store_true", help="Display unit values")
+    parser.add_argument("-best", help="Unit type to display ranked list of")
     args = parser.parse_args()
     if args.heur:
         heuristics(args.heur)
@@ -757,5 +796,7 @@ if __name__ == "__main__":
         bonuses()
     elif args.values:
         unit_values(args.civ)
+    elif args.best:
+        units_ranked(args.best)
     else:
         run(args.civ)
