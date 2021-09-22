@@ -450,8 +450,7 @@ class CivilizationManager:
         with open(TECHTREE_PATH / "locales" / "en" / "strings.json") as fobj:
             self.strings = json.load(fobj)
         self.unit_counts = defaultdict(int)
-        self.categorized_units = None
-        self.rare_units = None
+        self.civ_ranks = None
 
     def load_civs(self, civ_name=None):
         """ Load all civilizations."""
@@ -526,8 +525,10 @@ class CivilizationManager:
             if start_team:
                 lines.append(line[1:])
                 continue
+            if civ_name == "Chinese" and line.startswith("\n-15% Castle"):
+                lines[-1] += " " + line[1:]
             if line.startswith("\n• ") and not start_unique:
-                lines.append(line[3:])
+                lines.append(line[3:].strip())
             if line.startswith("\n<b>Unique Techs"):
                 start_unique = True
             if line.startswith("\n<b>Team Bonus"):
@@ -620,11 +621,13 @@ class CivilizationManager:
 
     def ranked_units(self):
         """ Builds dictionary of civname:unit-ranks."""
+        if self.civ_ranks:
+            return self.civ_ranks
         unit_civ_strengths = defaultdict(Counter)
         for civ, unit_strengths in self.calculate_unit_values().items():
             for unit, strength in unit_strengths.items():
                 unit_civ_strengths[unit][civ] = strength
-        civ_ranks = defaultdict(Counter)
+        self.civ_ranks = defaultdict(Counter)
         subunit_lookup = {}
         for unit, civ_strengths in unit_civ_strengths.items():
             if unit in subunit_lookup:
@@ -645,17 +648,25 @@ class CivilizationManager:
                     last_rank = idx
                     last_strength = strength
                 for subunit in subunits:
-                    civ_ranks[name][self.name_for_string_key(subunit)] = last_rank
-        return civ_ranks
+                    self.civ_ranks[name][
+                        self.name_for_string_key(subunit)
+                    ] = "{}/{}".format(last_rank, len(civ_strengths))
+        return self.civ_ranks
 
     def production_lines(self, civ_name):
         """ List of production lines for civ. Add ranks where appropriate"""
         lines = []
+        lookup = self.ranked_units()[civ_name]
         for building, info in self.building_info(civ_name).items():
             lines.append("<b>{}</b>".format(building))
             if info["techs"]:
                 lines.append(", ".join(info["techs"]))
-            lines.extend(info["units"])
+            for unit in info["units"]:
+                if unit in lookup:
+                    lines.append("{} ({})".format(unit, lookup[unit]))
+                else:
+                    lines.append(unit)
+        print(lines)
         return lines
 
     def heuristics(self, key):
@@ -795,13 +806,11 @@ def unit_values(cname):
     """ Show the unit values of civ."""
     c_m = CivilizationManager()
     c_m.load_civs(cname)
-    for civ, unit_values in c_m.ranked_units().items():
-        print(civ, unit_values)
-    # for name, units in c_m.calculate_unit_values(cname).items():
-    #     print("*" * len(name))
-    #     print(name)
-    #     print("*" * len(name))
-    #     print(units)
+    for name, units in c_m.calculate_unit_values(cname).items():
+        print("*" * len(name))
+        print(name)
+        print("*" * len(name))
+        print(units)
 
 
 def units_ranked(unit_name):
@@ -841,9 +850,9 @@ def update_arabia(cname):
     exit_civ_pattern = re.compile(r" +},")
     arabia_lines = []
     updates = {}
-    with open("arabia.js") as f:
-        for l in f:
-            arabia_lines.append(l.rstrip())
+    with open("arabia.js") as fobj:
+        for line in fobj:
+            arabia_lines.append(line.rstrip())
     for name in c_m.civilizations:
         in_civ = False
         civ_pattern = re.compile(civ_template.format(name.lower()))
@@ -874,13 +883,13 @@ def update_arabia(cname):
                 print(idx)
                 in_civ = True
                 print(name)
-    with open("arabia.js", "w") as f:
+    with open("arabia.js", "w") as fobj:
         for idx, line in enumerate(arabia_lines):
             if idx in updates:
-                f.write(updates[idx])
+                fobj.write(updates[idx])
             else:
-                f.write(line)
-            f.write("\n")
+                fobj.write(line)
+            fobj.write("\n")
 
 
 if __name__ == "__main__":
