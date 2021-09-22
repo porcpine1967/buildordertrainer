@@ -424,6 +424,8 @@ in a given building and their associated techs."""
                 values[unit] += 1
         siege_units.append("BATTERING_RAM")
         values["BATTERING_RAM"] = 0
+        if lookup["SIEGE_ENGINEERS"] in info["techs"]:
+            values["BATTERING_RAM"] += 0.3
         if lookup["BATTERING_RAM"] in info["units"]:
             values["BATTERING_RAM"] -= 1.2
         if lookup["SIEGE_RAM"] in info["units"]:
