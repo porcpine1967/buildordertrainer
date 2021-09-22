@@ -14,8 +14,7 @@ BUILDINGS = {
     "ARCHERY_RANGE": {
         "PRESENT_UNITS": (
             ("CROSSBOWMAN", "ARBALESTER",),
-            ("SLINGER",),
-            ("IMPERIAL_SKIRMISHER",),
+            ("SKIRMISHER", "IMPERIAL_SKIRMISHER",),
             ("CAVALRY_ARCHER", "HEAVY_CAV_ARCHER",),
             ("HAND_CANNONEER",),
             ("GENITOUR",),
@@ -633,13 +632,17 @@ class CivilizationManager:
             if unit in subunit_lookup:
                 subunits = subunit_lookup[unit]
             else:
+                found = False
                 for category in BUILDINGS.values():
                     useful = category["PRESENT_UNITS"]
                     for unit_set in useful:
                         if unit in unit_set:
                             subunit_lookup[unit] = unit_set
                             subunits = unit_set
+                            found = True
                             break
+                if not found:
+                    continue
             last_rank = 0
             last_strength = 0
             for idx, civ_strength in enumerate(civ_strengths.most_common(), 1):
@@ -668,18 +671,6 @@ class CivilizationManager:
                     lines.append(unit)
         print(lines)
         return lines
-
-    def heuristics(self, key):
-        """ Stuff for decisions. """
-        units = Counter()
-        for name, civ_data in self.data["techtrees"].items():
-            for unit in civ_data[key]:
-                units[unit] += 1
-
-        for unit, cnt in units.most_common():
-            unit_key = self.data["data"][key][str(unit)]["LanguageNameId"]
-            unit_name = self.strings[str(unit_key)]
-            print(unit_name, cnt)
 
 
 class DependencyManager:
@@ -789,10 +780,11 @@ def html(cname):
     c_m.js_civs(cname)
 
 
-def heuristics(key):
-    """ Runs Civ Manager heuristics."""
+def debug():
+    """ Runs Whatever."""
     c_m = CivilizationManager()
-    c_m.heuristics(key)
+    c_m.load_civs()
+    c_m.ranked_units()
 
 
 def bonuses():
@@ -894,9 +886,7 @@ def update_arabia(cname):
 
 if __name__ == "__main__":
     parser = ArgumentParser()
-    parser.add_argument(
-        "-heur", choices=("techs", "units",), help="Run heuristics with key"
-    )
+    parser.add_argument("-debug", action="store_true", help="Do something custom")
     parser.add_argument("-v", action="store_true", help="Run verify")
     parser.add_argument("-civ", type=str, help="Run for specific civ")
     parser.add_argument("-html", action="store_true", help="Display html")
@@ -909,8 +899,8 @@ if __name__ == "__main__":
         help="Update arabia.js bonuses, uniques, and production lines",
     )
     args = parser.parse_args()
-    if args.heur:
-        heuristics(args.heur)
+    if args.debug:
+        debug()
     elif args.v:
         verify()
     elif args.html:

@@ -1,11 +1,13 @@
 function initialize() {
   var keys = Object.keys(strategies);
   var select =  document.getElementById('civ_picker');
+  var opp_select =  document.getElementById('opposition_picker');
   for (var i = 0; i < keys.length; i++) {
       var opt = document.createElement('option');
       opt.value = i;
       opt.innerHTML = keys[i];
-      select.appendChild(opt);
+    select.appendChild(opt);
+	opp_select.appendChild(opt.cloneNode(true));
   }
   choose_civ();
 }
@@ -19,6 +21,17 @@ function choose_civ() {
 function switch_civ() {
   var idx =  document.getElementById('civ_picker').value;
   pick_civ(idx);
+}
+
+function switch_opposition() {
+  var civ_idx =  document.getElementById('opposition_picker').value;
+  var keys = Object.keys(strategies);
+  var civ_name = keys[civ_idx];
+  var civ_info = strategies[civ_name];
+  console.log(civ_name);
+  console.log(civ_info);
+  document.getElementById('antiheader').innerHTML = civ_name;
+  document.getElementById('antiproduction').innerHTML = civ_info['production'];
 }
 
 function pick_civ(civ_idx) {
