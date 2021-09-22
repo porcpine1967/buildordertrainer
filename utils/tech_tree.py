@@ -76,163 +76,170 @@ BUILDINGS = {
 
 CIV_UNIT_BONUSES = {
     "Aztecs": {
-        "Archer": 0.11,
-        "Skirmisher": 1.11,
-        "Man-At-Arms": 4.11,
-        "Pike": 4.11,
-        "Eagle": 4.11,
-        "Ram": 0.11,
-        "Onager": 0.11,
-        "Scorpion": 0.11,
+        "CROSSBOWMAN": 0.11,
+        "IMPERIAL_SKIRMISHER": 1.11,
+        "TWO_HANDED_SWORDSMAN": 4.11,
+        "PIKEMAN": 4.11,
+        "EAGLE_WARRIOR": 4.11,
+        "BATTERING_RAM": 0.11,
+        "MANGONEL": 0.11,
+        "SCORPION": 0.11,
     },
-    "Berbers": {"Knight": 0.2, "Light Cav": 0.2, "Camel": 1.2},
+    "Berbers": {"KNIGHT": 0.2, "LIGHT_CAVALRY": 0.2, "CAMEL_RIDER": 1.2},
     "Bohemians": {
-        "Archer": 0.5,
-        "Skirmisher": 0.5,
-        "Hand Cannoneer": 1.5,
-        "Pike": 0.12,
+        "CROSSBOWMAN": 0.5,
+        "IMPERIAL_SKIRMISHER": 0.5,
+        "HAND_CANNONEER": 1.5,
+        "PIKEMAN": 0.12,
     },
-    "Britons": {"Archer": 1.7, "Skirmisher": 0.7, "Trebuchet": 1},
-    "Bulgarians": {"Knight": 0.33, "Light Cav": 0.33, "Man-At-Arms": 2.5},
-    "Burgundians": {"Knight": 1, "BBC": 0.25, "Hand Cannoneer": 0.25},
+    "Britons": {"CROSSBOWMAN": 1.7, "IMPERIAL_SKIRMISHER": 0.7, "TREBUCHET": 1},
+    "Bulgarians": {"KNIGHT": 0.33, "LIGHT_CAVALRY": 0.33, "TWO_HANDED_SWORDSMAN": 2.5},
+    "Burgundians": {"KNIGHT": 1, "BOMBARD_CANNON": 0.25, "HAND_CANNONEER": 0.25},
     "Burmese": {
-        "Knight": 0.6,
-        "Light Cav": 0.6,
-        "Elephant": 1.6,
-        "Man-At-Arms": 3.0,
-        "Pike": 3.0,
+        "KNIGHT": 0.6,
+        "LIGHT_CAVALRY": 0.6,
+        "BATTLE_ELEPHANT": 1.6,
+        "TWO_HANDED_SWORDSMAN": 3.0,
+        "PIKEMAN": 3.0,
     },
-    "Byzantines": {"Camel": 0.25, "Skirmisher": 0.25, "Pike": 0.25},
+    "Byzantines": {"CAMEL_RIDER": 0.25, "IMPERIAL_SKIRMISHER": 0.25, "PIKEMAN": 0.25},
     "Celts": {
-        "Man-At-Arms": 0.03,
-        "Pike": 0.03,
-        "Ram": 2.25,
-        "Onager": 2.25,
-        "Scorpion": 2.25,
+        "TWO_HANDED_SWORDSMAN": 0.03,
+        "PIKEMAN": 0.03,
+        "BATTERING_RAM": 2.25,
+        "MANGONEL": 2.25,
+        "SCORPION": 2.25,
     },
-    "Chinese": {"Scorpion": 2.0,},
+    "Chinese": {"SCORPION": 2.0,},
     "Cumans": {
-        "Knight": 0.03,
-        "Light Cav": 0.53,
-        "Steppe Lancer": 0.53,
-        "Cavalry Archer": 0.53,
-        "Ram": 2.0,
+        "KNIGHT": 0.03,
+        "LIGHT_CAVALRY": 0.53,
+        "STEPPE_LANCER": 0.53,
+        "HEAVY_CAV_ARCHER": 0.53,
+        "BATTERING_RAM": 2.0,
     },
-    "Ethiopians": {"Archer": 0.18, "Onager": 0.25, "BBC": 0.25},
-    "Franks": {"Knight": 2.2, "Light Cav": 2.2},
-    "Goths": {"Man-At-Arms": 1.65, "Pike": 1.65},
-    "Huns": {"Knight": 0.2, "Light Cav": 0.2, "Cavalry Archer": 0.2, "Trebuchet": 2},
-    "Incas": {"Skirmisher": 0.5, "Eagle": 1},
-    "Indians": {"Light Cav": 1.0, "Camel": 1.4, "Hand Cannoneer": 0.5},
-    "Italians": {"Hand Cannoneer": 0.2, "BBC": 0.2},
-    "Japanese": {"Man-At-Arms": 0.33, "Pike": 0.33, "Trebuchet": 1},
-    "Khmer": {"Elephant": 3.01, "Scorpion": 10.5},
+    "Ethiopians": {"CROSSBOWMAN": 0.18, "MANGONEL": 0.25, "BOMBARD_CANNON": 0.25},
+    "Franks": {"KNIGHT": 2.2, "LIGHT_CAVALRY": 2.2},
+    "Goths": {"TWO_HANDED_SWORDSMAN": 1.65, "PIKEMAN": 1.65},
+    "Huns": {
+        "KNIGHT": 0.2,
+        "LIGHT_CAVALRY": 0.2,
+        "HEAVY_CAV_ARCHER": 0.2,
+        "TREBUCHET": 2,
+    },
+    "Incas": {"IMPERIAL_SKIRMISHER": 0.5, "EAGLE_WARRIOR": 1},
+    "Indians": {"LIGHT_CAVALRY": 1.0, "CAMEL_RIDER": 1.4, "HAND_CANNONEER": 0.5},
+    "Italians": {"HAND_CANNONEER": 0.2, "BOMBARD_CANNON": 0.2},
+    "Japanese": {"TWO_HANDED_SWORDSMAN": 0.33, "PIKEMAN": 0.33, "TREBUCHET": 1},
+    "Khmer": {"BATTLE_ELEPHANT": 3.01, "SCORPION": 10.5},
     "Koreans": {
-        "Archer": 0.1,
-        "Skirmisher": 0.1,
-        "Cavalry Archer": 0.1,
-        "Onager": 1.16,
+        "CROSSBOWMAN": 0.1,
+        "IMPERIAL_SKIRMISHER": 0.1,
+        "HEAVY_CAV_ARCHER": 0.1,
+        "MANGONEL": 1.16,
     },
-    "Lithuanians": {"Pike": 0.51, "Knight": 2, "Skirmisher": 0.5},
+    "Lithuanians": {"PIKEMAN": 0.51, "KNIGHT": 2, "IMPERIAL_SKIRMISHER": 0.5},
     "Magyars": {
-        "Light Cav": 0.15,
-        "Cavalry Archer": 1,
-        "Archer": 0.2,
-        "Skirmisher": 0.2,
+        "LIGHT_CAVALRY": 0.15,
+        "HEAVY_CAV_ARCHER": 1,
+        "CROSSBOWMAN": 0.2,
+        "IMPERIAL_SKIRMISHER": 0.2,
     },
-    "Malay": {"Elephant": 0.4, "Man-At-Arms": 1},
+    "Malay": {"BATTLE_ELEPHANT": 0.4, "TWO_HANDED_SWORDSMAN": 1},
     "Malians": {
-        "Knight": 5.0,
-        "Light Cav": 5.0,
-        "Camel": 5.0,
-        "Man-At-Arms": 3.0,
-        "Pike": 3.0,
+        "KNIGHT": 5.0,
+        "LIGHT_CAVALRY": 5.0,
+        "CAMEL_RIDER": 5.0,
+        "TWO_HANDED_SWORDSMAN": 3.0,
+        "PIKEMAN": 3.0,
     },
-    "Mayans": {"Archer": 0.3, "Skirmisher": 0.8, "Eagle": 5},
+    "Mayans": {"CROSSBOWMAN": 0.3, "IMPERIAL_SKIRMISHER": 0.8, "EAGLE_WARRIOR": 5},
     "Mongols": {
-        "Light Cav": 1.9,
-        "Steppe Lancer": 1.9,
-        "Cavalry Archer": 0.25,
-        "Onager": 0.5,
-        "Scorpion": 0.5,
-        "Ram": 0.5,
+        "LIGHT_CAVALRY": 1.9,
+        "STEPPE_LANCER": 1.9,
+        "HEAVY_CAV_ARCHER": 0.25,
+        "MANGONEL": 0.5,
+        "SCORPION": 0.5,
+        "BATTERING_RAM": 0.5,
     },
-    "Persians": {"Knight": 2, "Archer": 1},
-    "Poles": {"Knight": 1, "Light Cav": 1.25},
+    "Persians": {"KNIGHT": 2, "CROSSBOWMAN": 1},
+    "Poles": {"KNIGHT": 1, "LIGHT_CAVALRY": 1.25},
     "Portuguese": {
-        "Knight": 0.1,
-        "Archer": 0.1,
-        "Cavalry Archer": 0.1,
-        "Hand Cannoneer": 1.1,
-        "Man-At-Arms": 0.1,
-        "Onager": 0.1,
-        "Scorpion": 0.1,
-        "Trebuchet": 0.1,
-        "BBC": 1.1,
-        "Ram": 0.1,
+        "KNIGHT": 0.1,
+        "CROSSBOWMAN": 0.1,
+        "HEAVY_CAV_ARCHER": 0.1,
+        "HAND_CANNONEER": 1.1,
+        "TWO_HANDED_SWORDSMAN": 0.1,
+        "MANGONEL": 0.1,
+        "SCORPION": 0.1,
+        "TREBUCHET": 0.1,
+        "BOMBARD_CANNON": 1.1,
+        "BATTERING_RAM": 0.1,
     },
-    "Saracens": {"Archer": 0.2, "Camel": 1.5},
-    "Sicilians": {"Knight": 3, "Light Cav": 2.0, "Archer": 2.0},
+    "Saracens": {"CROSSBOWMAN": 0.2, "CAMEL_RIDER": 1.5},
+    "Sicilians": {"KNIGHT": 3, "LIGHT_CAVALRY": 2.0, "CROSSBOWMAN": 2.0},
     "Slavs": {
-        "Man-At-Arms": 0.25,
-        "Pike": 0.25,
-        "Onager": 0.15,
-        "Scorpion": 0.15,
-        "Ram": 0.15,
+        "TWO_HANDED_SWORDSMAN": 0.25,
+        "PIKEMAN": 0.25,
+        "MANGONEL": 0.15,
+        "SCORPION": 0.15,
+        "BATTERING_RAM": 0.15,
     },
-    "Spanish": {"Hand Cannoneer": 0.18},
+    "Spanish": {"HAND_CANNONEER": 0.18},
     "Tatars": {
-        "Light Cav": 1.1,
-        "Knight": 0.1,
-        "Camel": 0.1,
-        "Steppe Lancer": 1.1,
-        "Cavalry Archer": 1.65,
-        "Archer": 0.25,
-        "Skirmisher": 0.25,
-        "Hand Cannoneer": 0.25,
-        "Man-At-Arms": 0.1,
-        "Pike": 0.1,
-        "Scorpion": 0.25,
-        "Onager": 0.25,
-        "Trebuchet": 1.25,
-        "Ram": 0.1,
+        "LIGHT_CAVALRY": 1.1,
+        "KNIGHT": 0.1,
+        "CAMEL_RIDER": 0.1,
+        "STEPPE_LANCER": 1.1,
+        "HEAVY_CAV_ARCHER": 1.65,
+        "CROSSBOWMAN": 0.25,
+        "IMPERIAL_SKIRMISHER": 0.25,
+        "HAND_CANNONEER": 0.25,
+        "TWO_HANDED_SWORDSMAN": 0.1,
+        "PIKEMAN": 0.1,
+        "SCORPION": 0.25,
+        "MANGONEL": 0.25,
+        "TREBUCHET": 1.25,
+        "BATTERING_RAM": 0.1,
     },
     "Teutons": {
-        "Knight": 2.0,
-        "Man-At-Arms": 2.0,
-        "Pike": 2.0,
-        "Onager": 1.0,
-        "Scorpion": 1.0,
-        "Trebuchet": 1.0,
-        "BBC": 1.0,
-        "Ram": 1.0,
+        "KNIGHT": 2.0,
+        "TWO_HANDED_SWORDSMAN": 2.0,
+        "PIKEMAN": 2.0,
+        "MANGONEL": 1.0,
+        "SCORPION": 1.0,
+        "TREBUCHET": 1.0,
+        "BOMBARD_CANNON": 1.0,
+        "BATTERING_RAM": 1.0,
     },
     "Turks": {
-        "Light Cav": 0.5,
-        "Cavalry Archer": 1.5,
-        "Hand Cannoneer": 1.25,
-        "BBC": 2.25,
+        "LIGHT_CAVALRY": 0.5,
+        "HEAVY_CAV_ARCHER": 1.5,
+        "HAND_CANNONEER": 1.25,
+        "BOMBARD_CANNON": 2.25,
     },
     "Vietnamese": {
-        "Elephant": 2.0,
-        "Cavalry Archer": 1.5,
-        "Archer": 1.5,
-        "Skirmisher": 1.5,
+        "BATTLE_ELEPHANT": 2.0,
+        "HEAVY_CAV_ARCHER": 1.5,
+        "CROSSBOWMAN": 1.5,
+        "IMPERIAL_SKIRMISHER": 1.5,
     },
-    "Vikings": {"Man-At-Arms": 4.0, "Pike": 4.0},
+    "Vikings": {"TWO_HANDED_SWORDSMAN": 4.0, "PIKEMAN": 4.0},
 }
 
 
 class Civilization:
     """ Holds buildings, techs, and unit codes for given civilization."""
 
-    def __init__(self, block, dependency_manager):
+    def __init__(self, name, block, dependency_manager):
+        self.name = name
         self.buildings = block["buildings"]
         self.techs = block["techs"]
         self.unique = block["unique"]
         self.units = block["units"]
         self.key_lookup = dependency_manager.constant_lookup
         self.building_from_tech = dependency_manager.building_lookups
+        self.calculated_units = None
 
     @property
     def unique_techs(self):
@@ -301,6 +308,135 @@ in a given building and their associated techs."""
                 data["techs"].append(-1 * key)
         return data
 
+    def calculate_unit_value(self):
+        """ Calculate the value of the given units in a civ."""
+        if self.calculated_units:
+            return self.calculated_units
+
+        lookup = self.key_lookup
+        values = defaultdict(float)
+        range_units = [
+            "CROSSBOWMAN",
+            "IMPERIAL_SKIRMISHER",
+        ]
+        stable = self.verify_building("STABLE")
+        # Stable
+        if stable:
+            info = self.building_data("STABLE")
+            stable_units = []
+            if -1 * lookup["KNIGHT"] not in info["units"]:
+                stable_units.append("KNIGHT")
+            if lookup["KNIGHT"] in info["units"]:
+                values["KNIGHT"] -= 2.5
+            if lookup["PALADIN"] in info["units"]:
+                values["KNIGHT"] += 3.6
+            if -1 * lookup["LIGHT_CAVALRY"] not in info["units"]:
+                stable_units.append("LIGHT_CAVALRY")
+            if lookup["HUSSAR"] in info["units"]:
+                values["LIGHT_CAVALRY"] += 1
+            if lookup["WINGED_HUSSAR"] in info["units"]:
+                values["LIGHT_CAVALRY"] += 4
+            if lookup["CAMEL_RIDER"] in info["units"]:
+                stable_units.append("CAMEL_RIDER")
+            if lookup["IMPERIAL_CAMEL_RIDER"] in info["units"]:
+                stable_units.append("CAMEL_RIDER")
+                values["CAMEL_RIDER"] += 2.8
+            if lookup["BATTLE_ELEPHANT"] in info["units"]:
+                stable_units.append("BATTLE_ELEPHANT")
+            if lookup["STEPPE_LANCER"] in info["units"]:
+                stable_units.append("STEPPE_LANCER")
+            for unit in stable_units:
+                for tech in info["blacksmith_techs"]:
+                    values[unit] += tech - 2
+                if -1 * lookup["BLOODLINES"] in info["techs"]:
+                    values[unit] -= 1
+                if -1 * lookup["HUSBANDRY"] in info["techs"]:
+                    values[unit] -= 0.1
+
+        # Range
+        info = self.building_data("ARCHERY_RANGE")
+        if stable:
+            range_units.append("HEAVY_CAV_ARCHER")
+            if lookup["HEAVY_CAV_ARCHER"] in info["units"]:
+                values["HEAVY_CAV_ARCHER"] += 2
+            if -1 * lookup["BLOODLINES"] in info["techs"]:
+                values["HEAVY_CAV_ARCHER"] -= 1
+            if -1 * lookup["HUSBANDRY"] in info["techs"]:
+                values["HEAVY_CAV_ARCHER"] -= 0.1
+            if lookup["PARTHIAN_TACTICS"] in info["techs"]:
+                values["HEAVY_CAV_ARCHER"] += 1.5
+
+        if lookup["ARBALESTER"] in info["units"]:
+            values["CROSSBOWMAN"] += 1.5
+        if -1 * lookup["CROSSBOWMAN"] in info["units"]:
+            values["CROSSBOWMAN"] -= 2.0
+        if lookup["IMPERIAL_SKIRMISHER"] in info["units"]:
+            values["IMPERIAL_SKIRMISHER"] += 1
+        if -1 * lookup["ELITE_SKIRMISHER"] in info["units"]:
+            values["IMPERIAL_SKIRMISHER"] -= 2.0
+        for unit in range_units:
+            for tech in info["blacksmith_techs"]:
+                values[unit] += tech - 2
+            if -1 * lookup["THUMB_RING"] in info["techs"]:
+                values[unit] -= 1
+        # HC
+        if lookup["HAND_CANNONEER"] in info["units"]:
+            values["HAND_CANNONEER"] += info["blacksmith_techs"][1] - 2
+
+        # Barracks
+        info = self.building_data("BARRACKS")
+        barracks_units = ["TWO_HANDED_SWORDSMAN", "PIKEMAN"]
+        if lookup["EAGLE_WARRIOR"] in info["units"]:
+            barracks_units.append("EAGLE_WARRIOR")
+        if lookup["CHAMPION"] in info["units"]:
+            values["TWO_HANDED_SWORDSMAN"] += 2.6
+        if -1 * lookup["TWO_HANDED_SWORDSMAN"] in info["units"]:
+            values["TWO_HANDED_SWORDSMAN"] -= 3
+        if -1 * lookup["SUPPLIES"] in info["techs"]:
+            values["TWO_HANDED_SWORDSMAN"] -= 0.15
+        if lookup["HALBERDIER"] in info["units"]:
+            values["PIKEMAN"] += 2.6
+        if -1 * lookup["PIKEMAN"] in info["units"]:
+            values["PIKEMAN"] -= 2.2
+        for unit in barracks_units:
+            for tech in info["blacksmith_techs"]:
+                values[unit] += tech - 2
+            if -1 * lookup["SQUIRES"] in info["techs"]:
+                values[unit] -= 0.1
+
+        # Siege
+        info = self.building_data("SIEGE_WORKSHOP")
+        siege_units = [
+            "MANGONEL",
+            "SCORPION",
+            "TREBUCHET",
+        ]
+        if lookup["BOMBARD_CANNON"] in info["units"]:
+            siege_units.append("BOMBARD_CANNON")
+        if lookup["MANGONEL"] in info["units"]:
+            values["MANGONEL"] -= 2.3
+        if lookup["SIEGE_ONAGER"] in info["units"]:
+            values["MANGONEL"] += 2.6
+        if lookup["HEAVY_SCORPION"] in info["units"]:
+            values["SCORPION"] += 3.25
+        for unit in siege_units:
+            values[unit] += 0
+            if lookup["SIEGE_ENGINEERS"] in info["techs"]:
+                values[unit] += 1
+        siege_units.append("BATTERING_RAM")
+        values["BATTERING_RAM"] = 0
+        if lookup["BATTERING_RAM"] in info["units"]:
+            values["BATTERING_RAM"] -= 1.2
+        if lookup["SIEGE_RAM"] in info["units"]:
+            values["BATTERING_RAM"] += 2.75
+        try:
+            for unit, bonus in CIV_UNIT_BONUSES[self.name].items():
+                values[unit] += bonus
+        except KeyError:
+            pass
+        self.calculated_units = values
+        return values
+
 
 class CivilizationManager:
     """ Gathers all information for each civ."""
@@ -329,7 +465,7 @@ class CivilizationManager:
         """ Create civ with given name. """
         for _civ_name, civ_data in self.data["techtrees"].items():
             if civ_name == _civ_name:
-                civ = Civilization(civ_data, self.dependency_manager)
+                civ = Civilization(civ_name, civ_data, self.dependency_manager)
                 self.civilizations[civ_name] = civ
                 for unit in civ.units:
                     self.unit_counts[unit] += 1
@@ -348,139 +484,14 @@ class CivilizationManager:
                         print(item)
 
     def calculate_unit_values(self, civ_name=None):
-        unit_values = {}
+        """Calculates unit values for one or more civs"""
+        civ_unit_values = {}
         for _civ_name in self.civilizations:
             if civ_name and _civ_name != civ_name:
                 continue
-            unit_values[_civ_name] = self.calculate_unit_value(_civ_name)
-        return unit_values
-
-    def calculate_unit_value(self, civ_name):
-        """ Calculate the pre-bonus value of the given units in a civ."""
-        lookup = self.dependency_manager.constant_lookup
-        civ = self.civilizations[civ_name]
-        values = defaultdict(float)
-        range_units = [
-            "Archer",
-            "Skirmisher",
-        ]
-        stable = civ.verify_building("STABLE")
-        # Stable
-        if stable:
-            info = civ.building_data("STABLE")
-            stable_units = []
-            if -1 * lookup["KNIGHT"] not in info["units"]:
-                stable_units.append("Knight")
-            if lookup["KNIGHT"] in info["units"]:
-                values["Knight"] -= 2.5
-            if lookup["PALADIN"] in info["units"]:
-                values["Knight"] += 3.6
-            if -1 * lookup["LIGHT_CAVALRY"] not in info["units"]:
-                stable_units.append("Light Cav")
-            if lookup["HUSSAR"] in info["units"]:
-                values["Light Cav"] += 1
-            if lookup["WINGED_HUSSAR"] in info["units"]:
-                values["Light Cav"] += 4
-            if lookup["CAMEL_RIDER"] in info["units"]:
-                stable_units.append("Camel")
-            if lookup["IMPERIAL_CAMEL_RIDER"] in info["units"]:
-                stable_units.append("Camel")
-                values["Camel"] += 2.8
-            if lookup["BATTLE_ELEPHANT"] in info["units"]:
-                stable_units.append("Elephant")
-            if lookup["STEPPE_LANCER"] in info["units"]:
-                stable_units.append("Steppe Lancer")
-            for unit in stable_units:
-                for tech in info["blacksmith_techs"]:
-                    values[unit] += tech - 2
-                if -1 * lookup["BLOODLINES"] in info["techs"]:
-                    values[unit] -= 1
-                if -1 * lookup["HUSBANDRY"] in info["techs"]:
-                    values[unit] -= 0.1
-
-        # Range
-        info = civ.building_data("ARCHERY_RANGE")
-        if stable:
-            range_units.append("Cavalry Archer")
-            if lookup["HEAVY_CAV_ARCHER"] in info["units"]:
-                values["Cavalry Archer"] += 2
-            if -1 * lookup["BLOODLINES"] in info["techs"]:
-                values["Cavalry Archer"] -= 1
-            if -1 * lookup["HUSBANDRY"] in info["techs"]:
-                values["Cavalry Archer"] -= 0.1
-            if lookup["PARTHIAN_TACTICS"] in info["techs"]:
-                values["Cavalry Archer"] += 1.5
-
-        if lookup["ARBALESTER"] in info["units"]:
-            values["Archer"] += 1.5
-        if -1 * lookup["CROSSBOWMAN"] in info["units"]:
-            values["Archer"] -= 2.0
-        if lookup["IMPERIAL_SKIRMISHER"] in info["units"]:
-            values["Skirmisher"] += 1
-        if -1 * lookup["ELITE_SKIRMISHER"] in info["units"]:
-            values["Skirmisher"] -= 2.0
-        for unit in range_units:
-            for tech in info["blacksmith_techs"]:
-                values[unit] += tech - 2
-            if -1 * lookup["THUMB_RING"] in info["techs"]:
-                values[unit] -= 1
-        # HC
-        if lookup["HAND_CANNONEER"] in info["units"]:
-            values["Hand Cannoneer"] += info["blacksmith_techs"][1] - 2
-
-        # Barracks
-        info = civ.building_data("BARRACKS")
-        barracks_units = ["Man-At-Arms", "Pike"]
-        if lookup["EAGLE_WARRIOR"] in info["units"]:
-            barracks_units.append("Eagle")
-        if lookup["CHAMPION"] in info["units"]:
-            values["Man-At-Arms"] += 2.6
-        if -1 * lookup["TWO_HANDED_SWORDSMAN"] in info["units"]:
-            values["Man-At-Arms"] -= 3
-        if -1 * lookup["SUPPLIES"] in info["techs"]:
-            values["Man-At-Arms"] -= 0.15
-        if lookup["HALBERDIER"] in info["units"]:
-            values["Pike"] += 2.6
-        if -1 * lookup["PIKEMAN"] in info["units"]:
-            values["Pike"] -= 2.2
-        for unit in barracks_units:
-            for tech in info["blacksmith_techs"]:
-                values[unit] += tech - 2
-            if -1 * lookup["SQUIRES"] in info["techs"]:
-                values[unit] -= 0.1
-
-        # Siege
-        info = civ.building_data("SIEGE_WORKSHOP")
-        siege_units = [
-            "Onager",
-            "Scorpion",
-            "Trebuchet",
-        ]
-        if lookup["BOMBARD_CANNON"] in info["units"]:
-            siege_units.append("BBC")
-        if lookup["MANGONEL"] in info["units"]:
-            values["Onager"] -= 2.3
-        if lookup["SIEGE_ONAGER"] in info["units"]:
-            values["Onager"] += 2.6
-        if lookup["HEAVY_SCORPION"] in info["units"]:
-            values["Scorpion"] += 3.25
-        for unit in siege_units:
-            values[unit] += 0
-            if lookup["SIEGE_ENGINEERS"] in info["techs"]:
-                values[unit] += 1
-        siege_units.append("Ram")
-        values["Ram"] = 0
-        if lookup["BATTERING_RAM"] in info["units"]:
-            values["Ram"] -= 1.2
-        if lookup["SIEGE_RAM"] in info["units"]:
-            values["Ram"] += 2.75
-        try:
-            for unit, bonus in CIV_UNIT_BONUSES[civ_name].items():
-                values[unit] += bonus
-
-        except KeyError:
-            pass
-        return values
+            civ = self.civilizations[_civ_name]
+            civ_unit_values[_civ_name] = civ.calculate_unit_value()
+        return civ_unit_values
 
     def display_civs(self):
         """ Call display civ on all loaded civs."""
@@ -544,6 +555,11 @@ class CivilizationManager:
         name_key = info["LanguageNameId"]
         return self.strings[str(name_key)]
 
+    def name_for_string_key(self, key):
+        """ Utility for getting name for string key."""
+        int_key = self.dependency_manager.constant_lookup[key]
+        return self.name_for_key(int_key, "units")
+
     def building_info(self, civ_name):
         """ Returns info for building in a civ."""
         civ = self.civilizations[civ_name]
@@ -596,13 +612,51 @@ class CivilizationManager:
                 self.unique_unit(civ_name), "<br>".join(self.tech_info(civ_name))
             )
         )
-        production_lines = []
+        print(
+            '        production: "{}",'.format(
+                "<br>".join(self.production_lines(civ_name))
+            )
+        )
+
+    def ranked_units(self):
+        """ Builds dictionary of civname:unit-ranks."""
+        unit_civ_strengths = defaultdict(Counter)
+        for civ, unit_strengths in self.calculate_unit_values().items():
+            for unit, strength in unit_strengths.items():
+                unit_civ_strengths[unit][civ] = strength
+        civ_ranks = defaultdict(Counter)
+        subunit_lookup = {}
+        for unit, civ_strengths in unit_civ_strengths.items():
+            if unit in subunit_lookup:
+                subunits = subunit_lookup[unit]
+            else:
+                for category in BUILDINGS.values():
+                    useful = category["PRESENT_UNITS"]
+                    for unit_set in useful:
+                        if unit in unit_set:
+                            subunit_lookup[unit] = unit_set
+                            subunits = unit_set
+                            break
+            last_rank = 0
+            last_strength = 0
+            for idx, civ_strength in enumerate(civ_strengths.most_common(), 1):
+                name, strength = civ_strength
+                if strength != last_strength:
+                    last_rank = idx
+                    last_strength = strength
+                for subunit in subunits:
+                    civ_ranks[name][self.name_for_string_key(subunit)] = last_rank
+        return civ_ranks
+
+    def production_lines(self, civ_name):
+        """ List of production lines for civ. Add ranks where appropriate"""
+        lines = []
         for building, info in self.building_info(civ_name).items():
-            production_lines.append("<b>{}</b>".format(building))
+            lines.append("<b>{}</b>".format(building))
             if info["techs"]:
-                production_lines.append(", ".join(info["techs"]))
-            production_lines.extend(info["units"])
-        print('        production: "{}",'.format("<br>".join(production_lines)))
+                lines.append(", ".join(info["techs"]))
+            lines.extend(info["units"])
+        return lines
 
     def heuristics(self, key):
         """ Stuff for decisions. """
@@ -741,11 +795,13 @@ def unit_values(cname):
     """ Show the unit values of civ."""
     c_m = CivilizationManager()
     c_m.load_civs(cname)
-    for name, units in c_m.calculate_unit_values(cname).items():
-        print("*" * len(name))
-        print(name)
-        print("*" * len(name))
-        print(units)
+    for civ, unit_values in c_m.ranked_units().items():
+        print(civ, unit_values)
+    # for name, units in c_m.calculate_unit_values(cname).items():
+    #     print("*" * len(name))
+    #     print(name)
+    #     print("*" * len(name))
+    #     print(units)
 
 
 def units_ranked(unit_name):
@@ -774,6 +830,59 @@ def verify():
     dep.verify()
 
 
+def update_arabia(cname):
+    """ Update bonus, unique, and production lines in arabia.js"""
+    c_m = CivilizationManager()
+    c_m.load_civs(cname)
+    civ_template = "^ +{}:"
+    bonuses_pattern = re.compile(r"^ +bonuses:")
+    uniques_pattern = re.compile(r"^ +uniques:")
+    production_pattern = re.compile(r"^ +production:")
+    exit_civ_pattern = re.compile(r" +},")
+    arabia_lines = []
+    updates = {}
+    with open("arabia.js") as f:
+        for l in f:
+            arabia_lines.append(l.rstrip())
+    for name in c_m.civilizations:
+        in_civ = False
+        civ_pattern = re.compile(civ_template.format(name.lower()))
+        for idx, line in enumerate(arabia_lines):
+            if in_civ:
+                m = bonuses_pattern.match(line)
+                if m:
+                    updates[idx] = '{} "{}",'.format(
+                        m.group(0), "<br>".join(c_m.bonuses(name))
+                    )
+                m = uniques_pattern.match(line)
+                if m:
+                    updates[idx] = '{} "{}<br><br>{}",'.format(
+                        m.group(0),
+                        c_m.unique_unit(name),
+                        "<br>".join(c_m.tech_info(name)),
+                    )
+
+                m = production_pattern.match(line)
+                if m:
+                    updates[idx] = '{} "{}",'.format(
+                        m.group(0), "<br>".join(c_m.production_lines(name))
+                    )
+            if in_civ and exit_civ_pattern.match(line):
+                print(idx)
+                break
+            if civ_pattern.match(line):
+                print(idx)
+                in_civ = True
+                print(name)
+    with open("arabia.js", "w") as f:
+        for idx, line in enumerate(arabia_lines):
+            if idx in updates:
+                f.write(updates[idx])
+            else:
+                f.write(line)
+            f.write("\n")
+
+
 if __name__ == "__main__":
     parser = ArgumentParser()
     parser.add_argument(
@@ -785,6 +894,11 @@ if __name__ == "__main__":
     parser.add_argument("-bonuses", action="store_true", help="Display bonuses")
     parser.add_argument("-values", action="store_true", help="Display unit values")
     parser.add_argument("-best", help="Unit type to display ranked list of")
+    parser.add_argument(
+        "-update",
+        action="store_true",
+        help="Update arabia.js bonuses, uniques, and production lines",
+    )
     args = parser.parse_args()
     if args.heur:
         heuristics(args.heur)
@@ -798,5 +912,7 @@ if __name__ == "__main__":
         unit_values(args.civ)
     elif args.best:
         units_ranked(args.best)
+    elif args.update:
+        update_arabia(args.civ)
     else:
         run(args.civ)
