@@ -75,7 +75,7 @@ PROMPTS = (
     ("Build Barracks", "wa",),
     ("Build Stable", "we",),
     ("Build Town Center", "qz",),
-    ("Build Castle", "wc",),
+    ("Build Castle", "wz",),
     ("Research Forging", "si",),
     ("Research Mail", "so",),
     ("Research Barding", "sp",),
