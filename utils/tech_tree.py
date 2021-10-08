@@ -527,7 +527,7 @@ class CivilizationManager:
                 lines.append(line[1:])
                 continue
             if civ_name == "Chinese" and line.startswith("\n-15% Castle"):
-                lines[-1] += " " + line[1:]
+                lines[-1] += " " + line.strip()
             if line.startswith("\n• ") and not start_unique:
                 lines.append(line[3:].strip())
             if line.startswith("\n<b>Unique Techs"):
