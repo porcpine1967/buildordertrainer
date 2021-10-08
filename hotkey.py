@@ -56,7 +56,7 @@ PROMPTS = (
     ("Research Town Watch", "a;",),
     ("Research Loom", "ak",),
     ("Build house", "qq",),
-    ("Build farm", "qa",),
+    ("Build farm", "qt",),
     ("Build mill", "qw",),
     ("Research Horse Collar", "io",),
     ("Build lumber camp", "qr",),
@@ -76,11 +76,15 @@ PROMPTS = (
     ("Build Stable", "we",),
     ("Build Town Center", "qz",),
     ("Build Castle", "wz",),
+    ("Build Dock", "qy",),
+    ("Build University", "qg",),
     ("Research Forging", "si",),
     ("Research Mail", "so",),
     ("Research Barding", "sp",),
     ("Research Fletching", "sk",),
     ("Research Archer Armor", "sl",),
+    ("Research Redemption", "nk",),
+    ("Research Block Printing", "nl",),
 )
 
 
