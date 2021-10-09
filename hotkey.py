@@ -65,6 +65,7 @@ PROMPTS = (
     ("Research Ballistics", ",k",),
     ("Research Chemistry", ",l",),
     ("Research Siege Engineers", ",;",),
+    ("Research Treadmill Crane", ",q",),
     # Eco buildings
     ("Build house", "wq",),
     ("Build mill", "ww",),
