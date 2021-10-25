@@ -18,6 +18,13 @@
     <script src="arabia_functions.js"></script>
   </head>
   <body>
+    <select id="civ_picker" onchange="switch_civ()">
+      <option value="0"></option>
+    </select>
+    <select id="opposition_picker" onchange="switch_opposition()">
+      <option value="0"></option>
+    </select>
+	<button id="alt_strategy" style="display:none" onclick="switch_strategy()">Alternate Strategy</button>
     <h2 id="civ"></h2>
     <div style="margin: 10px;">Strategy: <span id="strategy"></span></div>
     <div style="margin: 10px;">
@@ -26,6 +33,14 @@
         <tr><td id="opening"></td><td id="transition"></td><td id="castle_age"></td><td id="imperial_age"></td></tr>
       </table>
     </div>
+	<div id="important_techs"></div>
+   <div style="margin: 10px;">
+      <h3>Civilization Information</h3>
+      <table class="civ_info">
+		<tr><th>Bonuses</th><th>Uniques</th><th>Production</th><th id="antiheader">Opposition</th></tr>
+		  <tr><td id="bonuses"></td><td id="uniques"></td><td id="production"></td><td id="antiproduction"></td></tr>
+      </table>
+   </div>
     <div id="bo" style="margin: 10px;">
       <h3>Build Order</h3>
       <h4>Dark Age</h4>
@@ -43,13 +58,6 @@
       </table>
       <div id="cup_instructions" style="margin: 10px;"></div>
       <div id="castle_instructions"></div>
-   </div>
-   <div style="margin: 10px;">
-      <h3>Civilization Information</h3>
-      <table class="civ_info">
-		<tr><th>Bonuses</th><th>Uniques</th><th>Production</th><th id="antiheader">Opposition</th></tr>
-		  <tr><td id="bonuses"></td><td id="uniques"></td><td id="production"></td><td id="antiproduction"></td></tr>
-      </table>
    </div>
     <h2>Help (<span onClick="toggleHelp()" style="color: blue; cursor: hand;">toggle</span>)</h2>
     <div id="help" style="display: none;">
@@ -69,12 +77,6 @@
       <dd>Please leave a message or make feature requests/report bugs at the <a href="https://github.com/porcpine1967/buildordertrainer/issues">github project page</a>.</dd>
       </dl>
     </div>
-  <select id="civ_picker" onchange="switch_civ()">
-    <option value="0"></option>
-  </select>
-  <select id="opposition_picker" onchange="switch_opposition()">
-    <option value="0"></option>
-  </select>
   <script>initialize()</script>
   </body>
 </html>
