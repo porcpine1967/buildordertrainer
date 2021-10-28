@@ -361,7 +361,7 @@ var strategies = {
           uniques: "Boyar: cavalry unit resistant to melee attack<br><br>Orthodoxy: Monks have extra armor.<br>Druzhina: Infantry damage adjacent units.",
           production: "<b>Archery Range</b><br>Attack: 2, Armor: 3, MISSING Thumb Ring<br>Crossbowman (32/39)<br>Skirmisher (32/39)<br>Heavy Cavalry Archer (26/36)<br><b>Stable</b><br>Attack: 3, Armor: 3<br>Hussar (15/35)<br>Cavalier (19/35)<br><b>Barracks</b><br>Attack: 3, Armor: 3<br>Champion (8/39)<br>Halberdier (7/39)<br><b>Siege Workshop</b><br>Siege Engineers<br>Siege Ram (4/39)<br>Siege Onager (6/39)<br>Heavy Scorpion (7/39)",
          },
-  spanish: {...base_strategies.scouts_archers, ...castle_strategies.knights_skirms,
+  spanish: {...base_strategies.scouts_castle, ...castle_strategies.knights_skirms,
             bonuses: "Builders work 30% faster<br>Blacksmith upgrades don't cost gold<br>Cannon Galleons benefit from Ballistics (fire faster, more accurately)<br>Gunpowder units fire 18% faster<br>Trade units generate +25% gold",
             uniques: "Conquistador: mounted hand cannoneer<br><br>Inquisition: Increases monk conversion rate.<br>Supremacy: Villagers have exceptional combat abilities.",
             production: "<b>Archery Range</b><br>Attack: 3, Armor: 3<br>Skirmisher (9/39)<br>Heavy Cavalry Archer (14/36)<br>Hand Cannoneer (7/20)<br>MISSING Crossbowman<br><b>Stable</b><br>Attack: 3, Armor: 3<br>Hussar (15/35)<br>Paladin (7/35)<br><b>Barracks</b><br>Attack: 3, Armor: 3<br>Champion (9/39)<br>Halberdier (9/39)<br><b>Siege Workshop</b><br>Siege Ram (14/39)<br>Onager (28/39)<br>Scorpion (31/39)<br>Bombard Cannon (15/21)",
