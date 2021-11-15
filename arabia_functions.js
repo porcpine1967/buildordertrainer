@@ -6,56 +6,65 @@ function initialize() {
       var opt = document.createElement('option');
       opt.value = i;
       opt.innerHTML = keys[i];
-    select.appendChild(opt);
-	opp_select.appendChild(opt.cloneNode(true));
+      select.appendChild(opt);
+      opp_select.appendChild(opt.cloneNode(true));
   }
-  choose_civ();
+  random_civ();
+  select.focus();
 }
 
-function choose_civ() {
-  var keys = civs;
-  var idx = Math.floor(keys.length * Math.random());
-  pick_civ(idx);
+function random_civ() {
+    var idx = Math.floor(civs.length * Math.random());
+    pick_civ(idx);
+    var select = document.getElementById('civ_picker');
+    select.value = idx;
 }
-
 function switch_civ() {
   var idx =  document.getElementById('civ_picker').value;
   pick_civ(idx);
 }
 
 function switch_strategy() {
-	var keys = Object.keys(strategies);
+    var keys = Object.keys(strategies);
     var civ_name = document.getElementById('civ').innerHTML
     var to_main = document.getElementById('alt_strategy').innerHTML == "Alternate Strategy";
-	var civ_info = strategies[civ_name];
-	if (to_main){
-		document.getElementById('alt_strategy').innerHTML = 'Main Strategy';
-		load_strategy(civ_info["alt"]);
-	} else {
-		document.getElementById('alt_strategy').innerHTML = 'Alternate Strategy';
-		load_strategy(civ_info);
-	}
+    var civ_info = strategies[civ_name];
+    if (to_main){
+        document.getElementById('alt_strategy').innerHTML = 'Main Strategy';
+        load_strategy(civ_info["alt"]);
+    } else {
+        document.getElementById('alt_strategy').innerHTML = 'Alternate Strategy';
+        load_strategy(civ_info);
+    }
 }
 
 function switch_opposition() {
   var civ_idx =  document.getElementById('opposition_picker').value;
   var keys = Object.keys(strategies);
-  var civ_name = keys[civ_idx];
-  var civ_info = strategies[civ_name];
-  document.getElementById('antiheader').innerHTML = civ_name;
-  document.getElementById('antiproduction').innerHTML = civ_info['production'];
+  if (civ_idx in keys){
+    var civ_name = keys[civ_idx];
+    var civ_info = strategies[civ_name];
+      document.getElementById('antiheader').innerHTML = civ_name;
+      document.getElementById('antiproduction').innerHTML = civ_info['production'];
+    } else {
+      document.getElementById('antiheader').innerHTML = "Opposition";
+      document.getElementById('antiproduction').innerHTML = "";
+    }
 }
 
 function pick_civ(civ_idx) {
-  var keys = Object.keys(strategies);
+    var keys = Object.keys(strategies);
+    if (!(civ_idx in keys)) {
+        return random_civ();
+    }
   var civ_name = keys[civ_idx];
   var civ_info = strategies[civ_name];
-	if (civ_info["alt"]) {
-		document.getElementById('alt_strategy').style.display = 'inline';
-	} else {
-	  document.getElementById('alt_strategy').style.display = 'none';
-	  document.getElementById('alt_strategy').innerHTML = 'Alternate Strategy';
-	}
+    if (civ_info["alt"]) {
+        document.getElementById('alt_strategy').style.display = 'inline';
+    } else {
+      document.getElementById('alt_strategy').style.display = 'none';
+      document.getElementById('alt_strategy').innerHTML = 'Alternate Strategy';
+    }
   load_strategy(civ_info);
   document.getElementById('bonuses').innerHTML = civ_info['bonuses'];
   document.getElementById('uniques').innerHTML = civ_info['uniques'];
@@ -90,7 +99,7 @@ function load_strategy(civ_info) {
   document.getElementById('castle_age').innerHTML = civ_info['castle'];
   document.getElementById('imperial_age').innerHTML = civ_info['imp'];
   if (civ_info['important_techs']){
-	document.getElementById('important_techs').innerHTML = "<b>Important techs:</b> " + civ_info['important_techs'];
+    document.getElementById('important_techs').innerHTML = "<b>Important techs:</b> " + civ_info['important_techs'];
   }
 }
 
