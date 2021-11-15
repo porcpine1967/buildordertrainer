@@ -108,8 +108,12 @@ var castle_strategies  = {
 var civs = ["aztecs", "berbers", "bohemians", "britons", "bulgarians", "burgundians", "burmese", "byzantines", "celts", "chinese", "cumans", "ethiopians", "franks", "goths", "huns", "incas", "indians", "italians", "japanese", "khmer", "koreans", "lithuanians", "magyars", "malay", "malians", "mayans", "mongols", "persians", "poles", "portuguese", "saracens", "sicilians", "spanish", "slavs", "tatars", "teutons", "turks", "vietnamese", "vikings"];
 
 var strategies = {
-  aztecs: {...base_strategies.eagles_castle, ...castle_strategies.eagles_pikes,
-           imp: "Eagles + Trash + Siege",
+  aztecs: {...base_strategies.maa_archers,
+		   strategy: "5 drush into Archers",
+		   opening: "5 militia Drush",
+		   castle: "Xbow + monks",
+           imp: "Elite Eagle raids || Champs + Trash + Siege",
+		   castle_instructions: "Fast imp; UP: infantry upgrades, 3-4 barracks; spam eagles",
            important_techs: "Garland Wars (Imp: 450F 750G)",
            bonuses: "Villagers carry +3<br>Military units created 11% faster<br>+5 Monk hit points for each Monastery technology<br>Start with +50 gold<br>Relics generate +33% gold",
            uniques: "Jaguar Warrior: infantry unit strong vs infantry<br><br>Atlatl: Skirmishers have +1 attack, +1 range.<br>Garland Wars: Infantry have +4 attack.",

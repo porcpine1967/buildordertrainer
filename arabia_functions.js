@@ -79,9 +79,9 @@ function load_strategy(civ_info) {
       document.getElementById('dark_values').innerHTML += '<td>' + civ_info['dark_values'][i] + '</td>';
   }
   document.getElementById('dark_headers').innerHTML += '<th>Up</th>';
-  document.getElementById('dark_values').innerHTML += '<td>' + civ_info['fup_instructions'] + '</td>';
+  document.getElementById('dark_values').innerHTML += '<td class="instructions">' + civ_info['fup_instructions'] + '</td>';
   document.getElementById('feudal_headers').innerHTML += '<th>Buildings</th>';
-  document.getElementById('feudal_values').innerHTML += '<td>' + civ_info['feudal_instructions'] + '</td>';
+  document.getElementById('feudal_values').innerHTML += '<td class="buildings">' + civ_info['feudal_instructions'] + '</td>';
   for (var i = 0; i < civ_info['feudal_headers'].length; i++) {
       document.getElementById('feudal').style.display = 'block';
       document.getElementById('feudal_headers').innerHTML += '<th>' + civ_info['feudal_headers'][i] + '</th>';
@@ -89,7 +89,7 @@ function load_strategy(civ_info) {
   }
   if (civ_info['cup_instructions']) {
     document.getElementById('feudal_headers').innerHTML += '<th>Up</th>';
-    document.getElementById('feudal_values').innerHTML += '<td>' + civ_info['cup_instructions'] + '</td>';
+    document.getElementById('feudal_values').innerHTML += '<td class="instructions">' + civ_info['cup_instructions'] + '</td>';
   }
   document.getElementById('dark_instructions').innerHTML = civ_info['dark_instructions'];
   document.getElementById('castle_instructions').innerHTML = civ_info['castle_instructions'];
