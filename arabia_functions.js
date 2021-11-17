@@ -7,7 +7,9 @@ function initialize() {
       opt.value = i;
       opt.innerHTML = keys[i];
       select.appendChild(opt);
-      opp_select.appendChild(opt.cloneNode(true));
+      if (civs.includes(keys[i])) {
+          opp_select.appendChild(opt.cloneNode(true));
+      }
   }
   random_civ();
   select.focus();
@@ -44,12 +46,14 @@ function switch_opposition() {
   if (civ_idx in keys){
     var civ_name = keys[civ_idx];
     var civ_info = strategies[civ_name];
-      document.getElementById('antiheader').innerHTML = civ_name;
-      document.getElementById('antiproduction').innerHTML = civ_info['production'];
-    } else {
-      document.getElementById('antiheader').innerHTML = "Opposition";
-      document.getElementById('antiproduction').innerHTML = "";
-    }
+    document.getElementById('antiheader').innerHTML = civ_name;
+    document.getElementById('antiproduction').innerHTML = civ_info['production'];
+    document.getElementById('opp_glwr').src = "arabia_glwrs/" + civ_name + ".png";
+  } else {
+    document.getElementById('antiheader').innerHTML = "Opposition";
+    document.getElementById('antiproduction').innerHTML = "";
+    document.getElementById('opp_glwr').src = "";
+  }
 }
 
 function pick_civ(civ_idx) {
@@ -57,19 +61,24 @@ function pick_civ(civ_idx) {
     if (!(civ_idx in keys)) {
         return random_civ();
     }
-  var civ_name = keys[civ_idx];
-  var civ_info = strategies[civ_name];
+    var civ_name = keys[civ_idx];
+    var civ_info = strategies[civ_name];
     if (civ_info["alt"]) {
         document.getElementById('alt_strategy').style.display = 'inline';
     } else {
-      document.getElementById('alt_strategy').style.display = 'none';
-      document.getElementById('alt_strategy').innerHTML = 'Alternate Strategy';
+        document.getElementById('alt_strategy').style.display = 'none';
+        document.getElementById('alt_strategy').innerHTML = 'Alternate Strategy';
     }
-  load_strategy(civ_info);
-  document.getElementById('bonuses').innerHTML = civ_info['bonuses'];
-  document.getElementById('uniques').innerHTML = civ_info['uniques'];
-  document.getElementById('production').innerHTML = civ_info['production'];
-  document.getElementById('civ').innerHTML = civ_name;
+    load_strategy(civ_info);
+    document.getElementById('bonuses').innerHTML = civ_info['bonuses'];
+    document.getElementById('uniques').innerHTML = civ_info['uniques'];
+    document.getElementById('production').innerHTML = civ_info['production'];
+    document.getElementById('civ').innerHTML = civ_name;
+    if (civs.includes(civ_name)) {
+        document.getElementById('glwr').src = "arabia_glwrs/" + civ_name + ".png";
+    } else {
+        document.getElementById('glwr').src = "";
+    }
 };
 
 function load_strategy(civ_info) {

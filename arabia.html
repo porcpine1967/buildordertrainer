@@ -7,42 +7,52 @@
       h2 { margin: 3px; font-size: 18px }
       #civ { text-transform: capitalize }
       #antiheader { text-transform: capitalize }
+      #important_techs { clear: both }
       td,th { padding: 5px; border: 1px solid black}
       td {text-align: center;}
-	  .civ_info td {text-align: left; vertical-align: top}
+      .strategy {margin: 10px}
+      .civ_info td {text-align: left; vertical-align: top}
+      .summary { float: left }
       button.quantity { width: 3em; font-size: 24 }
       button.so {display: block; margin-bottom: 10px}
       #feudal, #castle {display: none}
-	  td.instructions { background: silver;}
-	  td.buildings { background: khaki;}
+      td.instructions { background: silver;}
+      td.buildings { background: khaki;}
     </style>
     <script src="arabia.js"></script>
     <script src="arabia_functions.js"></script>
   </head>
   <body>
     <select id="civ_picker" onchange="switch_civ()">
-      <option value="x"></option>
     </select>
     <select id="opposition_picker" onchange="switch_opposition()">
       <option value="x"></option>
     </select>
-	<button id="alt_strategy" style="display:none" onclick="switch_strategy()">Alternate Strategy</button>
-    <h2 id="civ"></h2>
-    <div style="margin: 10px;">Strategy: <span id="strategy"></span></div>
-    <div style="margin: 10px;">
-      <table>
-        <tr><th>Opening</th><th>Transition</th><th>Castle Age</th><th>Imperial Age</th></tr>
-        <tr><td id="opening"></td><td id="transition"></td><td id="castle_age"></td><td id="imperial_age"></td></tr>
-      </table>
+    <button id="alt_strategy" style="display:none" onclick="switch_strategy()">Alternate Strategy</button>
+    <div>
+      <div class="summary">
+        <h2 id="civ"></h2>
+        <div class="strategy">Strategy: <span id="strategy"></span></div>
+        <div class="strategy">
+          <table>
+            <tr><th>Opening</th><th>Transition</th><th>Castle Age</th><th>Imperial Age</th></tr>
+            <tr><td id="opening"></td><td id="transition"></td><td id="castle_age"></td><td id="imperial_age"></td></tr>
+          </table>
+        </div>
+        <div id="important_techs"></div>
+      </div>
+      <div>
+        <img id="glwr" src=""/>
+        <img id="opp_glwr" src=""/>
+      </div>
     </div>
-	<div id="important_techs"></div>
-   <div style="margin: 10px;">
+    <div style="margin: 10px; clear: both">
       <h3>Civilization Information</h3>
       <table class="civ_info">
-		<tr><th>Bonuses</th><th>Uniques</th><th>Production</th><th id="antiheader">Opposition</th></tr>
-		  <tr><td id="bonuses"></td><td id="uniques"></td><td id="production"></td><td id="antiproduction"></td></tr>
+        <tr><th>Bonuses</th><th>Uniques</th><th>Production</th><th id="antiheader">Opposition</th></tr>
+        <tr><td id="bonuses"></td><td id="uniques"></td><td id="production"></td><td id="antiproduction"></td></tr>
       </table>
-   </div>
+    </div>
     <div id="bo" style="margin: 10px;">
       <h3>Build Order</h3>
       <h4>Dark Age</h4>
@@ -60,25 +70,26 @@
       </table>
       <div id="cup_instructions" style="margin: 10px;"></div>
       <div id="castle_instructions"></div>
-   </div>
+    </div>
     <h2>Help (<span onClick="toggleHelp()" style="color: blue; cursor: hand;">toggle</span>)</h2>
     <div id="help" style="display: none;">
       <dl>
-      <dt>What is this page for?</dt>
-      <dd>This page randomly chooses a civilization that was ranked as one of the top civs for Arabia by <a href="https://youtu.be/rI74BwK5E7M">the Viper</a>. I built this page so I could randomly get a good civilization rather than the oddball civs I was getting when I chose random.
-      </dd>
-      <dt>Where did you get the strategies?</dt>
-      <dd>I found the general strategies at <a href="https://ageofempires.fandom.com/wiki/Category:Strategies_(Age_of_Empires_II)">Age of Empires Fandom</a> and distilled the information from them.</dd>
-      <dt>What is a build order?</dt>
-      <dd>In Age of Empires II, the community has worked out the most efficient order to assign villagers to various tasks in order to reach a certain goal. For example, if you want to make archers you need to click up to the Feudal Age, build Archery Ranges, and then make archers in a continuous stream. The ordering of villagers to specific tasks in a way that reaches that goal the most quickly is called a "build order".
-      <dt>Where did you get your build orders?</dt>
-      <dd>These build orders are based on Cicero's <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=1489568470">Build Order Reference</a>.<dd>
-      <dt>Which browsers work best for the trainer?</dt>
-      <dd>I have only tested the trainer on Chrome.</dd>
-      <dt>How do I contact you?</dt>
-      <dd>Please leave a message or make feature requests/report bugs at the <a href="https://github.com/porcpine1967/buildordertrainer/issues">github project page</a>.</dd>
+        <dt>What is this page for?</dt>
+        <dd>This page provides build and strategy guidance for each civilization, plus additional civ info.</dd>
+        <dt>What are those images?</dt>
+        <dd>The images are normalized game-winning odds for the length of the game. They should help indicate when to push and when to hang back, plus when your enemy is weakest.</dd>
+        <dt>Where did you get the strategies?</dt>
+        <dd>I found the general strategies at <a href="https://ageofempires.fandom.com/wiki/Category:Strategies_(Age_of_Empires_II)">Age of Empires Fandom</a> and distilled the information from them.</dd>
+        <dt>What is a build order?</dt>
+        <dd>In Age of Empires II, the community has worked out the most efficient order to assign villagers to various tasks in order to reach a certain goal. For example, if you want to make archers you need to click up to the Feudal Age, build Archery Ranges, and then make archers in a continuous stream. The ordering of villagers to specific tasks in a way that reaches that goal the most quickly is called a "build order".
+          <dt>Where did you get your build orders?</dt>
+        <dd>These build orders are based on Cicero's <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=1489568470">Build Order Reference</a>.<dd>
+          <dt>Which browsers work best for the trainer?</dt>
+        <dd>I have only tested the trainer on Chrome.</dd>
+        <dt>How do I contact you?</dt>
+        <dd>Please leave a message or make feature requests/report bugs at the <a href="https://github.com/porcpine1967/buildordertrainer/issues">github project page</a>.</dd>
       </dl>
     </div>
-  <script>initialize()</script>
+    <script>initialize()</script>
   </body>
 </html>
