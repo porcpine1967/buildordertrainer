@@ -159,7 +159,7 @@ var strategies = {
             castle: "LtCav+Longswords||Elephant+Pikes",
             cup_instructions: "2nd Stable||2nd Barracks",
             imp: "Elite Elephants or Champions; Faith",
-            important_techs: "Howdah (if elephants; Castle: 400F 300W)",
+            important_techs: "Howdah (if elephants; Castle: 400F 300W), Manipur Cavalry (Imp: 650F 400G)",
             bonuses: "Lumber Camp technologies free<br>Infantry +1 attack per age (starting in the Feudal Age)<br>Monastery technologies cost -50%<br>Relics visible on the map at the start of the game",
             uniques: "Arambai: cavalry archer with a powerful but inaccurate dart attack<br><br>Howdah: Battle Elephants receive +1 normal/+2 pierce armor.<br>Manipur Cavalry: Cavalry deals +5 bonus attack vs. archers.",
             production: "<b>Archery Range</b><br>Attack: 3, Armor: 1, Parthian Tactics, MISSING Thumb Ring<br>Crossbowman (36/39)<br>Skirmisher (37/39)<br>Heavy Cavalry Archer (24/36)<br><b>Stable</b><br>Attack: 3, Armor: 3<br>Hussar (2/35)<br>Cavalier (11/35)<br>Battle Elephant (1/4)<br><b>Barracks</b><br>Attack: 3, Armor: 3<br>Champion (3/39)<br>Halberdier (1/39)<br><b>Siege Workshop</b><br>Siege Engineers<br>Capped Ram (24/39)<br>Onager (15/39)<br>Heavy Scorpion (8/39)<br>Bombard Cannon (5/21)",
