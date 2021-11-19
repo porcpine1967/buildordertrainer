@@ -59,8 +59,8 @@
   + 3
   Howdah: Battle Elephants receive +1 normal/+2 pierce armor.
   + 1
-  Manipur Cavalry: Cavalry and Arambai deal +6 bonus attack vs buildings.
-  + .6
+  Manipur Cavalry: Cavalry and Arambai deal +6 bonus attack vs Archers.
+  + 3
   **********
   Byzantines
   **********
@@ -340,7 +340,7 @@
   *******
   Vikings
   *******
-  Infantry +10% hit points Feudal, +15% Castle, +20% Imperial Age
+  Infantry +20% hit points Feudal, +20% Castle, +20% Imperial Age
   + 1.5
   Chieftains: Infantry get attack bonus vs. cavalry.
   + 2.5

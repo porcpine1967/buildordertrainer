@@ -95,9 +95,9 @@ CIV_UNIT_BONUSES = {
     "Bulgarians": {"KNIGHT": 0.33, "LIGHT_CAVALRY": 0.33, "TWO_HANDED_SWORDSMAN": 2.5},
     "Burgundians": {"KNIGHT": 1, "BOMBARD_CANNON": 0.25, "HAND_CANNONEER": 0.25},
     "Burmese": {
-        "KNIGHT": 0.6,
-        "LIGHT_CAVALRY": 0.6,
-        "BATTLE_ELEPHANT": 1.6,
+        "KNIGHT": 3.0,
+        "LIGHT_CAVALRY": 3.0,
+        "BATTLE_ELEPHANT": 4.0,
         "TWO_HANDED_SWORDSMAN": 3.0,
         "PIKEMAN": 3.0,
     },
