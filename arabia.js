@@ -125,7 +125,7 @@ var strategies = {
             production: "<b>Archery Range</b><br>Attack: 3, Armor: 3<br>Crossbowman (23/39)<br>Skirmisher (9/39)<br>Heavy Cavalry Archer (14/36)<br>Hand Cannoneer (8/20)<br>Genitour<br><b>Stable</b><br>Attack: 3, Armor: 3<br>Hussar (11/35)<br>Cavalier (16/35)<br>Camel Rider (4/12)<br><b>Barracks</b><br>Attack: 3, Armor: 3<br>Champion (9/39)<br>Pikeman (34/39)<br><b>Siege Workshop</b><br>Siege Engineers<br>Capped Ram (24/39)<br>Onager (15/39)<br>Heavy Scorpion (8/39)<br>Bombard Cannon (5/21)",
            },
   bohemians: {...base_strategies.maa_archers,
-              castle: "Xbow+Pikes, Hand Canonneers",
+              castle: "Xbow+Pikes, Hand Canonneers; Fervor",
               cup_instructions: "2nd Barracks",
               bonuses: "Blacksmiths, Monasteries and Universities cost -100 wood<br>Chemistry and Hand Cannoneer available in Castle Age<br>Spearman-line deals +25% bonus damage<br>Fervor and Sanctity affect Villagers<br>Mining Camp technologies free<br>Markets work 80% faster",
               uniques: "Hussite Wagon: siege unit units behind it receive 50% less damage from incoming projectiles<br><br>Wagenburg Tactics: Gunpowder units move 15% faster.<br>Hussite Reforms: Monks and Monastery technologies have their gold cost replaced by food.",
