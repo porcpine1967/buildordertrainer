@@ -71,6 +71,16 @@ var base_strategies = {
                   opening: "Scouts",
                   transition: "Castle",
                  },
+  scouts_skirms: {...base_strategy,
+                  dark_headers: ["Sheep", "Wood", "Boar", "Berries", "Boar to farms", "Wood"],
+                  dark_values: [6, 3, 2, 4, 2, "4 (7)"],
+                  fup_instructions: "3 sheep to wood (10); barracks",
+                  feudal_headers: ["Farms", "Wood", "Gold", "Wheelbarrow", "Farms"],
+                  feudal_values: ["8 (14)", "2 (12)", "4", "+", "4 (18)"],
+                  feudal_instructions: "Stable, Range",
+                  opening: "Scouts",
+                  transition: "Archers",
+                 },
 };
 
 var castle_strategies  = {
@@ -293,7 +303,10 @@ var strategies = {
             uniques: "War Wagon: cavalry archer unit strong vs infantry and archers<br><br>Eupseong: Watch Towers, Guard Towers and Keeps have +2 range.<br>Shinkichon: Mangonels, Onagers, and Siege Onagers have +1 range.",
             production: "<b>Archery Range</b><br>Attack: 3, Armor: 3, MISSING Bloodlines<br>Arbalester (7/39)<br>Skirmisher (8/39)<br>Heavy Cavalry Archer (18/36)<br>Hand Cannoneer (8/20)<br><b>Stable</b><br>Attack: 2, Armor: 2, MISSING Bloodlines<br>Hussar (32/35)<br>Cavalier (34/35)<br><b>Barracks</b><br>Attack: 2, Armor: 3<br>Champion (27/39)<br>Halberdier (26/39)<br><b>Siege Workshop</b><br>Siege Engineers<br>Capped Ram (24/39)<br>Siege Onager (2/39)<br>Scorpion (27/39)<br>Bombard Cannon (5/21)",
            },
-  lithuanians: {...base_strategies.scouts_archers, ...castle_strategies.knights_skirms,
+  lithuanians: {...base_strategies.scouts_skirms,
+				castle: "Monks (relics), Knights+skirms",
+				cup_instructions: "Blacksmith, 2nd Stable, guard relics, TC to gold",
+				castle_instructions: "Monastery first",
                 strategy: "Map Control",
                 important_techs: "Tower Shields (Imp: 500F 200G)",
                 bonuses: "Start with +150 food<br>Spearman-line and Skirmishers move 10% faster<br>Each garrisoned relic gives +1 attack to Knights and Leitis (maximum +4)<br>Monasteries work 20% faster",
