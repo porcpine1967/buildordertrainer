@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<rss version="2.0">
+  <channel>
+    <title>Dice, Camera, Action! An Official Dungeons &amp; Dragons Podcast</title>
+    <description>Dice, Camera, Action! is a live play-through of D&amp;D's latest storylines run by Dungeon Master extraordinaire, Chris Perkins, for the amazing group of adventurers known as the Waffle Crew.</description>
+    <link>https://podbay.fm/p/dice-camera-action-an-official-dungeons-and-dragons-podcast</link>
+    <category>Dungeons &amp; Dragons/podcast/actual play/roleplaying</category>
+    <copyright>Copyright 2018</copyright>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 31 Mar 2023 00:39:14 -0400</lastBuildDate>
+    <pubDate>Thu, 3 Jul 2014 13:38:55 -0400</pubDate>
+    <image>
+      <url>https://alidashealingtouch.com/dca.jpg</url>
+      <title>Dice, Camera, Action!</title>
+      <width>400</width>
+      <height>400</height>
+    </image>
+    <item>
+      <title>Close the Airlock Captains Chair 1</title>
+      <link>http://archive.org/download/CloseTheAirlock/Close_the_Airlock_Captains_Chair_1.mp3</link>
+      <description>Close the Airlock Captains Chair 1</description>
+      <enclosure url="http://archive.org/download/CloseTheAirlock/Close_the_Airlock_Captains_Chair_1.mp3" type="audio/mpeg" />
+      <guid isPermaLink="false">105e0d46-865d-4efc-9500-62ec3a57ebfb</guid>
+      <category>Traveller/podcast/actual play/roleplaying</category>
+      <pubDate>Thu, 31 May 2012 00:00:00 +0000</pubDate>
+    </item>
+  </channel>
+</rss>
+
